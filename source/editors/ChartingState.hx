@@ -78,7 +78,7 @@ class ChartingState extends MusicBeatState
 		['Dadbattle Spotlight', "Used in Dad Battle,\nValue 1: 0/1 = ON/OFF,\n2 = Target Dad\n3 = Target BF"],
 		['Hey!', "Plays the \"Hey!\" animation from Bopeebo,\nValue 1: BF = Only Boyfriend, GF = Only Girlfriend,\nSomething else = Both.\nValue 2: Custom animation duration,\nleave it blank for 0.6s"],
 		['Set GF Speed', "Sets GF head bopping speed,\nValue 1: 1 = Normal speed,\n2 = 1/2 speed, 4 = 1/4 speed etc.\nUsed on Fresh during the beatbox parts.\n\nWarning: Value must be integer!"],
-		['Philly Glow', "Exclusive to Week 3\nValue 1: 0/1/2 = OFF/ON/Reset Gradient\n \nNo, i won't add it to other weeks."],
+		['Philly Glow', "Exclusive to Week 3\nValue 1: 0/1/2 = OFF/ON/Reset Gradient\n \nNo, i won't add it to other weeks.\nNote: added it to other stages :trol:"],
 		['Kill Henchmen', "For Mom's songs, don't use this please, i love them :("],
 		['Add Camera Zoom', "Used on MILF on that one \"hard\" part\nValue 1: Camera zoom add (Default: 0.015)\nValue 2: UI zoom add (Default: 0.03)\nLeave the values blank if you want to use Default."],
 		['BG Freaks Expression', "Should be used only in \"school\" Stage!"],
@@ -89,7 +89,14 @@ class ChartingState extends MusicBeatState
 		['Screen Shake', "Value 1: Camera shake\nValue 2: HUD shake\n\nEvery value works as the following example: \"1, 0.05\".\nThe first number (1) is the duration.\nThe second number (0.05) is the intensity."],
 		['Change Character', "Value 1: Character to change (Dad, BF, GF)\nValue 2: New character's name"],
 		['Change Scroll Speed', "Value 1: Scroll Speed Multiplier (1 is default)\nValue 2: Time it takes to change fully in seconds."],
-		['Set Property', "Value 1: Variable name\nValue 2: New value"]
+		['Set Property', "Value 1: Variable name\nValue 2: New value"],
+		['Quick note spin', "Does a quick note spin"],
+		['Flash effect', "Does a flash effect  (if the Flashing setting is enabled)\nOn Value 1:\n\n0: White Game cam flash\n1: for Black Game cam flash.\n2: for White HUD cam Flash\n3: for Black HUD cam Flash"],
+		['Hide or Show HUD elements', "(On Value 1: 0 to hide all of the hud elements\n| 1 to show only strums\n| 2 to show the hud elements if it was hidden previously)"],
+		['Hide or Show HUD elements with Fade', "(On Value 1: 0 to hide all of the hud elements with fade\n| 1 to show the hud elements if it was hidden\n with fade previously)"],
+		['turn that fuckin spin on', "360 camhud spin lmao\nValue 1: (0: turn dat thing off\n 1: turn dat thing on to the right\n 2: turn dat thing on to the left)"],
+		['Switch to Pixel or 3D UI', "On Value 1:\n\n0: Pixel UI\n1: 3D UI\n2: Revert Default UI"],
+		['Thunderstorm type black screen', "adds a thunderstom from the shaggy mod type black screen\nValue 1: (0: Turn off, 1: turn on)"],
 	];
 
 	var _file:FileReference;
@@ -214,7 +221,7 @@ class ChartingState extends MusicBeatState
 				bpm: 150.0,
 				needsVoices: true,
 				arrowSkin: '',
-				splashSkin: 'noteSplashes',//idk it would crash if i didn't
+				splashSkin: 'noteSplashes',//idk it would crash if i didn't\
 				isSkinSep: false,
 				player1: 'bf',
 				player2: 'dad',
@@ -417,7 +424,7 @@ class ChartingState extends MusicBeatState
 		check_isSkinSep.callback = function()
 		{
 			_song.isSkinSep = check_isSkinSep.checked;
-			trace('CHECKED! Opponent Skin is now separated from the players (DNB mods moment)');
+			trace('CHECKED OPP SKIN SEP!');
 		};
 
 		var saveButton:FlxButton = new FlxButton(110, 8, "Save", function()
