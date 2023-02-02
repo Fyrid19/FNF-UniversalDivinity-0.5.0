@@ -215,6 +215,7 @@ class ChartingState extends MusicBeatState
 				needsVoices: true,
 				arrowSkin: '',
 				splashSkin: 'noteSplashes',//idk it would crash if i didn't
+				isSkinSep: false,
 				player1: 'bf',
 				player2: 'dad',
 				gfVersion: 'gf',
@@ -411,6 +412,14 @@ class ChartingState extends MusicBeatState
 			//trace('CHECKED!');
 		};
 
+		var check_isSkinSep = new FlxUICheckBox(500, 45, null, null, "Has Opponent Skin Separated", 120);
+		check_isSkinSep.checked = _song.isSkinSep;
+		check_isSkinSep.callback = function()
+		{
+			_song.isSkinSep = check_isSkinSep.checked;
+			trace('CHECKED! Opponent Skin is now separated from the players (DNB mods moment)');
+		};
+
 		var saveButton:FlxButton = new FlxButton(110, 8, "Save", function()
 		{
 			saveLevel();
@@ -604,6 +613,7 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(UI_songTitle);
 
 		tab_group_song.add(check_voices);
+		tab_group_song.add(check_isSkinSep);
 		tab_group_song.add(clear_events);
 		tab_group_song.add(clear_notes);
 		tab_group_song.add(saveButton);

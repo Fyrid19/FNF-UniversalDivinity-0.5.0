@@ -2,6 +2,7 @@ package;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.FlxCamera;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.math.FlxMath;
 import flixel.util.FlxColor;
@@ -95,6 +96,8 @@ class Note extends FlxSprite
 
 	public var hitsoundDisabled:Bool = false;
 
+	public var camHUD:FlxCamera;
+
 	private function set_multSpeed(value:Float):Float {
 		resizeByRatio(value / multSpeed);
 		multSpeed = value;
@@ -142,6 +145,8 @@ class Note extends FlxSprite
 						missHealth = 0.3;
 					}
 					hitCausesMiss = true;
+				case 'Restart Note': // did this solely to get the splashes to work lmao
+					noteSplashTexture = 'SHUTDOWNnoteSplashes';
 				case 'Alt Animation':
 					animSuffix = '-alt';
 				case 'No Animation':
@@ -158,7 +163,7 @@ class Note extends FlxSprite
 		return value;
 	}
 
-	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?inEditor:Bool = false)
+	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?inEditor:Bool = false, ?isPlayer:Bool = false)
 	{
 		super();
 
@@ -199,6 +204,8 @@ class Note extends FlxSprite
 				animation.play(animToPlay + 'Scroll');
 			}
 		}
+
+		if(PlayState.SONG.isSkinSep && isPlayer) set_texture('NOTE_assets');
 
 		// trace(prevNote);
 

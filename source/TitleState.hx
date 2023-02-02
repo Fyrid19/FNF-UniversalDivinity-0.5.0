@@ -29,10 +29,6 @@ import flixel.util.FlxTimer;
 import flixel.util.FlxGradient;
 import lime.app.Application;
 import openfl.Assets;
-import trolling.SusState;
-import trolling.CheaterState;
-import trolling.YouCheatedSomeoneIsComing;
-import trolling.CrasherState;
 import flixel.addons.display.FlxBackdrop;
 
 using StringTools;
