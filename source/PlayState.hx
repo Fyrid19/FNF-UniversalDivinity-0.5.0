@@ -3386,7 +3386,7 @@ class PlayState extends MusicBeatState
 					dad.angle += elapsed * 10;
 					dad.y += (Math.sin(elapsedtime) * 0.6);
 				default:
-					dad.y += (Math.sin(elapsedtime) * 0.6);
+					dad.y += (Math.sin(elapsedtime) * 0.6); // we need to find a way so that the camera locks onto the character when it flys, it just looks weird now.
 			}
 		}
 	if(funnyFloatyBoys.contains(boyfriend.curCharacter.toLowerCase()) && canFloat)
