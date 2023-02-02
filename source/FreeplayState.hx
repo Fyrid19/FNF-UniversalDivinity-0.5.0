@@ -26,7 +26,7 @@ class FreeplayState extends MusicBeatState
 
 	var selector:FlxText;
 	var curSelected:Int = 0;
-	var curDifficulty:Int = 2; // changed this to set everything on hard as default >:) (changeable though by the player FUUUUUU-)
+	var curDifficulty:Int = 1;
 
 	var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('backgrounds/SUSSUS AMOGUS'));
 
@@ -70,7 +70,7 @@ class FreeplayState extends MusicBeatState
 		0xFFFF0D00, // purgatory stuff 9 
 		0xFF189429, // purgatory stuff 10
 		0xFF24177D, // purgatory stuff 11 
-		0xFF420000, // purgatory stuff 12 (I DONT FUCKING KNOW WHY THIS GIVES ME THE EASY DIFFICULTY)
+		0xFF420000, // purgatory stuff 12
 		0xFFFFFFFF, // purgatory stuff 13
 		0xFF000000, // purgatory stuff 14
     ];
@@ -448,11 +448,9 @@ public static function destroyFreeplayVocals() {
 		curDifficulty += change;
 
 		if (curDifficulty < 0)
-			curDifficulty = 2;
+			curDifficulty = 1;
 		if (curDifficulty > 2)
-			curDifficulty = 2;
-		
-		// i removed the !Inmods thing hopefully color 12 doesnt show the finale difficulty
+			curDifficulty = 1;
 
 		#if !switch
 		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
@@ -477,10 +475,10 @@ public static function destroyFreeplayVocals() {
 		if (songs[curSelected].week != 1 || songs[curSelected].songName == 'Old-Insanity')
 		{
 			if (curDifficulty < 2)
-				curDifficulty = 2;
+				curDifficulty = 1;
 
 			if (curDifficulty > 2)
-				curDifficulty = 2;
+				curDifficulty = 1;
 		}
 		
 		#if !switch
