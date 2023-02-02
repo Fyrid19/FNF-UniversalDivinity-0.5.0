@@ -1,6 +1,5 @@
 package;
 
-import options.OptionsState;
 #if desktop
 import Discord.DiscordClient;
 #end
@@ -24,45 +23,39 @@ import editors.MasterEditorMenu;
 
 using StringTools;
 
-class MainMenuState extends MusicBeatState
+class ExtrasMenuState extends MusicBeatState
 {
 	public static var psychEngineVersion:String = '0.6.2'; //This is also used for Discord RPC
-	public static var curModVer:String = '1.0'; //also used for discord rpc idk why the same text above had to be copied and pasted here so i reworded it lmao
-	public static var curModDevBuild:String = 'ALPHA 1';
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
 	private var camGame:FlxCamera;
 	private var camAchievement:FlxCamera;
 	
-	var optionShit:Array<String> = ['story_mode', 'freeplay', 'extras', 'options'];
+	var optionShit:Array<String> = [
+		#if MODS_ALLOWED 'mods', #end
+		#if ACHIEVEMENTS_ALLOWED 'awards', #end
+		'credits',
+		#if desktop 'discord' #end
+	];
 
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
-	private var char1:Character = null;
-	var side(default, null):Dynamic;
-	var camLerp(default, null):Null<Float>;
-
-	public static var sexo3:Bool = true;
-
-	override function beatHit() { super.beatHit(); char1.dance(); }
 
 	public static var firstStart:Bool = true;
 
 	public static var finishedFunnyMove:Bool = false;
 
-	public static var engineVers:Array<String> = ['Divinity', 'Morrow', 'Fyrid', 'Rambi', 'Mordon', 'Jimmy']; // SHIT-
-
-	public static var daRealEngineVer = engineVers[FlxG.random.int(0, 6)]; // had to make a duplicate
-
-	public static var bgPaths:Array<String> = 
+	public static var bgPaths:Array<String> = // remind me to replace this later with the fucking current bgs we have -frogb
 	[
-		'backgrounds/DandruNotHere',
-		'backgrounds/melDoesStuff',
-		'backgrounds/melDoesStuff2',
-		'backgrounds/Laughz',
-		'backgrounds/MooseDave'
+		'backgrounds/SUSSUS AMOGUS',
+		'backgrounds/SwagnotrllyTheMod',
+		'backgrounds/Olyantwo',
+		'backgrounds/morie',
+		'backgrounds/mantis',
+		'backgrounds/mamakotomi',
+		'backgrounds/T5mpler'
 	];
 
 	override function create()
@@ -84,8 +77,6 @@ class MainMenuState extends MusicBeatState
 		transOut = FlxTransitionableState.defaultTransOut;
 
 		persistentUpdate = persistentDraw = true;
-
-		daRealEngineVer = engineVers[FlxG.random.int(0, 6)];
 
 		var yScroll:Float = Math.max(0.1 - (0.03 * (optionShit.length - 4)), 0.1);
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(randomizeBG());
@@ -119,7 +110,7 @@ class MainMenuState extends MusicBeatState
 
 		for (i in 0...optionShit.length)
 			{
-				var menuItem:FlxSprite = new FlxSprite(0, FlxG.height * 2);
+				var menuItem:FlxSprite = new FlxSprite(0, FlxG.height * 1.6);
 				menuItem.scale.x = scale;
 				menuItem.scale.y = scale;
 				menuItem.frames = Paths.getSparrowAtlas('mainmenu/menu_' + optionShit[i]);
@@ -127,7 +118,7 @@ class MainMenuState extends MusicBeatState
 				menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
 				menuItem.animation.play('idle');
 				menuItem.ID = i;
-				menuItem.x = 100;
+				menuItem.x = -200;
 				menuItems.add(menuItem);
 				menuItem.scrollFactor.set();
 				menuItem.antialiasing = ClientPrefs.globalAntialiasing;
@@ -143,40 +134,7 @@ class MainMenuState extends MusicBeatState
 
 		firstStart = false;
 
-		FlxG.camera.follow(camFollow, null, camLerp);
-
-		FlxG.camera.zoom = 3;
-		side = new FlxSprite();
-		side.alpha = 0;
-		FlxTween.tween(FlxG.camera, {zoom: 1}, 1.1, {ease: FlxEase.expoInOut});
-		FlxTween.tween(bg, {angle: 0}, 1, {ease: FlxEase.quartInOut});
-		FlxTween.tween(side, {alpha: 1}, 0.9, {ease: FlxEase.quartInOut});
-
-		char1 = new Character(700, -100, 'RandoScript');
-		char1.setGraphicSize(Std.int(char1.width * 1));
-		add(char1);
-		char1.visible = false;
-		
-		FlxTween.tween(char1, {y: char1.y + 50}, 5, {ease: FlxEase.quadInOut, type: PINGPONG});
-
-		FlxTween.tween(char1, {y: char1.y + 50}, 5, {ease: FlxEase.quadInOut, type: PINGPONG, startDelay: 0.1});
-
-		var versionShit:FlxText = new FlxText(15, FlxG.height - 84, 0, "Universal Divinity Developer Build " + curModDevBuild, 12);
-		versionShit.scrollFactor.set();
-		versionShit.setFormat("Comic Sans MS Bold", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		add(versionShit);
-		var versionShit:FlxText = new FlxText(15, FlxG.height - 64, 0, "Psych Engine v" + psychEngineVersion, 12);
-		versionShit.scrollFactor.set();
-		versionShit.setFormat("Comic Sans MS Bold", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		add(versionShit);
-		var versionShit:FlxText = new FlxText(15, FlxG.height - 44, 0, "Friday Night Funkin' v" + Application.current.meta.get('version'), 12);
-		versionShit.scrollFactor.set();
-		versionShit.setFormat("Comic Sans MS Bold", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		add(versionShit);
-		var versionShit:FlxText = new FlxText(15, FlxG.height - 24, 0, "Early 1.0 " + daRealEngineVer + " Engine, Universal Divinity", 12);
-		versionShit.scrollFactor.set();
-		versionShit.setFormat("Comic Sans MS Bold", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		add(versionShit);
+		FlxG.camera.follow(camFollowPos, null, 1);
 
 		// NG.core.calls.event.logEvent('swag').send();
 
@@ -197,18 +155,6 @@ class MainMenuState extends MusicBeatState
 		var lerpVal:Float = CoolUtil.boundTo(elapsed * 5.6, 0, 1);
 		camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
 
-		if (optionShit[curSelected] == 'story_mode')
-			{
-				changeItem(-1); changeItem(1);
-				char1.dance();
-				char1.updateHitbox();
-				char1.visible = true;
-				}
-				else
-				{
-				char1.visible = false;
-				}
-
 		if (!selectedSomethin)
 		{
 			if (controls.UI_UP_P)
@@ -223,19 +169,21 @@ class MainMenuState extends MusicBeatState
 				changeItem(1);
 			}
 
-			if (controls.BACK)
+			if (controls.BACK && MainMenuState.sexo3) // sex is real -frogb
 			{
 				selectedSomethin = true;
 				FlxG.sound.play(Paths.sound('cancelMenu'));
-				MusicBeatState.switchState(new TitleState());
+				MusicBeatState.switchState(new MainMenuState());
 			}
 
 			if (controls.ACCEPT)
 				{
-					if (optionShit[curSelected] == 'donate')
+					if (optionShit[curSelected] == 'discord')
 					{
-						CoolUtil.browserLoad('https://gamebanana.com/mods/43201');
-					}
+						if (MainMenuState.sexo3) {
+				    		CoolUtil.browserLoad('https://discord.gg/vsdave'); //vs dave discord (ELSE MY NUTS BITCH, WE CHANGING THIS SOON) -frogb
+						} 
+					} 
 					else
 					{
 						selectedSomethin = true;
@@ -243,8 +191,6 @@ class MainMenuState extends MusicBeatState
 						
 						if(ClientPrefs.flashing)
 							FlxFlicker.flicker(magenta, 1.1, 0.15, false);
-
-						FlxTween.tween(FlxG.camera, {zoom:1.35}, 1.45, {ease: FlxEase.expoIn});
 	
 						menuItems.forEach(function(spr:FlxSprite)
 						{
@@ -291,6 +237,7 @@ class MainMenuState extends MusicBeatState
 	
 			menuItems.forEach(function(spr:FlxSprite)
 			{
+				spr.screenCenter(X);
 			});
 		}
 	function goToState()
@@ -299,18 +246,14 @@ class MainMenuState extends MusicBeatState
 	
 			switch (daChoice)
 			{
-				case 'story_mode':
-					MusicBeatState.switchState(new NewStoryDivinity());
-				case 'freeplay':
-					MusicBeatState.switchState(new FreeplayState());
-				case 'extras':
-					MusicBeatState.switchState(new ExtrasMenuState());
-				case 'options':
-					MusicBeatState.switchState(new OptionsState());
 				case 'credits':
 					MusicBeatState.switchState(new CreditsState());
 				case 'awards':
 					MusicBeatState.switchState(new AchievementsMenuState());
+				#if MODS_ALLOWED
+				case 'mods':
+					MusicBeatState.switchState(new ModsMenuState());
+				#end
 			}
 		}
 
