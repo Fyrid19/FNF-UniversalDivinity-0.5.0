@@ -26,7 +26,7 @@ class StrumNote extends FlxSprite
 		return value;
 	}
 
-	public function new(x:Float, y:Float, leData:Int, player:Int) {
+	public function new(x:Float, y:Float, leData:Int, player:Int) { // I MODIFIED THIS A BIT HOPEFULLY THE OPPO SKIN SHIT DOESNT APPLY TO THE PLAYER STRUMS TOO -frogb
 		colorSwap = new ColorSwap();
 		shader = colorSwap.shader;
 		noteData = leData;
@@ -35,7 +35,16 @@ class StrumNote extends FlxSprite
 		super(x, y);
 
 		var skin:String = 'NOTE_assets';
-		if(PlayState.SONG.arrowSkin != null && PlayState.SONG.arrowSkin.length > 1) skin = PlayState.SONG.arrowSkin;
+		if(PlayState.SONG.arrowSkin != null && PlayState.SONG.arrowSkin.length > 1)
+		{
+			if(PlayState.SONG.isSkinSep != true)
+				skin = PlayState.SONG.arrowSkin;
+			else
+			{
+				if(player == 0)
+					skin = PlayState.SONG.arrowSkin;
+			}
+		}
 		texture = skin; //Load texture and anims
 
 		scrollFactor.set();

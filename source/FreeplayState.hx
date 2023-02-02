@@ -120,7 +120,6 @@ class FreeplayState extends MusicBeatState
 			switch (AllPossibleSongs[CurrentPack].toLowerCase())
 			{
 				case 'main':
-					addWeek(['Opposition'], 12, ['dataexpunged']);
 					addWeek(['Midnight'], 1, ['dave']);
 					addWeek(['Blast'], 3, ['bambi']);
 					addWeek(['Golden'], 6, ['tristan']);
