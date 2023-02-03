@@ -152,7 +152,7 @@ class PlayState extends MusicBeatState
 	public var gf:Character = null;
 	public var boyfriend:Boyfriend = null;
 
-	var funnyFloatyBoys:Array<String> = ['heldai-phase-1']; // i know 404 is open useable but if we want to add him to our mod then we can put his json name here. -frogb
+	var funnyFloatyBoys:Array<String> = ['mordon', 'heldai-phase-1']; // i know 404 is open useable but if we want to add him to our mod then we can put his json name here. -frogb
 	var funnySideFloatyBoys:Array<String> = ['bombu', 'bombu-expunged'];
 	var canSlide:Bool = true;
 	
@@ -206,9 +206,10 @@ class PlayState extends MusicBeatState
 	public var bads:Int = 0;
 	public var shits:Int = 0;
 
-	public var hasBfDarkLevels:Array<String> = ['farmNight', 'houseNight', '3dFucked', 'houseroof'];
-	public var hasBfSunsetLevels:Array<String> = ['farmSunset', 'houseSunset'];
-	public var hasBfDarkerLevels:Array<String> = ['spooky'];
+	//i dont think any of these work so we gotta do this in lua lmao (doTweenColor specifically) -frogb
+	public var hasBfDarkLevels:Array<String> = ['farmNight', 'houseNight', '3dFucked', 'houseroof']; // 0xFF878787
+	public var hasBfSunsetLevels:Array<String> = ['farmSunset', 'houseSunset']; // 0xFFF9974C
+	public var hasBfDarkerLevels:Array<String> = ['spooky']; // not needed 
 
 	private var daspinlmao:Bool = false;
 	private var daleftspinlmao:Bool = false;
@@ -792,7 +793,7 @@ class PlayState extends MusicBeatState
 				defaultCamZoom = 0.85;
 				curStage = '3dMordon';
 
-				var bg:BGSprite = new BGSprite('MordonBG');
+				var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('MordonBG'));
 				bg.antialiasing = true;
 				bg.scrollFactor.set(0.6, 0.6);
 				bg.active = true;
@@ -4751,6 +4752,10 @@ for (key => value in luaShaders)
 		else if (noteDiff > Conductor.safeZoneOffset * 0.25)
 		{
 			goods += 1;
+		}
+		else
+		{
+			spawnNoteSplashOnNote(note);
 		}
 
 		totalNotesHit += daRating.ratingMod;
