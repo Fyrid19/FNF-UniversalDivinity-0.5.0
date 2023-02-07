@@ -64,6 +64,7 @@ import DialogueBoxPsych;
 import Conductor.Rating;
 import Shaders;
 import DynamicShaderHandler;
+import divinity.SkinSelectState;
 #if sys
 import sys.FileSystem;
 #end
@@ -76,6 +77,10 @@ using StringTools;
 
 class PlayState extends MusicBeatState
 {
+	//UD variables idk
+	public static var skipSkinSelect:Bool;
+
+	//normal fnf shit
 	public static var STRUM_X = 42;
 	public static var STRUM_X_MIDDLESCROLL = -278;
 
@@ -856,12 +861,12 @@ class PlayState extends MusicBeatState
 
 		dadGhost.visible = false;
 		dadGhost.antialiasing = true;
-		dadGhost.scale.copyFrom(dad.scale);
+		//dadGhost.scale.copyFrom(dad.scale);
 		dadGhost.updateHitbox();
 
 		bfGhost.visible = false;
 		bfGhost.antialiasing = true;
-		bfGhost.scale.copyFrom(boyfriend.scale);
+		//bfGhost.scale.copyFrom(boyfriend.scale);
 		bfGhost.updateHitbox();
 
 		if(curStage.toLowerCase() == 'school')
@@ -990,7 +995,11 @@ class PlayState extends MusicBeatState
 		dadGroup.add(dad);
 		startCharacterLua(dad.curCharacter);
 
-		boyfriend = new Boyfriend(0, 0, SONG.player1);
+		if (!skipSkinSelect) {
+			boyfriend = new Boyfriend(0, 0, SkinSelectState.curSkin);
+		} else {
+			boyfriend = new Boyfriend(0, 0, SONG.player1);
+		}
 		startCharacterPos(boyfriend);
 		boyfriendGroup.add(boyfriend);
 		startCharacterLua(boyfriend.curCharacter);
@@ -4056,7 +4065,7 @@ for (key => value in luaShaders)
 				if(FlxTransitionableState.skipNextTransIn) {
 					CustomFadeTransition.nextCamera = null;
 				}
-				MusicBeatState.switchState(new FreeplayState());
+				MusicBeatState.switchState(new divinity.DivinityFreeplayState());
 				FlxG.sound.playMusic(Paths.music('freakyMenu'));
 				changedDifficulty = false;
 			}

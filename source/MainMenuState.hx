@@ -85,7 +85,7 @@ class MainMenuState extends MusicBeatState
 
 		//var yScroll:Float = Math.max(0.25 - (0.05 * (optionShit.length - 4)), 0.1);
 		var bg:FlxBackdrop;
-		bg = new FlxBackdrop(Paths.image(randomizeBG()), 0.2, 0);
+		bg = new FlxBackdrop(randomizeBG(), 0.2, 0);
 		bg.velocity.set(25, 0);
 		bg.updateHitbox();
 		bg.screenCenter(X);
@@ -155,7 +155,7 @@ class MainMenuState extends MusicBeatState
 			var menuItem:MainMenuItem = new MainMenuItem();
 			menuItem.scale.x = scale;
 			menuItem.scale.y = scale;
-			menuItem.frames = Paths.getSparrowAtlas('mainmenu/menu_' + optionShit[i]);
+			menuItem.frames = Paths.getSparrowAtlas('mainmenu/buttons/menu_' + optionShit[i]);
 			menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
 			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
 			menuItem.animation.play('idle');
@@ -278,7 +278,7 @@ class MainMenuState extends MusicBeatState
 									case 'story_mode':
 										MusicBeatState.switchState(new divinity.DivinityStoryMenuState());
 									case 'freeplay':
-										MusicBeatState.switchState(new FreeplayState());
+										MusicBeatState.switchState(new divinity.DivinityFreeplayState());
 									#if MODS_ALLOWED
 									case 'mods':
 										MusicBeatState.switchState(new ModsMenuState());
