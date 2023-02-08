@@ -206,7 +206,6 @@ class Note extends FlxSprite
 		}
 
 		if(PlayState.SONG.isSkinSep && isPlayer) set_texture('NOTE_assets');
-
 		// trace(prevNote);
 
 		if(prevNote!=null)
