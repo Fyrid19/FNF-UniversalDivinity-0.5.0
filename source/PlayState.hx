@@ -245,16 +245,12 @@ class PlayState extends MusicBeatState
 
 	var notesHitArray:Array<Date> = [];
 
-	var redSky:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('dave/redsky'));
+	var redSky:FlxSprite = new FlxSprite(-600, -300).loadGraphic(Paths.image('dave/redsky'));
 	var insanityRed:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('dave/redsky_insanity'));
-	//var redPlatform:FlxSprite = new FlxSprite(-275, 750).loadGraphic(Paths.image('dave/redPlatform')); // that never happened oops
-	var backyardnight:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('dave/backyardnight'));
-	var backyard:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('dave/backyard'));
 	var poop:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('dave/blank'));
 	var soscaryishitmypants:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('dave/ok'));
 	var poopBG:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('dave/3dFucked'));
 	var blackBG:FlxSprite = new FlxSprite(-120, -120).makeGraphic(Std.int(FlxG.width * 100), Std.int(FlxG.height * 150), FlxColor.BLACK);
-	//var computer:FlxSprite;
 
 	var dialogue:Array<String> = ['blah blah blah', 'coolswag'];
 	var dialogueJson:DialogueFile = null;
@@ -346,6 +342,12 @@ class PlayState extends MusicBeatState
 	var detailsText:String = "";
 	var detailsPausedText:String = "";
 	#end
+
+	//camera movement shit
+	var camFollowX:Int = 0;
+    var camFollowY:Int = 0;
+    var dadCamFollowX:Int = 0;
+	var dadCamFollowY:Int = 0;
 
 	//Achievement shit
 	var keysPressed:Array<Bool> = [];
@@ -4255,6 +4257,12 @@ for (key => value in luaShaders)
 					camHUD.zoom += hudZoom;
 				}
 
+			case 'Change the Default Camera Zoom': // not to be confused with the one above!
+					var mZoom:Float = Std.parseFloat(value1);
+					if(Math.isNaN(mZoom)) mZoom = 0.09;
+
+					defaultCamZoom = mZoom;
+
 			case 'Trigger BG Ghouls':
 				if(curStage == 'schoolEvil' && !ClientPrefs.lowQuality) {
 					bgGhouls.dance(true);
@@ -5219,7 +5227,27 @@ for (key => value in luaShaders)
 			}
 
 			var char:Character = dad;
-			var animToPlay:String = singAnimations[Std.int(Math.abs(note.noteData))] + altAnim;
+			var animToPlay:String = '';
+			switch (Math.abs(note.noteData))
+			{
+				case 0:
+					animToPlay = 'singLEFT';
+					dadCamFollowY = 0;
+					dadCamFollowX = -25;
+				case 1:
+					animToPlay = 'singDOWN';
+					dadCamFollowY = 25;
+					dadCamFollowX = 0;
+				case 2:
+					animToPlay = 'singUP';
+					dadCamFollowY = -25;
+					dadCamFollowX = 0;
+				case 3:
+					animToPlay = 'singRIGHT';
+					dadCamFollowY = 0;
+					dadCamFollowX = 25;
+			}
+
 			if(note.gfNote) {
 				char = gf;
 			}
@@ -5303,7 +5331,29 @@ for (key => value in luaShaders)
 			health += note.hitHealth * healthGain;
 
 			if(!note.noAnimation) {
-				var animToPlay:String = singAnimations[Std.int(Math.abs(note.noteData))];
+				var daAlt = '';
+				if(note.noteType == 'Alt Animation') daAlt = '-alt';
+
+				var animToPlay:String = '';
+				switch (Std.int(Math.abs(note.noteData)))
+				{
+					case 0:
+						animToPlay = 'singLEFT';
+						camFollowY = 0;
+						camFollowX = -25;
+					case 1:
+						animToPlay = 'singDOWN';
+						camFollowY = 25;
+						camFollowX = 0;
+					case 2:
+						animToPlay = 'singUP';
+						camFollowY = -25;
+						camFollowX = 0;
+					case 3:
+						animToPlay = 'singRIGHT';
+						camFollowY = 0;
+						camFollowX = 25;
+				}
 
 				if(note.gfNote)
 				{

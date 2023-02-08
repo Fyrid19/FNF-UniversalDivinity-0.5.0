@@ -17,12 +17,18 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import flixel.util.FlxColor;
+import divinity.DivinityFreeplayState;
 
 using StringTools;
 
 class SkinSelectState extends MusicBeatState
 {
     public static var curSkin:String = 'bf';
+
+    // info shit
+    var curText:FlxText;
+    var controlsText:FlxText;
+    var formText:FlxText;
 
     public static var curSelected:Int = 0;
     var charSelected = false;
@@ -69,11 +75,20 @@ class SkinSelectState extends MusicBeatState
         playtestTxt.setFormat('default.ttf', 64, 0xFFFFFF, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
         playtestTxt.screenCenter(X);
         add(playtestTxt);
+            
+        controlsText = new FlxText(10, 50, 0, 'Left or right to change character.\nPress ESC to go back to the Freeplay Menu\n', 20);
+        controlsText.setFormat(Paths.font("comic.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+        controlsText.size = 20;
+    
+        // add(formText); took this from strident crisis but wtf is a formtext?
+        add(controlsText);
 
         FlxTween.tween(buttonBG, {'scale.x': 1}, 1, {ease: FlxEase.circOut});
         FlxTween.tween(bars, {'scale.y': 1}, 1, {ease: FlxEase.circOut});
+        FlxTween.tween(controlsText, {'scale.y': 1}, 1, {ease: FlxEase.circOut});
 
         super.create();
+        
     }
 
     override public function update(elapsed:Float)
@@ -81,7 +96,7 @@ class SkinSelectState extends MusicBeatState
         super.update(elapsed);
 
         if (controls.BACK && !charSelected) {
-            MusicBeatState.switchState(new divinity.DivinityFreeplayState());
+            MusicBeatState.switchState(new FreeplayState());
         }
 
         if(controls.NOTE_LEFT_P && playtesting && !charSelected) {
