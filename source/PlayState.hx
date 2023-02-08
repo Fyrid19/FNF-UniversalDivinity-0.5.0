@@ -4681,7 +4681,7 @@ for (key => value in luaShaders)
 				if(FlxTransitionableState.skipNextTransIn) {
 					CustomFadeTransition.nextCamera = null;
 				}
-				MusicBeatState.switchState(new divinity.DivinityFreeplayState());
+				MusicBeatState.switchState(new FreeplayState()); // goddamnit fyrid the freeplaystate aint even finished yet, keep using this one for now -frogb
 				FlxG.sound.playMusic(Paths.music('freakyMenu'));
 				changedDifficulty = false;
 			}

@@ -18,6 +18,7 @@ import lime.utils.Assets;
 #if desktop
 import Discord.DiscordClient;
 #end
+import divinity.SkinSelectState;
 using StringTools;
 
 class FreeplayState extends MusicBeatState
@@ -367,7 +368,7 @@ class FreeplayState extends MusicBeatState
 				PlayState.storyDifficulty = curDifficulty;
 			
 				PlayState.storyWeek = songs[curSelected].week;
-				LoadingState.loadAndSwitchState(new PlayState());
+				LoadingState.loadAndSwitchState(new PlayState()); // fuck.
 			}
 		}
 		if(ctrl)
@@ -418,7 +419,7 @@ class FreeplayState extends MusicBeatState
 
 		PlayState.storyWeek = songs[curSelected].week;
 		trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
-		LoadingState.loadAndSwitchState(new PlayState());
+		LoadingState.loadAndSwitchState(new divinity.SkinSelectState());
 
 		FlxG.sound.music.volume = 0;
 				
