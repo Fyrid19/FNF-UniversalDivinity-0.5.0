@@ -19,7 +19,7 @@ import flixel.util.FlxColor;
 import lime.app.Application;
 import Achievements;
 import editors.MasterEditorMenu;
-import options.OptionsState
+import options.OptionsState;
 
 using StringTools;
 

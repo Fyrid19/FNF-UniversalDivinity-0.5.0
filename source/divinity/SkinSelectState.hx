@@ -81,6 +81,7 @@ class SkinSelectState extends MusicBeatState
         controlsText.size = 20;
     
         // add(formText); took this from strident crisis but wtf is a formtext?
+        // something we dont need :troll: - fyrid
         add(controlsText);
 
         FlxTween.tween(buttonBG, {'scale.x': 1}, 1, {ease: FlxEase.circOut});

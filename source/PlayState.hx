@@ -1516,7 +1516,7 @@ class PlayState extends MusicBeatState
 		healthBarBG.y = FlxG.height * 0.89;
 		healthBarBG.screenCenter(X);
 		healthBarBG.scrollFactor.set();
-		healthBarBG.visible = !ClientPrefs.hideHud;
+		healthBarBG.visible = false;
 		healthBarBG.xAdd = -4;
 		healthBarBG.yAdd = -4;
 		add(healthBarBG);
@@ -1538,7 +1538,7 @@ class PlayState extends MusicBeatState
 		healthBarOverlay.visible = !ClientPrefs.hideHud;
         healthBarOverlay.color = FlxColor.BLACK;
 		healthBarOverlay.blend = MULTIPLY;
-		healthBarOverlay.x = healthBarBG.x-1.9;
+		healthBarOverlay.x = healthBarBG.x;
 		healthBarOverlay.antialiasing = ClientPrefs.globalAntialiasing;
 		add(healthBarOverlay); 
 		if(ClientPrefs.downScroll)
