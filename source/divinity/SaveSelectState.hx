@@ -23,4 +23,9 @@ class SaveSelectState extends MusicBeatState
 	{
         
     }
+    
+    override public function update(elapsed:Float)
+    {
+        super.update(elapsed);
+    }
 }

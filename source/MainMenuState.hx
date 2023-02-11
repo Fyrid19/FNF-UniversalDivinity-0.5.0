@@ -58,11 +58,11 @@ class MainMenuState extends MusicBeatState
 
 	public static var bgPaths:Array<String> = 
 	[
-		'backgrounds/DandruNotHere',
-		'backgrounds/melDoesStuff',
-		'backgrounds/melDoesStuff2',
-		'backgrounds/Laughz',
-		'backgrounds/MooseDave'
+		'DandruNotHere',
+		'melDoesStuff',
+		'melDoesStuff2',
+		'Laughz',
+		'MooseDave'
 	];
 
 	override function create()
@@ -343,6 +343,6 @@ class MainMenuState extends MusicBeatState
 	public static function randomizeBG():flixel.system.FlxAssets.FlxGraphicAsset
 	{
 		var chance:Int = FlxG.random.int(0, bgPaths.length - 1);
-		return Paths.image(bgPaths[chance]);
+		return Paths.image('backgrounds/' + bgPaths[chance]);
 	}
 }
