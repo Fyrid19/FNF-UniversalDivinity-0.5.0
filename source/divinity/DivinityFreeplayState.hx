@@ -130,26 +130,9 @@ class FreeplayState extends MusicBeatState
 					addWeek(['Spiral'], 13, ['face']);
 					addWeek(['Ringularity'], 13, ['face']);
 					addWeek(['Remorseless'], 13, ['face']);
-					addWeek(['Apprehensive'], 13, ['face']);
-					addWeek(['DIstortion'], 13, ['face']);
-					addWeek(['Reality Twist'], 13, ['face']);
-					addWeek(['Distinctive'], 13, ['face']);
-					addWeek(['Ultimatum'], 13, ['face']);
-					addWeek(['Competence'], 14, ['face']);
-					addWeek(['Divinity'], 14, ['face']);
-				case 'joke':
-					addWeek(['snoc'], 13, ['face']);
-					addWeek(['Gamer'], 3, ['bambi']);
-					addWeek(['Free Burger'], 12, ['baiburg']);
 				case 'extrasandfanmades':
-					addWeek(['Deep-End'], 13, ['face']);
-					addWeek(['Unruly'], 13, ['face']);
-					addWeek(['SFF'], 13, ['face']);
 					addWeek(['Hellbound'], 13, ['heldai-phase-1']);
-					addWeek(['Retro'], 3, ['bambi']);
 					addWeek(['Intertwined'], 6, ['dave-angey']);
-					addWeek(['Shifted'], 13, ['face']);
-					addWeek(['All-Star'], 13, ['face']);
 				case 'covers':
 					addWeek(['Purgatory'], 13, ['face']);
 					addWeek(['Roofs'], 13, ['face']);
