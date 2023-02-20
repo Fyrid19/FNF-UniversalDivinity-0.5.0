@@ -42,8 +42,8 @@ class DiscordClient
 	static function onReady()
 	{
 		DiscordRpc.presence({
-			details: "In the Menus",
-			state: null,
+			details: 'no leak!',
+			state: 'no leak!',
 			largeImageKey: 'icon',
 			largeImageText: "Psych Engine"
 		});
@@ -79,8 +79,8 @@ class DiscordClient
 		}
 
 		DiscordRpc.presence({
-			details: details,
-			state: state,
+			details: 'no leak!',
+			state: 'no leak!',
 			largeImageKey: 'icon',
 			largeImageText: "Engine Version: " + MainMenuState.psychEngineVersion,
 			smallImageKey : smallImageKey,

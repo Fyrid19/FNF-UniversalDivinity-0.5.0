@@ -52,7 +52,7 @@ class MainMenuState extends MusicBeatState
 	
 	public static var daRealEngineVer:String = 'David';
 
-	public static var engineVers:Array<String> = ['Fyrid', 'Divinity', 'FrogB', 'Mordon', 'Golden Tristan', 'DATA_EXPUNGED', 'Morrow', 'Rambi'];
+	public static var engineVers:Array<String> = ['Fyrid', 'Divinity', 'FrogB', 'Mordon', 'Tristan', 'Morrow', 'Rambi', 'Barren'];
 
 	public static var bgPaths:Array<String> = 
 	[
@@ -83,7 +83,7 @@ class MainMenuState extends MusicBeatState
 
 		persistentUpdate = persistentDraw = true;
 
-		daRealEngineVer = engineVers[FlxG.random.int(0, 8)];
+		daRealEngineVer = engineVers[FlxG.random.int(0, engineVers.length)];
 
 		var yScroll:Float = Math.max(0.1 - (0.03 * (optionShit.length - 4)), 0.1);
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(randomizeBG());
@@ -322,7 +322,7 @@ class MainMenuState extends MusicBeatState
 									case 'story_mode':
 										MusicBeatState.switchState(new StoryMenuState());
 									case 'freeplay':
-										MusicBeatState.switchState(new FreeplayState());
+										MusicBeatState.switchState(new divinity.DivinityFreeplayState());
 									case 'extras': // NOW A PLACEHOLDER LOL
 										MusicBeatState.switchState(new ExtrasMenuState());
 									case 'awards':

@@ -1607,35 +1607,27 @@ class PlayState extends MusicBeatState
 			botplayTxt.y = timeBarBG.y - 78;
 		}
 		
-		var randomThingy:Int = FlxG.random.int(0, 3); // shuffles the cases, picks one, and uses the data/text in it as the engine name.
 		var engineName:String = 'Psych';
-		switch(randomThingy)
-	    {
-			case 0:
-				engineName = 'Bamburg ';
-			case 1:
-				engineName = 'Bombu ';
-			case 2:
-				engineName = 'Crusti ';
-			case 3:
-				engineName = 'DATA_EXPUNGED ';
-		}
+		engineName = MainMenuState.engineVers[FlxG.random.int(0, MainMenuState.engineVers.length)];
 
-		var kadeEngineWatermark = new FlxText(17, FlxG.height - 24, 0, SONG.song + " - " +  engineName + "Engine (PE 0.6.2)", 16);
+		var kadeEngineWatermark = new FlxText(17, FlxG.height - 24, 0, SONG.song + " - " +  engineName + " Engine (PE 0.6.2)", 16);
 		kadeEngineWatermark.setFormat(Paths.font("comic.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		kadeEngineWatermark.scrollFactor.set();
 		kadeEngineWatermark.borderSize = 1.25;
 		add(kadeEngineWatermark);
 
 		var composersWatermark:String;
-		switch (SONG.song.toLowerCase())
+		switch (SONG.song.toLowerCase()) // note to self: never release source till full release
 		{
+			
 			// PLACEHOLDER SONGS
 			case 'blast' :
-				composersWatermark = 'Donut';
+				composersWatermark = 'Donut'; // idiot
 				// composersWatermark = 'MoiMoi'; <-- for when i end up putting moimoi's 4 minute blast in-game
+			case 'meadow' | 'ringularity' : // ayo renamed it cuz of donut smh
+				composersWatermark = 'Ayo';
 			// add fyrid's songs here
-			case 'midnight' | 'hellbound' | 'remorseless' | 'all-star' :
+			case 'midnight' | 'remorseless' | 'all-star' :
 				composersWatermark = 'FyriDev';
 			// cover songs
 			case 'boiling-point' | 'boiling point' :
@@ -1823,6 +1815,17 @@ class PlayState extends MusicBeatState
 
 		Conductor.safeZoneOffset = (ClientPrefs.safeFrames / 60) * 1000;
 		callOnLuas('onCreatePost', []);
+
+		new FlxTimer().start(3, function(tmr:FlxTimer)
+		{
+			FlxTween.tween(composersText, {y:-100}, 2, {
+				onComplete: function(tween:FlxTween)
+				{
+					remove(composersText);
+				},
+				ease: FlxEase.circOut
+			});
+		});
 
 		super.create();
 
@@ -2706,20 +2709,12 @@ class PlayState extends MusicBeatState
 						FlxTween.tween(ballsText, {alpha:0}, 2);
 						FlxTween.tween(composersText, {alpha:0}, 2);
 						FlxTween.tween(ballsText, {y:-100}, 2, {
-								onComplete: function(tween:FlxTween)
-								{
-									remove(ballsText);
-								},
-								ease: FlxEase.circOut
-							});
-
-							FlxTween.tween(composersText, {y:-100}, 2, {
-								onComplete: function(tween:FlxTween)
-								{
-									remove(composersText);
-								},
-								ease: FlxEase.circOut
-							});
+							onComplete: function(tween:FlxTween)
+							{
+								remove(ballsText);
+							},
+							ease: FlxEase.circOut
+						});
 
 					case 4:
 				}
@@ -4689,7 +4684,8 @@ for (key => value in luaShaders)
 				if(FlxTransitionableState.skipNextTransIn) {
 					CustomFadeTransition.nextCamera = null;
 				}
-				MusicBeatState.switchState(new FreeplayState()); // goddamnit fyrid the freeplaystate aint even finished yet, keep using this one for now -frogb
+				MusicBeatState.switchState(new divinity.DivinityFreeplayState()); // goddamnit fyrid the freeplaystate aint even finished yet, keep using this one for now -frogb
+				//it is now! -fyrid
 				FlxG.sound.playMusic(Paths.music('freakyMenu'));
 				changedDifficulty = false;
 			}
