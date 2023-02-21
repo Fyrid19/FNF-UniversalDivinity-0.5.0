@@ -161,7 +161,7 @@ class PlayState extends MusicBeatState
 	var funnySideFloatyBoys:Array<String> = ['bombu', 'bombu-expunged'];
 	var canSlide:Bool = true;
 	
-	var dontDarkenChar:Array<String> = ['bambi-god', 'bambi-god2d'];
+	var dontDarkenChar:Array<String> = ['bambi-god'];
 
 	public var notes:FlxTypedGroup<Note>;
 	public var unspawnNotes:Array<Note> = [];
@@ -212,6 +212,7 @@ class PlayState extends MusicBeatState
 	public var shits:Int = 0;
 
 	//i dont think any of these work so we gotta do this in lua lmao (doTweenColor specifically) -frogb
+	//we dont have to use lua you just did it wrong :moyai: -fyrid
 	public var hasBfDarkLevels:Array<String> = ['farmNight', 'houseNight', '3dFucked', 'houseroof']; // 0xFF878787
 	public var hasBfSunsetLevels:Array<String> = ['farmSunset', 'houseSunset']; // 0xFFF9974C
 	public var hasBfDarkerLevels:Array<String> = ['spooky']; // not needed 
@@ -488,7 +489,7 @@ class PlayState extends MusicBeatState
 					curStage = 'houseNight';
 				case 'blast':
 					curStage = 'farmSunset';
-				case 'blast' | 'indignancy' :
+				case 'indignancy' :
 					curStage = 'farmNight';
 				case 'intertwined' | 'tessattack':
 					curStage = '3dRed';
@@ -3396,10 +3397,26 @@ class PlayState extends MusicBeatState
 					dad.y += (Math.sin(elapsedtime) * 0.6); // we need to find a way so that the camera locks onto the character when it flys, it just looks weird now.
 			}
 		}
-	if(funnyFloatyBoys.contains(boyfriend.curCharacter.toLowerCase()) && canFloat)
-	{
-		boyfriend.y += (Math.sin(elapsedtime) * 0.6);
-	}
+		if (hasBfDarkLevels.contains(curStage) && !dontDarkenChar.contains(dad.curCharacter.toLowerCase()))
+		{
+			boyfriend.color = 0xFF878787;
+		}
+		if(hasBfSunsetLevels.contains(curStage) && !dontDarkenChar.contains(dad.curCharacter.toLowerCase()))
+		{
+			boyfriend.color = 0xFFFF8F65;
+		}
+		if(hasBfDarkerLevels.contains(curStage) && !dontDarkenChar.contains(dad.curCharacter.toLowerCase()))
+		{
+			boyfriend.color = 0xFF383838;
+		}
+		else
+		{
+			boyfriend.color = FlxColor.WHITE;
+		}
+		if(funnyFloatyBoys.contains(boyfriend.curCharacter.toLowerCase()) && canFloat)
+		{
+			boyfriend.y += (Math.sin(elapsedtime) * 0.6);
+		}
 		if (daspinlmao)
 		{
 			camHUD.angle += elapsed * 30;
@@ -5378,25 +5395,6 @@ for (key => value in luaShaders)
 						gf.heyTimer = 0.6;
 					}
 				}
-
-				if(!boyfriend.hasMissAnimations) {
-			    	if (hasBfDarkLevels.contains(curStage) && !dontDarkenChar.contains(dad.curCharacter.toLowerCase()))
-			    	{
-			    		boyfriend.color = 0xFF878787;
-			    	}
-		     		if(hasBfSunsetLevels.contains(curStage) && !dontDarkenChar.contains(dad.curCharacter.toLowerCase()))
-			    	{
-			    		boyfriend.color = 0xFFFF8F65;
-			    	}
-			    	if(hasBfDarkerLevels.contains(curStage) && !dontDarkenChar.contains(dad.curCharacter.toLowerCase()))
-			    	{
-				    	boyfriend.color = 0xFF383838;
-			     	}
-			    	else
-		     		{
-			    		boyfriend.color = FlxColor.WHITE;
-			    	}
-				}
 			}
 
 			if(cpuControlled) {
@@ -5785,24 +5783,6 @@ for (key => value in luaShaders)
 		    	boyfriend.dance();
 
 				boyfriend.playAnim('idle', true);
-				if(!boyfriend.hasMissAnimations) {
-			    	if (hasBfDarkLevels.contains(curStage) && !dontDarkenChar.contains(dad.curCharacter.toLowerCase()))
-			    	{
-			    		boyfriend.color = 0xFF878787;
-			    	}
-		     		if(hasBfSunsetLevels.contains(curStage) && !dontDarkenChar.contains(dad.curCharacter.toLowerCase()))
-			    	{
-			    		boyfriend.color = 0xFFFF8F65;
-			    	}
-			    	if(hasBfDarkerLevels.contains(curStage) && !dontDarkenChar.contains(dad.curCharacter.toLowerCase()))
-			    	{
-				    	boyfriend.color = 0xFF383838;
-			     	}
-			    	else
-		     		{
-			    		boyfriend.color = FlxColor.WHITE;
-			    	}
-				}
 	    	}
 		}
 		if (curBeat % dad.danceEveryNumBeats == 0 && dad.animation.curAnim != null && !dad.animation.curAnim.name.startsWith('sing') && !dad.stunned)

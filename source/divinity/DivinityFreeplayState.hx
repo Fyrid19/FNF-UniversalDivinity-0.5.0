@@ -126,7 +126,7 @@ class DivinityFreeplayState extends MusicBeatState
 				case 'main':
 					addWeek(['Midnight'], 1, ['dave']);
 					addWeek(['Meadow'], 3, ['bambi']);
-					addWeek(['Golden'], 6, ['tristan']);
+					addWeek(['Golden'], 6, ['tristan-golden']);
 					addWeek(['Undefiable'], 12, ['dataexpunged']);
 					addWeek(['Spiral'], 13, ['face']);
 					addWeek(['Ringularity'], 13, ['face']);
@@ -135,12 +135,11 @@ class DivinityFreeplayState extends MusicBeatState
 					addWeek(['Hellbound'], 13, ['heldai-phase-1']);
 					addWeek(['Intertwined'], 6, ['dave-angey']);
 				case 'covers':
-					addWeek(['Purgatory'], 13, ['face']);
 					addWeek(['Roofs'], 13, ['face']);
 					addWeek(['Disposition'], 13, ['heldai-phase-1']);
 					addWeek(['Endless D'], 13, ['face']);
-					addWeek(['Boiling Point'], 13, ['face']);
-					addWeek(['Tessattack'], 13, ['face']);
+					addWeek(['Boiling Point'], 13, ['mordon']);
+					addWeek(['Tessattack'], 13, ['sbarren']);
 			}
 		}
 
