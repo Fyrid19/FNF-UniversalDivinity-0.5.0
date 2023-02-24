@@ -85,16 +85,16 @@ class PlayState extends MusicBeatState
 	public static var STRUM_X = 42;
 	public static var STRUM_X_MIDDLESCROLL = -278;
 
-	public static var ratingStuff:Array<Dynamic> = [
-		['You Suck!', 0.2], //From 0% to 19%
-		['Shit', 0.4], //From 20% to 39%
-		['Bad', 0.5], //From 40% to 49%
-		['Bruh', 0.6], //From 50% to 59%
-		['Meh', 0.69], //From 60% to 68%
-		['Nice', 0.7], //69%
-		['Good', 0.8], //From 70% to 79%
-		['Great', 0.9], //From 80% to 89%
-		['Sick!', 1], //From 90% to 99%
+	public static var ratingStuff:Array<Dynamic> = [ // fyrid if you wanna change this to alphabetical ratings just lmk -frogb
+		['JESUS PLAY A DIFFERENT SONG', 0.2], //From 0% to 19%
+		['How did you even get here', 0.4], //From 20% to 39%
+		['skill issue', 0.5], //From 40% to 49%
+		['Eh', 0.6], //From 50% to 59%
+		['Okay...', 0.69], //From 60% to 68%
+		['sex', 0.7], //69%
+		['Amazing', 0.8], //From 70% to 79%
+		['Epic', 0.9], //From 80% to 89%
+		['Outstanding!', 1], //From 90% to 99%
 		['Perfect!!', 1] //The value on this one isn't used actually, since Perfect is always "1"
 	];
 	public static var animatedShaders:Map<String, DynamicShaderHandler> = new Map<String, DynamicShaderHandler>();
@@ -157,7 +157,7 @@ class PlayState extends MusicBeatState
 	public var gf:Character = null;
 	public var boyfriend:Boyfriend = null;
 
-	var funnyFloatyBoys:Array<String> = ['dave-3d', 'mordon', 'heldai-phase-1']; // i know 404 is open useable but if we want to add him to our mod then we can put his json name here. -frogb
+	var funnyFloatyBoys:Array<String> = ['dave-3d', 'mordon', 'heldai-phase-1', 'bambiGod', 'sbarren']; // added shitted barren here -frogb
 	var funnySideFloatyBoys:Array<String> = ['bombu', 'bombu-expunged'];
 	var canSlide:Bool = true;
 	
@@ -1609,7 +1609,7 @@ class PlayState extends MusicBeatState
 		}
 		
 		var engineName:String = 'Psych';
-		engineName = MainMenuState.engineVers[FlxG.random.int(0, MainMenuState.engineVers.length)];
+		engineName = MainMenuState.engineVers[FlxG.random.int(0, MainMenuState.engineVers.length)]; // oh my fucking GOD FYRID WHY- -frogb
 
 		var kadeEngineWatermark = new FlxText(17, FlxG.height - 24, 0, SONG.song + " - " +  engineName + " Engine (PE 0.6.2)", 16);
 		kadeEngineWatermark.setFormat(Paths.font("comic.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -1618,14 +1618,12 @@ class PlayState extends MusicBeatState
 		add(kadeEngineWatermark);
 
 		var composersWatermark:String;
-		switch (SONG.song.toLowerCase()) // note to self: never release source till full release
+		switch (SONG.song.toLowerCase()) // note to self: never release source till full release // this was kinda sampled from geometric vocation wouldnt this be stealing code? lol -frogb
 		{
 			
-			// PLACEHOLDER SONGS
-			case 'blast' :
-				composersWatermark = 'Donut'; // idiot
-				// composersWatermark = 'MoiMoi'; <-- for when i end up putting moimoi's 4 minute blast in-game
-			case 'meadow' | 'ringularity' : // ayo renamed it cuz of donut smh
+			// PLACEHOLDER songs
+			//i deleted donut haha -frogb
+			case 'meadow' | 'ringularity' : // ayo renamed it cuz of donut smh //FYRID I WAS DOING YOU A FAVOR -frogb
 				composersWatermark = 'Ayo';
 			// add fyrid's songs here
 			case 'midnight' | 'remorseless' | 'all-star' :

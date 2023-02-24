@@ -52,7 +52,7 @@ class FreeplayState extends MusicBeatState
 
 	private var CurrentSongIcon:FlxSprite;
 
-	private var AllPossibleSongs:Array<String> = ["main", "extrasandfanmades", "joke", "covers"];
+	private var AllPossibleSongs:Array<String> = ["main", "extrasandfanmades", "covers"];
 
 	private var CurrentPack:Int = 0;
 
@@ -74,6 +74,8 @@ class FreeplayState extends MusicBeatState
 		0xFF420000, // purgatory stuff 12
 		0xFFFFFFFF, // purgatory stuff 13
 		0xFF000000, // purgatory stuff 14
+		0xFF8A00A2, // divinity stuff 15
+		0xFFFFD966, // divinity stuf 16
     ];
 
 	private var iconArray:Array<HealthIcon> = [];
@@ -122,39 +124,21 @@ class FreeplayState extends MusicBeatState
 			{
 				case 'main':
 					addWeek(['Midnight'], 1, ['dave']);
-					addWeek(['Blast'], 3, ['bambi']);
-					addWeek(['Golden'], 6, ['tristan']);
-					addWeek(['Undefiable'], 12, ['dataexpunged']);
+					addWeek(['Meadow'], 3, ['bambi']);
+					addWeek(['Golden'], 16, ['tristan-golden']);
+					addWeek(['Undefiable'], 12, ['dataexpunged']); // true exfucked
 					addWeek(['Spiral'], 13, ['face']);
 					addWeek(['Ringularity'], 13, ['face']);
 					addWeek(['Remorseless'], 13, ['face']);
-					addWeek(['Apprehensive'], 13, ['face']);
-					addWeek(['DIstortion'], 13, ['face']);
-					addWeek(['Reality Twist'], 13, ['face']);
-					addWeek(['Distinctive'], 13, ['face']);
-					addWeek(['Ultimatum'], 13, ['face']);
-					addWeek(['Competence'], 14, ['face']);
-					addWeek(['Divinity'], 14, ['face']);
-				case 'joke':
-					addWeek(['snoc'], 13, ['face']);
-					addWeek(['Gamer'], 3, ['bambi']);
-					addWeek(['Free Burger'], 12, ['baiburg']);
 				case 'extrasandfanmades':
-					addWeek(['Deep-End'], 13, ['face']);
-					addWeek(['Unruly'], 13, ['face']);
-					addWeek(['SFF'], 13, ['face']);
 					addWeek(['Hellbound'], 13, ['heldai-phase-1']);
-					addWeek(['Retro'], 3, ['bambi']);
 					addWeek(['Intertwined'], 6, ['dave-angey']);
-					addWeek(['Shifted'], 13, ['face']);
-					addWeek(['All-Star'], 13, ['face']);
 				case 'covers':
-					addWeek(['Purgatory'], 13, ['face']);
 					addWeek(['Roofs'], 13, ['face']);
 					addWeek(['Disposition'], 13, ['heldai-phase-1']);
 					addWeek(['Endless D'], 13, ['face']);
-					addWeek(['Boiling Point'], 13, ['face']);
-					addWeek(['Tessattack'], 13, ['face']);
+					addWeek(['Boiling Point'], 15, ['mordon']);
+					addWeek(['Tessattack'], 13, ['sbarren']);
 			}
 		}
 
@@ -419,7 +403,17 @@ class FreeplayState extends MusicBeatState
 
 		PlayState.storyWeek = songs[curSelected].week;
 		trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
-		LoadingState.loadAndSwitchState(new divinity.SkinSelectState());
+		if (songLowercase == 'intertwined') {
+			PlayState.skipSkinSelect = true;
+		} else {
+			PlayState.skipSkinSelect = false;
+		}
+
+		if (PlayState.skipSkinSelect) {
+			LoadingState.loadAndSwitchState(new PlayState());
+		} else {
+			LoadingState.loadAndSwitchState(new divinity.SkinSelectState());
+		}
 
 		FlxG.sound.music.volume = 0;
 				

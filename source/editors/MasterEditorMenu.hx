@@ -12,6 +12,7 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.system.FlxSound;
+import divinity.DivinityFreeplayState;
 #if MODS_ALLOWED
 import sys.FileSystem;
 #end
@@ -128,7 +129,7 @@ class MasterEditorMenu extends MusicBeatState
 			}
 			FlxG.sound.music.volume = 0;
 			#if PRELOAD_ALL
-			FreeplayState.destroyFreeplayVocals();
+			divinity.DivinityFreeplayState.destroyFreeplayVocals();
 			#end
 		}
 		

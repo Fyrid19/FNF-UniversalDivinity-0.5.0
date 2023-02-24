@@ -33,6 +33,7 @@ import flixel.util.FlxSave;
 import Shaders;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.system.FlxAssets.FlxShader;
+import divinity.DivinityFreeplayState;
 #if sys
 import sys.FileSystem;
 import sys.io.File;
@@ -1272,7 +1273,7 @@ class FunkinLua {
 			if(PlayState.isStoryMode)
 				MusicBeatState.switchState(new StoryMenuState());
 			else
-				MusicBeatState.switchState(new FreeplayState());
+				MusicBeatState.switchState(new divinity.DivinityFreeplayState());
 
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 			PlayState.changedDifficulty = false;

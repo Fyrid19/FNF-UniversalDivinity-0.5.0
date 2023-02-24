@@ -1,5 +1,6 @@
 //damn it fyrid your stupid freeplaystate bugged out the entire exit to menu shit, now i had to make a duplicate of the current one (the one with freeplay cats) -frogb
 //this is supposed to be where freeplay shit is frogb! -fyrid
+//THEN WHY THE FUCK IS IT RETURNING NULL AND GIVING ME A NULL OBJECT REFERENCE EARLIE- -frogb
 
 package divinity;
 
@@ -77,6 +78,8 @@ class DivinityFreeplayState extends MusicBeatState
 		0xFF420000, // purgatory stuff 12
 		0xFFFFFFFF, // purgatory stuff 13
 		0xFF000000, // purgatory stuff 14
+		0xFF8A00A2, // divinity stuff 15
+		0xFFFFD966, // divinity stuf 16
     ];
 
 	private var iconArray:Array<HealthIcon> = [];
@@ -126,8 +129,8 @@ class DivinityFreeplayState extends MusicBeatState
 				case 'main':
 					addWeek(['Midnight'], 1, ['dave']);
 					addWeek(['Meadow'], 3, ['bambi']);
-					addWeek(['Golden'], 6, ['tristan-golden']);
-					addWeek(['Undefiable'], 12, ['dataexpunged']);
+					addWeek(['Golden'], 16, ['tristan-golden']);
+					addWeek(['Undefiable'], 12, ['dataexpunged']); // true exfucked
 					addWeek(['Spiral'], 13, ['face']);
 					addWeek(['Ringularity'], 13, ['face']);
 					addWeek(['Remorseless'], 13, ['face']);
@@ -138,7 +141,7 @@ class DivinityFreeplayState extends MusicBeatState
 					addWeek(['Roofs'], 13, ['face']);
 					addWeek(['Disposition'], 13, ['heldai-phase-1']);
 					addWeek(['Endless D'], 13, ['face']);
-					addWeek(['Boiling Point'], 13, ['mordon']);
+					addWeek(['Boiling Point'], 15, ['mordon']);
 					addWeek(['Tessattack'], 13, ['sbarren']);
 			}
 		}
