@@ -1,4 +1,5 @@
 //damn it fyrid your stupid freeplaystate bugged out the entire exit to menu shit, now i had to make a duplicate of the current one (the one with freeplay cats) -frogb
+//this is supposed to be where freeplay shit is frogb! -fyrid
 
 package divinity;
 
@@ -23,7 +24,7 @@ import Discord.DiscordClient;
 import divinity.SkinSelectState;
 using StringTools;
 
-class FreeplayState extends MusicBeatState
+class DivinityFreeplayState extends MusicBeatState
 {
 	var songs:Array<SongMetadata> = [];
 
@@ -54,7 +55,7 @@ class FreeplayState extends MusicBeatState
 
 	private var CurrentSongIcon:FlxSprite;
 
-	private var AllPossibleSongs:Array<String> = ["main", "extrasandfanmades", "joke", "covers"];
+	private var AllPossibleSongs:Array<String> = ["main", "extrasandfanmades", "covers"];
 
 	private var CurrentPack:Int = 0;
 
@@ -124,39 +125,21 @@ class FreeplayState extends MusicBeatState
 			{
 				case 'main':
 					addWeek(['Midnight'], 1, ['dave']);
-					addWeek(['Blast'], 3, ['bambi']);
-					addWeek(['Golden'], 6, ['tristan']);
+					addWeek(['Meadow'], 3, ['bambi']);
+					addWeek(['Golden'], 6, ['tristan-golden']);
 					addWeek(['Undefiable'], 12, ['dataexpunged']);
 					addWeek(['Spiral'], 13, ['face']);
 					addWeek(['Ringularity'], 13, ['face']);
 					addWeek(['Remorseless'], 13, ['face']);
-					addWeek(['Apprehensive'], 13, ['face']);
-					addWeek(['DIstortion'], 13, ['face']);
-					addWeek(['Reality Twist'], 13, ['face']);
-					addWeek(['Distinctive'], 13, ['face']);
-					addWeek(['Ultimatum'], 13, ['face']);
-					addWeek(['Competence'], 14, ['face']);
-					addWeek(['Divinity'], 14, ['face']);
-				case 'joke':
-					addWeek(['snoc'], 13, ['face']);
-					addWeek(['Gamer'], 3, ['bambi']);
-					addWeek(['Free Burger'], 12, ['baiburg']);
 				case 'extrasandfanmades':
-					addWeek(['Deep-End'], 13, ['face']);
-					addWeek(['Unruly'], 13, ['face']);
-					addWeek(['SFF'], 13, ['face']);
 					addWeek(['Hellbound'], 13, ['heldai-phase-1']);
-					addWeek(['Retro'], 3, ['bambi']);
 					addWeek(['Intertwined'], 6, ['dave-angey']);
-					addWeek(['Shifted'], 13, ['face']);
-					addWeek(['All-Star'], 13, ['face']);
 				case 'covers':
-					addWeek(['Purgatory'], 13, ['face']);
 					addWeek(['Roofs'], 13, ['face']);
 					addWeek(['Disposition'], 13, ['heldai-phase-1']);
 					addWeek(['Endless D'], 13, ['face']);
-					addWeek(['Boiling Point'], 13, ['face']);
-					addWeek(['Tessattack'], 13, ['face']);
+					addWeek(['Boiling Point'], 13, ['mordon']);
+					addWeek(['Tessattack'], 13, ['sbarren']);
 			}
 		}
 
@@ -357,7 +340,7 @@ class FreeplayState extends MusicBeatState
 		if (controls.BACK && allowinputShit)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
-				MusicBeatState.switchState(new FreeplayState());
+				MusicBeatState.switchState(new divinity.DivinityFreeplayState());
 	
 			if (accepted && allowinputShit)
 			{
@@ -421,7 +404,17 @@ class FreeplayState extends MusicBeatState
 
 		PlayState.storyWeek = songs[curSelected].week;
 		trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
-		LoadingState.loadAndSwitchState(new divinity.SkinSelectState());
+		if (songLowercase == 'intertwined') {
+			PlayState.skipSkinSelect = true;
+		} else {
+			PlayState.skipSkinSelect = false;
+		}
+
+		if (PlayState.skipSkinSelect) {
+			LoadingState.loadAndSwitchState(new PlayState());
+		} else {
+			LoadingState.loadAndSwitchState(new divinity.SkinSelectState());
+		}
 
 		FlxG.sound.music.volume = 0;
 				

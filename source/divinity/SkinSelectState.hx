@@ -97,7 +97,7 @@ class SkinSelectState extends MusicBeatState
         super.update(elapsed);
 
         if (controls.BACK && !charSelected) {
-            MusicBeatState.switchState(new FreeplayState());
+            MusicBeatState.switchState(new divinity.DivinityFreeplayState());
         }
 
         if(controls.NOTE_LEFT_P && playtesting && !charSelected) {
