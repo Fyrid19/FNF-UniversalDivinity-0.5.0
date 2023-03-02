@@ -4495,15 +4495,15 @@ for (key => value in luaShaders)
 		if(isDad)
 		{
 			camFollow.set(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
-			camFollow.x += dad.cameraPosition[0] + opponentCameraOffset[0];
-			camFollow.y += dad.cameraPosition[1] + opponentCameraOffset[1];
+			camFollow.y += dadCamFollowY;
+			camFollow.x += dadCamFollowX;
 			tweenCamIn();
 		}
 		else
 		{
 			camFollow.set(boyfriend.getMidpoint().x - 100, boyfriend.getMidpoint().y - 100);
-			camFollow.x -= boyfriend.cameraPosition[0] - boyfriendCameraOffset[0];
-			camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
+			camFollow.x -= camFollowX;
+			camFollow.y += camFollowY;
 
 			if (Paths.formatToSongPath(SONG.song) == 'tutorial' && cameraTwn == null && FlxG.camera.zoom != 1)
 			{
@@ -5240,24 +5240,24 @@ for (key => value in luaShaders)
 			var char:Character = dad;
 			var animToPlay:String = '';
 			switch (Math.abs(note.noteData))
-			{
-				case 0:
-					animToPlay = 'singLEFT';
-					dadCamFollowY = 0;
-					dadCamFollowX = -25;
-				case 1:
-					animToPlay = 'singDOWN';
-					dadCamFollowY = 25;
-					dadCamFollowX = 0;
-				case 2:
-					animToPlay = 'singUP';
-					dadCamFollowY = -25;
-					dadCamFollowX = 0;
-				case 3:
-					animToPlay = 'singRIGHT';
-					dadCamFollowY = 0;
-					dadCamFollowX = 25;
-			}
+				{
+					case 0:
+						animToPlay = 'singLEFT';
+						dadCamFollowY = 0;
+						dadCamFollowX = -25;
+					case 1:
+						animToPlay = 'singDOWN';
+						dadCamFollowY = 25;
+						dadCamFollowX = 0;
+					case 2:
+						animToPlay = 'singUP';
+						dadCamFollowY = -25;
+						dadCamFollowX = 0;
+					case 3:
+						animToPlay = 'singRIGHT';
+						dadCamFollowY = 0;
+						dadCamFollowX = 25;
+				}
 
 			if(note.gfNote) {
 				char = gf;
@@ -5778,14 +5778,17 @@ for (key => value in luaShaders)
 		{
 	    	if (curBeat % boyfriend.danceEveryNumBeats == 0 && boyfriend.animation.curAnim != null && !boyfriend.animation.curAnim.name.startsWith('sing') && !boyfriend.stunned)
 	     	{
+				camFollowX = 0;
+		    	camFollowY = 0;
 		    	boyfriend.dance();
-
 				boyfriend.playAnim('idle', true);
 	    	}
 		}
 		if (curBeat % dad.danceEveryNumBeats == 0 && dad.animation.curAnim != null && !dad.animation.curAnim.name.startsWith('sing') && !dad.stunned)
 		{
 			dad.dance();
+			dadCamFollowX = 0;
+		    dadCamFollowY = 0;
 		}
 
 		switch (curStage)
