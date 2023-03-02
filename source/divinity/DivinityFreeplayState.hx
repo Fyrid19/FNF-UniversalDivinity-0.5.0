@@ -122,27 +122,53 @@ class DivinityFreeplayState extends MusicBeatState
 		super.create();
 	}
 
-	public function LoadProperPack()
+	public function LoadProperPack() // wait fyrid what happened to singularity lmao -frogb
 		{
 			switch (AllPossibleSongs[CurrentPack].toLowerCase())
 			{
 				case 'main':
 					addWeek(['Midnight'], 1, ['dave']);
-					addWeek(['Meadow'], 3, ['bambi']);
+					addWeek(['Meadow'], 3, ['bambi']); // ayo renamed it coz of donut smh
 					addWeek(['Golden'], 16, ['tristan-golden']);
 					addWeek(['Undefiable'], 12, ['dataexpunged']); // true exfucked
 					addWeek(['Spiral'], 13, ['face']);
 					addWeek(['Ringularity'], 13, ['face']);
 					addWeek(['Remorseless'], 13, ['face']);
+					//EVERYTHING FROM HERE ONWARDS IS COMING IN V1, and yes i copied and pasted the sbarren template lmao ignore that -frogb
+					//addWeek(['Apprehensive'], 13, ['sbarren']);
+					//addWeek(['Distortion'], 13, ['sbarren']);
+					//addWeek(['Reality Twist'], 13, ['sbarren']);
+					//addWeek(['Distinctive'], 13, ['sbarren']);
+					//addWeek(['Ultimatum'], 13, ['sbarren']);
 				case 'extrasandfanmades':
+					//addWeek(['Deep End'], 15, ['mordon']);
+					//addWeek(['Unruly'], 6, ['dave-angey']);
+					//addWeek(['SFF'], 6, ['dave-angey']);
 					addWeek(['Hellbound'], 13, ['heldai-phase-1']);
+					//addWeek(['Retro'], 6, ['dave-angey']);
 					addWeek(['Intertwined'], 6, ['dave-angey']);
+					//addWeek(['All-Star'], 6, ['dave-angey']); // fyrid said she wanted it replaced, awaiting the new song name
+					//addWeek(['Shifted'], 13, ['sbarren']); / shitted barren
+				// case 'joke': //whenever you ready you take the double slashes off this shit
+					//addWeek(['snoc'], 13, ['sbarren']);
+					//addWeek(['Gamer'], 13, ['sbarren']);
 				case 'covers':
+					//addWeek(['Purgatory'], 13, ['sbarren']);
 					addWeek(['Roofs'], 13, ['face']);
-					addWeek(['Disposition'], 13, ['heldai-phase-1']);
+					//addWeek(['Disposition'], 13, ['heldai-phase-1']);
 					addWeek(['Endless D'], 13, ['face']);
 					addWeek(['Boiling Point'], 15, ['mordon']);
-					addWeek(['Tessattack'], 13, ['sbarren']);
+					//addWeek(['Tessattack'], 13, ['sbarren']);
+					//addWeek(['Triple Trouble'], 13, ['sbarren']); <--- and if some fucker presses 7 or do some other shitthey get bought to triple dev
+					//addWeek(['Triple Dev'], 13, ['sbarren']); <--- idk do something in triple trouble to unlock this???
+					//god damn it redly (may be for 1.0 and 1.5 idk, unless we want a separate dev covers section or some shit)
+					//addWeek(['Victory'], 13, ['sbarren']);
+					//addWeek(['Armed'], 13, ['sbarren']);
+					//addWeek(['Monotone Atack'], 13, ['sbarren']);
+					//addWeek(['Gamebreaker'], 13, ['sbarren']);
+					//addWeek(['Quadruple Quarrel'], 13, ['sbarren']);
+					//addWeek(['Prey'], 13, ['sbarren']);
+					
 			}
 		}
 
