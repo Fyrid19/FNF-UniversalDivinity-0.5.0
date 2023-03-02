@@ -155,7 +155,7 @@ class DivinityFreeplayState extends MusicBeatState
 				case 'covers':
 					//addWeek(['Purgatory'], 13, ['sbarren']);
 					addWeek(['Roofs'], 13, ['face']);
-					//addWeek(['Disposition'], 13, ['heldai-phase-1']);
+					addWeek(['Disposition'], 13, ['heldai-phase-1']);
 					addWeek(['Endless D'], 13, ['face']);
 					addWeek(['Boiling Point'], 15, ['mordon']);
 					//addWeek(['Tessattack'], 13, ['sbarren']);
@@ -439,7 +439,7 @@ class DivinityFreeplayState extends MusicBeatState
 			PlayState.skipSkinSelect = false;
 		}
 
-		if (PlayState.skipSkinSelect) {
+		if (PlayState.skipSkinSelect) { // ok but how do we skip it though do we like hold down a key or smth lol -frogb
 			LoadingState.loadAndSwitchState(new PlayState());
 		} else {
 			LoadingState.loadAndSwitchState(new divinity.SkinSelectState());

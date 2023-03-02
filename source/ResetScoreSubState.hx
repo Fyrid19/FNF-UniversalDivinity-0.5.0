@@ -2,6 +2,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxSubState;
 import flixel.util.FlxColor;
+import divinity.DivinityFreeplayState;
 
 using StringTools;
 
@@ -93,6 +94,7 @@ class ResetScoreSubState extends MusicBeatSubstate
 			if(onYes) {
 				if(week == -1) {
 					Highscore.resetSong(song, difficulty);
+					MusicBeatState.switchState(new divinity.DivinityFreeplayState());
 				} else {
 					Highscore.resetWeek(WeekData.weeksList[week], difficulty);
 				}
