@@ -493,7 +493,7 @@ class TitleState extends MusicBeatState
 			case 17:
 				createCoolText(['And special thanks to our contributors']);
 			case 18:
-				addMoreText('Gabriel, Astro, Benjamin, Bamber, Carter, Zoip,\nchezcake, WorldMostCringe, Sketcherbasics101, Gill, Snoop, Polter\nMatt, MelDoesStuff, Ben, ZertyXD, nn, Moi');
+				addMoreText('Gabriel, Astro, Benjamin, Bamber, Carter, Zoip,\nchezcake, WorldMostCringe, Sketcherbasics101, Gill, Snoop, Polter,\nMatt, MelDoesStuff, ZertyXD, nn, Moi');
 			case 19:
 				deleteCoolText();
 			case 20:
