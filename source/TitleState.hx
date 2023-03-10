@@ -487,13 +487,13 @@ class TitleState extends MusicBeatState
 			case 14:
 				createCoolText(['VS D&B Universal Divinity', 'by']);
 			case 15:
-				addMoreText('FyriDev, Rambi, FrogB, ayo, Blocki,\nBoxHaze, NooboDev, Jayyee, PurplyBoi738, CXYon3');
+				addMoreText('FyriDev, Rambi, FrogB, ayo, Blocki, chezcake,\nBoxHaze, NooboDev, Jayyee, PurplyBoi738, CXYon3');
 			case 16:
 				deleteCoolText();
 			case 17:
 				createCoolText(['And special thanks to our contributors']);
 			case 18:
-				addMoreText('Gabriel, Astro, Benjamin, Bamber, Carter, Zoip,\nchezcake, WorldMostCringe, Sketcherbasics101, Gill, Snoop, Polter,\nMatt, MelDoesStuff, ZertyXD, nn, Moi');
+				addMoreText('Gabriel, Astro, Benjamin, Bamber, Carter, Zoip,\nAVery, Sketcherbasics101, Gill, Snoop, Polter, RandoScript,\nMatt, MelDoesStuff, ZertyXD, nn, Moi, Poop');
 			case 19:
 				deleteCoolText();
 			case 20:

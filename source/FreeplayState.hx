@@ -1,4 +1,8 @@
-package;
+//damn it fyrid your stupid freeplaystate bugged out the entire exit to menu shit, now i had to make a duplicate of the current one (the one with freeplay cats) -frogb
+//this is supposed to be where freeplay shit is frogb! -fyrid
+//THEN WHY THE FUCK IS IT RETURNING NULL AND GIVING ME A NULL OBJECT REFERENCE EARLIE- -frogb
+
+package divinity;
 
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxEase;
@@ -21,7 +25,7 @@ import Discord.DiscordClient;
 import divinity.SkinSelectState;
 using StringTools;
 
-class FreeplayState extends MusicBeatState
+class DivinityFreeplayState extends MusicBeatState
 {
 	var songs:Array<SongMetadata> = [];
 
@@ -151,7 +155,7 @@ class FreeplayState extends MusicBeatState
 				case 'covers':
 					//addWeek(['Purgatory'], 13, ['sbarren']);
 					addWeek(['Roofs'], 13, ['face']);
-					//addWeek(['Disposition'], 13, ['heldai-phase-1']);
+					addWeek(['Disposition'], 13, ['heldai-phase-1']);
 					addWeek(['Endless D'], 13, ['face']);
 					addWeek(['Boiling Point'], 15, ['mordon']);
 					//addWeek(['Tessattack'], 13, ['sbarren']);
@@ -365,7 +369,7 @@ class FreeplayState extends MusicBeatState
 		if (controls.BACK && allowinputShit)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
-				MusicBeatState.switchState(new FreeplayState());
+				MusicBeatState.switchState(new divinity.DivinityFreeplayState());
 	
 			if (accepted && allowinputShit)
 			{
@@ -435,7 +439,7 @@ class FreeplayState extends MusicBeatState
 			PlayState.skipSkinSelect = false;
 		}
 
-		if (PlayState.skipSkinSelect) {
+		if (PlayState.skipSkinSelect) { // ok but how do we skip it though do we like hold down a key or smth lol -frogb
 			LoadingState.loadAndSwitchState(new PlayState());
 		} else {
 			LoadingState.loadAndSwitchState(new divinity.SkinSelectState());

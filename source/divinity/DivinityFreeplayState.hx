@@ -153,21 +153,21 @@ class DivinityFreeplayState extends MusicBeatState
 					//addWeek(['snoc'], 13, ['sbarren']);
 					//addWeek(['Gamer'], 13, ['sbarren']);
 				case 'covers':
-					addWeek(['Purgatory'], 13, ['sbarren']);
+					//addWeek(['Purgatory'], 13, ['sbarren']);
 					addWeek(['Roofs'], 13, ['face']);
 					addWeek(['Disposition'], 13, ['heldai-phase-1']);
 					addWeek(['Endless D'], 13, ['face']);
 					addWeek(['Boiling Point'], 15, ['mordon']);
 					addWeek(['Tessattack'], 13, ['sbarren']);
-					addWeek(['Triple Trouble'], 13, ['sbarren']); //<--- and if some fucker presses 7 or do some other shitthey get bought to triple dev
-					addWeek(['Triple Dev'], 13, ['sbarren']); //<--- idk do something in triple trouble to unlock this???
+					//addWeek(['Triple Trouble'], 13, ['sbarren']); //<--- and if some fucker presses 7 or do some other shitthey get bought to triple dev
+					//addWeek(['Triple Dev'], 13, ['sbarren']); //<--- idk do something in triple trouble to unlock this???
 					//god damn it redly (may be for 1.0 and 1.5 idk, unless we want a separate dev covers section or some shit)
-					addWeek(['Victory'], 13, ['sbarren']);
-					addWeek(['Armed'], 13, ['sbarren']);
-					addWeek(['Monotone Atack'], 13, ['sbarren']);
-					addWeek(['Gamebreaker'], 13, ['sbarren']);
-					addWeek(['Quadruple Quarrel'], 13, ['sbarren']);
-					addWeek(['Prey'], 13, ['sbarren']);
+					//addWeek(['Victory'], 13, ['sbarren']);
+					//addWeek(['Armed'], 13, ['sbarren']);
+					//addWeek(['Monotone Atack'], 13, ['sbarren']);
+					//addWeek(['Gamebreaker'], 13, ['sbarren']);
+					//addWeek(['Quadruple Quarrel'], 13, ['sbarren']);
+					//addWeek(['Prey'], 13, ['sbarren']);
 					
 			}
 		}

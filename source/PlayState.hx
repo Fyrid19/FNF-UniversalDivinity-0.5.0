@@ -3443,6 +3443,29 @@ class PlayState extends MusicBeatState
 
 		switch (curStage)
 		{
+			case 'houseNight' | 'farmNight': // Dark character thing
+                {
+                    dad.color = 0xFF878787;
+                    gf.color = 0xFF878787;
+                    boyfriend.color = 0xFF878787;
+
+					if (SONG.player2 == 'bambi-god2d')
+					{
+						dad.color = 0xFFFFFFFF;
+					}
+                }
+			case 'spooky': // Darker character thing
+				{
+					dad.color = 0xFF383838;
+					gf.color = 0xFF383838;
+					boyfriend.color = 0xFF383838;
+				}
+			case 'farmSunset' | 'houseSunset': // sunset !!
+				{
+					dad.color = 0xFFFF8F65;
+					gf.color = 0xFFFF8F65;
+		    		boyfriend.color = 0xFFFF8F65;
+				}
 			case 'tank':
 				moveTank(elapsed);
 			case 'schoolEvil':
