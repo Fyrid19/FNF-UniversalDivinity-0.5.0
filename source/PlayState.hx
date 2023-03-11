@@ -782,7 +782,7 @@ class PlayState extends MusicBeatState
 				defaultCamZoom = 0.85;
 				curStage = '3dRed';
 
-				redSky.loadGraphic(Paths.image('dave/redsky'));
+				redSky.loadGraphic(Paths.image('void/redsky'));
 				redSky.antialiasing = true;
 				redSky.scrollFactor.set(0.6, 0.6);
 				redSky.active = true;
@@ -794,6 +794,24 @@ class PlayState extends MusicBeatState
 				var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect(2, 5, 0.1);
 				redSky.shader = testshader.shader;
 				curbg = redSky;
+			}
+
+			case 'the-PHONES':
+			{
+				defaultCamZoom = 0.85;
+				curStage = 'the-PHONES';
+
+				var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('void/the-PHONES'));
+				bg.antialiasing = true;
+				bg.scrollFactor.set(0.6, 0.6);
+				bg.active = true;
+
+				add(bg);
+
+				// below code assumes shaders are always enabled which is bad
+				var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect(2, 5, 0.1);
+				bg.shader = testshader.shader;
+				curbg = bg;
 			}
 
 			case '3dMordon':
@@ -819,7 +837,7 @@ class PlayState extends MusicBeatState
 				defaultCamZoom = 0.85;
 				curStage = 'sbarrenBG';
 
-				var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('void/sbarrenBG'));
+				var bg:FlxSprite = new FlxSprite(-900, -500).loadGraphic(Paths.image('void/sbarrenBG'));
 				bg.antialiasing = true;
 				bg.scrollFactor.set(0.6, 0.6);
 				bg.active = true;
