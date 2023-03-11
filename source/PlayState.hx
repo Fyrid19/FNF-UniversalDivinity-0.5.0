@@ -801,7 +801,25 @@ class PlayState extends MusicBeatState
 				defaultCamZoom = 0.85;
 				curStage = '3dMordon';
 
-				var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('MordonBG'));
+				var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('void/MordonBG'));
+				bg.antialiasing = true;
+				bg.scrollFactor.set(0.6, 0.6);
+				bg.active = true;
+
+				add(bg);
+
+				// below code assumes shaders are always enabled which is bad
+				var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect(2, 5, 0.1);
+				bg.shader = testshader.shader;
+				curbg = bg;
+			}
+
+			case 'sbarrenBG':
+			{
+				defaultCamZoom = 0.85;
+				curStage = 'sbarrenBG';
+
+				var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('void/sbarrenBG'));
 				bg.antialiasing = true;
 				bg.scrollFactor.set(0.6, 0.6);
 				bg.active = true;
