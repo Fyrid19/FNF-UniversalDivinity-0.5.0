@@ -155,7 +155,7 @@ class SkinSelectState extends MusicBeatState
             playtestTxt.alpha = 0;
         }
 
-        if (controls.ACCEPT && !playtesting) {
+        if (controls.ACCEPT && !playtesting && !charSelected) {
             charSelected = true;
             var heyAnimation:Bool = character.animation.getByName("hey") != null; 
 			character.playAnim(heyAnimation ? 'hey' : 'singUP', true);
