@@ -1341,6 +1341,10 @@ class PlayState extends MusicBeatState
 				gf.visible = false;
 		}
 
+		if(SkinSelectState.curSkin == 'bf-holding-gf') {
+			gf.visible = false;
+		}
+
 		switch(curStage)
 		{
 			case 'limo':
