@@ -5,10 +5,10 @@
 				20,
 				40
 			],
-			"indices": [],
+			"loop": true,
 			"fps": 30,
 			"anim": "idle",
-			"loop": true,
+			"indices": [],
 			"name": "idle"
 		},
 		{
@@ -16,10 +16,10 @@
 				0,
 				0
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
+			"indices": [],
 			"name": "down"
 		},
 		{
@@ -27,10 +27,10 @@
 				20,
 				50
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
+			"indices": [],
 			"name": "up"
 		},
 		{
@@ -38,10 +38,10 @@
 				15,
 				20
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
+			"indices": [],
 			"name": "right"
 		},
 		{
@@ -49,10 +49,10 @@
 				27,
 				20
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
+			"indices": [],
 			"name": "left"
 		}
 	],
@@ -62,7 +62,7 @@
 		-580,
 		-360
 	],
-	"healthicon": "baiburgnew",
+	"healthicon": "mordon",
 	"flip_x": false,
 	"healthbar_colors": [
 		199,

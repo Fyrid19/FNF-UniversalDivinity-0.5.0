@@ -1,4 +1,8 @@
-package;
+//damn it fyrid your stupid freeplaystate bugged out the entire exit to menu shit, now i had to make a duplicate of the current one (the one with freeplay cats) -frogb
+//this is supposed to be where freeplay shit is frogb! -fyrid
+//THEN WHY THE FUCK IS IT RETURNING NULL AND GIVING ME A NULL OBJECT REFERENCE EARLIE- -frogb
+
+package divinity;
 
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxEase;
@@ -21,7 +25,7 @@ import Discord.DiscordClient;
 import divinity.SkinSelectState;
 using StringTools;
 
-class FreeplayState extends MusicBeatState
+class DivinityFreeplayState extends MusicBeatState
 {
 	var songs:Array<SongMetadata> = [];
 
@@ -52,7 +56,7 @@ class FreeplayState extends MusicBeatState
 
 	private var CurrentSongIcon:FlxSprite;
 
-	private var AllPossibleSongs:Array<String> = ["main", "extrasandfanmades", "joke", "covers"];
+	private var AllPossibleSongs:Array<String> = ["main", "extrasandfanmades", "covers"];
 
 	private var CurrentPack:Int = 0;
 
@@ -74,6 +78,8 @@ class FreeplayState extends MusicBeatState
 		0xFF420000, // purgatory stuff 12
 		0xFFFFFFFF, // purgatory stuff 13
 		0xFF000000, // purgatory stuff 14
+		0xFF8A00A2, // divinity stuff 15
+		0xFFFFD966, // divinity stuf 16
     ];
 
 	private var iconArray:Array<HealthIcon> = [];
@@ -116,45 +122,53 @@ class FreeplayState extends MusicBeatState
 		super.create();
 	}
 
-	public function LoadProperPack()
+	public function LoadProperPack() // wait fyrid what happened to singularity lmao -frogb
 		{
 			switch (AllPossibleSongs[CurrentPack].toLowerCase())
 			{
 				case 'main':
 					addWeek(['Midnight'], 1, ['dave']);
-					addWeek(['Blast'], 3, ['bambi']);
-					addWeek(['Golden'], 6, ['tristan']);
-					addWeek(['Undefiable'], 12, ['dataexpunged']);
+					addWeek(['Meadow'], 3, ['bambi']); // ayo renamed it coz of donut smh
+					addWeek(['Golden'], 16, ['tristan-golden']);
+					addWeek(['Undefiable'], 12, ['dataexpunged']); // true exfucked
 					addWeek(['Spiral'], 13, ['face']);
 					addWeek(['Ringularity'], 13, ['face']);
 					addWeek(['Remorseless'], 13, ['face']);
-					addWeek(['Apprehensive'], 13, ['face']);
-					addWeek(['DIstortion'], 13, ['face']);
-					addWeek(['Reality Twist'], 13, ['face']);
-					addWeek(['Distinctive'], 13, ['face']);
-					addWeek(['Ultimatum'], 13, ['face']);
-					addWeek(['Competence'], 14, ['face']);
-					addWeek(['Divinity'], 14, ['face']);
-				case 'joke':
-					addWeek(['snoc'], 13, ['face']);
-					addWeek(['Gamer'], 3, ['bambi']);
-					addWeek(['Free Burger'], 12, ['baiburg']);
+					//EVERYTHING FROM HERE ONWARDS IS COMING IN V1, and yes i copied and pasted the sbarren template lmao ignore that -frogb
+					//addWeek(['Apprehensive'], 13, ['sbarren']);
+					//addWeek(['Distortion'], 13, ['sbarren']);
+					//addWeek(['Reality Twist'], 13, ['sbarren']);
+					//addWeek(['Distinctive'], 13, ['sbarren']);
+					//addWeek(['Ultimatum'], 13, ['sbarren']);
 				case 'extrasandfanmades':
-					addWeek(['Deep-End'], 13, ['face']);
-					addWeek(['Unruly'], 13, ['face']);
-					addWeek(['SFF'], 13, ['face']);
+					//addWeek(['Deep End'], 15, ['mordon']);
+					//addWeek(['Unruly'], 6, ['dave-angey']);
+					//addWeek(['SFF'], 6, ['dave-angey']);
 					addWeek(['Hellbound'], 13, ['heldai-phase-1']);
-					addWeek(['Retro'], 3, ['bambi']);
+					//addWeek(['Retro'], 6, ['dave-angey']);
 					addWeek(['Intertwined'], 6, ['dave-angey']);
-					addWeek(['Shifted'], 13, ['face']);
-					addWeek(['All-Star'], 13, ['face']);
+					//addWeek(['All-Star'], 6, ['dave-angey']); // fyrid said she wanted it replaced, awaiting the new song name
+					//addWeek(['Shifted'], 13, ['sbarren']); / shitted barren
+				// case 'joke': //whenever you ready you take the double slashes off this shit
+					//addWeek(['snoc'], 13, ['sbarren']);
+					//addWeek(['Gamer'], 13, ['sbarren']);
 				case 'covers':
-					addWeek(['Purgatory'], 13, ['face']);
+					//addWeek(['Purgatory'], 13, ['sbarren']);
 					addWeek(['Roofs'], 13, ['face']);
 					addWeek(['Disposition'], 13, ['heldai-phase-1']);
 					addWeek(['Endless D'], 13, ['face']);
-					addWeek(['Boiling Point'], 13, ['face']);
-					addWeek(['Tessattack'], 13, ['face']);
+					addWeek(['Boiling Point'], 15, ['mordon']);
+					//addWeek(['Tessattack'], 13, ['sbarren']);
+					//addWeek(['Triple Trouble'], 13, ['sbarren']); <--- and if some fucker presses 7 or do some other shitthey get bought to triple dev
+					//addWeek(['Triple Dev'], 13, ['sbarren']); <--- idk do something in triple trouble to unlock this???
+					//god damn it redly (may be for 1.0 and 1.5 idk, unless we want a separate dev covers section or some shit)
+					//addWeek(['Victory'], 13, ['sbarren']);
+					//addWeek(['Armed'], 13, ['sbarren']);
+					//addWeek(['Monotone Atack'], 13, ['sbarren']);
+					//addWeek(['Gamebreaker'], 13, ['sbarren']);
+					//addWeek(['Quadruple Quarrel'], 13, ['sbarren']);
+					//addWeek(['Prey'], 13, ['sbarren']);
+					
 			}
 		}
 
@@ -355,7 +369,7 @@ class FreeplayState extends MusicBeatState
 		if (controls.BACK && allowinputShit)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
-				MusicBeatState.switchState(new FreeplayState());
+				MusicBeatState.switchState(new divinity.DivinityFreeplayState());
 	
 			if (accepted && allowinputShit)
 			{
@@ -419,7 +433,17 @@ class FreeplayState extends MusicBeatState
 
 		PlayState.storyWeek = songs[curSelected].week;
 		trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
-		LoadingState.loadAndSwitchState(new divinity.SkinSelectState());
+		if (songLowercase == 'intertwined') {
+			PlayState.skipSkinSelect = true;
+		} else {
+			PlayState.skipSkinSelect = false;
+		}
+
+		if (PlayState.skipSkinSelect) { // ok but how do we skip it though do we like hold down a key or smth lol -frogb
+			LoadingState.loadAndSwitchState(new PlayState());
+		} else {
+			LoadingState.loadAndSwitchState(new divinity.SkinSelectState());
+		}
 
 		FlxG.sound.music.volume = 0;
 				

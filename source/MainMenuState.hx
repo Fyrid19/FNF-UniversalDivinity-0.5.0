@@ -26,8 +26,8 @@ using StringTools;
 class MainMenuState extends MusicBeatState
 {
 	public static var psychEngineVersion:String = '0.6.2'; //This is also used for Discord RPC
-	public static var devModVer:String = 'ALPHA 1';
-	public static var curModVer:String = '1.0'; //This is also used FOR YOUR MOTHE-
+	public static var devModVer:String = 'ALPHA 1'; //THIS IS USED FOR FUCKING YOU SO TIGHT IN THE A- -frogb
+	public static var curModVer:String = 'Early 1.0'; //This is also used FOR YOUR MOTHE-
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
@@ -181,7 +181,7 @@ class MainMenuState extends MusicBeatState
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("Comic Sans MS Bold", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, curModVer + ' ' + daRealEngineVer + " Engine, VD&B: Universal Divinity 1.0", 12);
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, curModVer + " Divinity Engine, VD&B: Universal Divinity 1.0", 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("Comic Sans MS Bold", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);

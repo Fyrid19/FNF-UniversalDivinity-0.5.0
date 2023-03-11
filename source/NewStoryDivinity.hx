@@ -143,7 +143,7 @@ class NewStoryDivinity extends MusicBeatState
 		{
 			lol = true;
 			FlxG.sound.play(Paths.sound('confirmMenu'));
-			startSong('shattered/shattered-hard', 'supplanted', 'reality breaking');	
+			startSong('midnight/midnight-hard', 'meadow', 'golden', 'undefiable');	
 		}
 		  
 		if(controls.BACK)
@@ -163,7 +163,7 @@ class NewStoryDivinity extends MusicBeatState
 		super.update(elapsed);
 	  }
 	  
-    function startSong(songName1:String, songName2:String, songName3:String)
+    function startSong(songName1:String, songName2:String, songName3:String, songName4:String)
     {
 	   FlxFlicker.flicker(week1, 1, 0.06, false, false, function(flick:FlxFlicker)
 	   {

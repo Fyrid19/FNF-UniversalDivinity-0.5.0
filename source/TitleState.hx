@@ -196,7 +196,7 @@ class TitleState extends MusicBeatState
 			FlxG.sound.music.fadeIn(4, 0, 0.7);
 		}
 
-		Conductor.changeBPM(240.5);
+		Conductor.changeBPM(162.5);
 		persistentUpdate = true;
 
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
@@ -487,13 +487,13 @@ class TitleState extends MusicBeatState
 			case 14:
 				createCoolText(['VS D&B Universal Divinity', 'by']);
 			case 15:
-				addMoreText('FyriDev, Rambi, RandoScript, FrogB, ayo,\nBoxHaze, NooboDev, Jayyee, PurplyBoi738, CXYon3');
+				addMoreText('FyriDev, Rambi, FrogB, ayo, Blocki, chezcake,\nBoxHaze, NooboDev, Jayyee, PurplyBoi738, CXYon3');
 			case 16:
 				deleteCoolText();
 			case 17:
 				createCoolText(['And special thanks to our contributors']);
 			case 18:
-				addMoreText('Gabriel, Astro, Benjamin, Bamber, Carter,\nchezcake, AVeryCringeUser, Sketcherbasics101,\nThis is Matt, MelDoesStuff, Ben, ZertyXD, nn');
+				addMoreText('Gabriel, Astro, Benjamin, Bamber, Carter, Zoip,\nAVery, Sketcherbasics101, Gill, Snoop, Polter, RandoScript,\nMatt, MelDoesStuff, ZertyXD, nn, Moi, Poop');
 			case 19:
 				deleteCoolText();
 			case 20:
