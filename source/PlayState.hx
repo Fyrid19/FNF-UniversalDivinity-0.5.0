@@ -5269,6 +5269,21 @@ for (key => value in luaShaders)
 			{
 				char.playAnim(animToPlay, true);
 				char.holdTimer = 0;
+
+				var camPower = 60;
+				moveCameraSection();
+				if (!SONG.notes[curSection].mustHitSection) {
+					switch (note.noteData) {
+						case 0:
+							camFollow.x -= camPower;
+						case 1:
+							camFollow.y += camPower;
+						case 2:
+							camFollow.y -= camPower;
+						case 3:
+							camFollow.x += camPower;
+					}
+				}
 			}
 		}
 
@@ -5380,6 +5395,21 @@ for (key => value in luaShaders)
 				{
 					boyfriend.playAnim(animToPlay + note.animSuffix, true);
 					boyfriend.holdTimer = 0;
+
+					var camPower = 30;
+					moveCameraSection();
+					if (SONG.notes[curSection].mustHitSection) {
+						switch (note.noteData) {
+							case 0:
+								camFollow.x -= camPower;
+							case 1:
+								camFollow.y += camPower;
+							case 2:
+								camFollow.y -= camPower;
+							case 3:
+								camFollow.x += camPower;
+						}
+					}
 				}
 
 				if(note.noteType == 'Hey!') {
