@@ -157,7 +157,7 @@ class PlayState extends MusicBeatState
 	public var gf:Character = null;
 	public var boyfriend:Boyfriend = null;
 
-	var funnyFloatyBoys:Array<String> = ['dave-3d', 'mordon', 'heldai-phase-1']; // i know 404 is open useable but if we want to add him to our mod then we can put his json name here. -frogb
+	var funnyFloatyBoys:Array<String> = ['dave-3d', 'mordon', 'heldai-phase-1', 'sbarren'];
 	var funnySideFloatyBoys:Array<String> = ['bombu', 'bombu-expunged'];
 	var canSlide:Bool = true;
 	
@@ -213,6 +213,7 @@ class PlayState extends MusicBeatState
 
 	//i dont think any of these work so we gotta do this in lua lmao (doTweenColor specifically) -frogb
 	//we dont have to use lua you just did it wrong :moyai: -fyrid
+	//I FIGURED IT OUT ALREADY YOU FUCKING IDIOT :im_so_pissed_i_shidded: -frogb
 	public var hasBfDarkLevels:Array<String> = ['farmNight', 'houseNight', '3dFucked', 'houseroof']; // 0xFF878787
 	public var hasBfSunsetLevels:Array<String> = ['farmSunset', 'houseSunset']; // 0xFFF9974C
 	public var hasBfDarkerLevels:Array<String> = ['spooky']; // not needed 
@@ -3484,7 +3485,29 @@ class PlayState extends MusicBeatState
 		callOnLuas('onUpdate', [elapsed]);
 
 		switch (curStage)
-		{
+		{ // took this straight from the dnb source, added a few things from definitive edition too -frogb (ignore the fact that theres the slur there im too lazy to delete that i just want it FIXED-)
+			case 'bambersHell': // glowing retard 
+				{
+					gf.color = 0xFF878787;
+					boyfriend.color = 0xFF878787;
+				}
+			case 'farmNight': //dark as hell -frogb
+				{
+					dad.color = 0xFF878787;
+					gf.color = 0xFF878787;
+					boyfriend.color = 0xFF878787;
+					
+					if (SONG.player2 == 'bambi-god2d')
+					{
+						dad.color = 0xFFFFFFFF;
+					}
+				}
+			case 'farmSunset' | 'houseSunset': // FIXED SUNSET SHIT YAY -frogb
+				{
+					dad.color = 0xFFFF8F65;
+					gf.color = 0xFFFF8F65;
+		    		boyfriend.color = 0xFFFF8F65;
+				}
 			case 'tank':
 				moveTank(elapsed);
 			case 'schoolEvil':
