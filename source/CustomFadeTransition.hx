@@ -31,6 +31,7 @@ class CustomFadeTransition extends MusicBeatSubstate {
 		var height:Int = Std.int(FlxG.height / zoom);
 		transGradient = FlxGradient.createGradientFlxSprite(width, height, (isTransIn ? [0x0, FlxColor.BLACK] : [FlxColor.BLACK, 0x0]));
 		transGradient.scrollFactor.set();
+		transGradient.visible = false;
 		add(transGradient);
 
 		transBlack = new FlxSprite().makeGraphic(width, height + 400, FlxColor.BLACK);
@@ -38,19 +39,18 @@ class CustomFadeTransition extends MusicBeatSubstate {
 		add(transBlack);
 
 		transGradient.x -= (width - FlxG.width) / 2;
-		transBlack.x = transGradient.x;
+		transBlack.screenCenter();
 
 		if(isTransIn) {
-			transGradient.y = transBlack.y - transBlack.height;
-			FlxTween.tween(transGradient, {y: transGradient.height + 50}, duration, {
+			FlxTween.tween(transBlack, {alpha: 0}, duration, {
 				onComplete: function(twn:FlxTween) {
 					close();
+					transBlack.alpha = 1;
 				},
 			ease: FlxEase.linear});
 		} else {
-			transGradient.y = -transGradient.height;
-			transBlack.y = transGradient.y - transBlack.height + 50;
-			leTween = FlxTween.tween(transGradient, {y: transGradient.height + 50}, duration, {
+			transBlack.alpha = 0;
+			FlxTween.tween(transBlack, {alpha: 1}, duration, {
 				onComplete: function(twn:FlxTween) {
 					if(finishCallback != null) {
 						finishCallback();
@@ -68,23 +68,23 @@ class CustomFadeTransition extends MusicBeatSubstate {
 
 	override function update(elapsed:Float) {
 		if(isTransIn) {
-			transBlack.y = transGradient.y + transGradient.height;
+			//transBlack.y = transGradient.y + transGradient.height;
 		} else {
-			transBlack.y = transGradient.y - transBlack.height;
+			//transBlack.y = transGradient.y - transBlack.height;
 		}
 		super.update(elapsed);
 		if(isTransIn) {
-			transBlack.y = transGradient.y + transGradient.height;
+			//transBlack.y = transGradient.y + transGradient.height;
 		} else {
-			transBlack.y = transGradient.y - transBlack.height;
+			//transBlack.y = transGradient.y - transBlack.height;
 		}
 	}
 
 	override function destroy() {
-		if(leTween != null) {
+		/*if(leTween != null) {
 			finishCallback();
 			leTween.cancel();
-		}
+		}*/
 		super.destroy();
 	}
 }

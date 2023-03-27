@@ -60,6 +60,7 @@ class ClientPrefs {
 	public static var goodWindow:Int = 90;
 	public static var badWindow:Int = 135;
 	public static var safeFrames:Float = 10;
+	public static var saveFileName:String = 'save1';
 
 	//Every key has two binds, add your key bind down here and then add your control on options/ControlsSubState.hx and Controls.hx
 	public static var keyBinds:Map<String, Array<FlxKey>> = [
@@ -130,11 +131,13 @@ class ClientPrefs {
 		FlxG.save.data.hitsoundVolume = hitsoundVolume;
 		FlxG.save.data.pauseMusic = pauseMusic;
 		FlxG.save.data.checkForUpdates = checkForUpdates;
+
+		FlxG.save.data.saveFileName = saveFileName;
 	
 		FlxG.save.flush();
 
 		var save:FlxSave = new FlxSave();
-		save.bind('controls_v2', 'ninjamuffin99'); //Placing this in a separate save so that it can be manually deleted without removing your Score and stuff
+		save.bind('controls_v2', 'UDSaves/' + saveFileName); //Placing this in a separate save so that it can be manually deleted without removing your Score and stuff
 		save.data.customControls = keyBinds;
 		save.flush();
 		FlxG.log.add("Settings saved!");
@@ -265,8 +268,12 @@ class ClientPrefs {
 			checkForUpdates = FlxG.save.data.checkForUpdates;
 		}
 
+		if(FlxG.save.data.saveFileName != null) {
+			saveFileName = FlxG.save.data.saveFileName;
+		}
+
 		var save:FlxSave = new FlxSave();
-		save.bind('controls_v2', 'UniversalDivinity');
+		save.bind('controls_v2', 'UDSaves/' + saveFileName);
 		if(save != null && save.data.customControls != null) {
 			var loadedControls:Map<String, Array<FlxKey>> = save.data.customControls;
 			for (control => keys in loadedControls) {

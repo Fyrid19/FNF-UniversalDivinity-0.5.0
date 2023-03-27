@@ -122,7 +122,8 @@ class DivinityFreeplayState extends MusicBeatState
 		super.create();
 	}
 
-	public function LoadProperPack() // wait fyrid what happened to singularity lmao -frogb
+	public function LoadProperPack() // wait fyrid what happened to singularity lmao -frogb 
+		// its called ringularity ayo named it wrong -fyrid
 		{
 			switch (AllPossibleSongs[CurrentPack].toLowerCase())
 			{
@@ -167,7 +168,7 @@ class DivinityFreeplayState extends MusicBeatState
 					//addWeek(['Monotone Atack'], 13, ['sbarren']);
 					//addWeek(['Gamebreaker'], 13, ['sbarren']);
 					//addWeek(['Quadruple Quarrel'], 13, ['sbarren']);
-					//addWeek(['Prey'], 13, ['sbarren']);
+					//addWeek(['Prey'], 13, ['sbarren']); // ITS ALL SHITTED BARRENNN -fyrid
 					
 			}
 		}

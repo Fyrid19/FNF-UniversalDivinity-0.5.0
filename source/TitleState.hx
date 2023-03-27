@@ -31,6 +31,8 @@ import lime.app.Application;
 import openfl.Assets;
 import flixel.addons.display.FlxBackdrop;
 
+import divinity.SaveSelectState;
+
 using StringTools;
 
 class TitleState extends MusicBeatState
@@ -108,8 +110,9 @@ class TitleState extends MusicBeatState
 		swagShader = new ColorSwap();
 		super.create();
 
-		FlxG.save.bind('funkin', 'ninjamuffin99');
+		FlxG.save.bind('divinity', 'UDSaves/' + SaveSelectState.preSaveFileName);
 		ClientPrefs.loadPrefs();
+		ClientPrefs.saveFileName = SaveSelectState.preSaveFileName;
 
 		Highscore.load();
 
@@ -196,7 +199,7 @@ class TitleState extends MusicBeatState
 			FlxG.sound.music.fadeIn(4, 0, 0.7);
 		}
 
-		Conductor.changeBPM(162.5);
+		Conductor.changeBPM(130);
 		persistentUpdate = true;
 
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
@@ -520,7 +523,7 @@ class TitleState extends MusicBeatState
 	{
 		if (!skippedIntro)
 		{
-			Conductor.changeBPM(148);
+			Conductor.changeBPM(130);
 
 			remove(logoSpr);
 
