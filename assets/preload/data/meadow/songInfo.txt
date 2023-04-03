@@ -1,2 +1,3 @@
-Composer: Ayo
-Charter: -Jay-
+Ayo
+-Jay-
+0xFF00B515

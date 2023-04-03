@@ -1,2 +1,3 @@
-Composer: FyriDev
-Charter: FyriDev
+Aura
+Aura
+0xFF1D3FFF

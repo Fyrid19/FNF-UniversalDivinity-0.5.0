@@ -1,2 +1,3 @@
-Composer: Ayo
-Charter: FyriDev
+Ayo
+Aura
+0xFFFFEA00

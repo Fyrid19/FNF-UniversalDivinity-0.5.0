@@ -1,2 +1,3 @@
-Composer: BoxHaze
-Charter(s): -Jay-, FyriDev
+BoxHaze
+-Jay-, Aura
+0xFFFFD146

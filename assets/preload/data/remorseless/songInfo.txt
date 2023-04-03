@@ -1,2 +1,3 @@
-Composer: FyriDev
-Charter(s): AVeryCringeUser, FyriDev
+Aura
+AVeryCringeUser
+0xFFAAAAAA
