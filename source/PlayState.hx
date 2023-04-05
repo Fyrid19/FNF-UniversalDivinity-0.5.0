@@ -627,7 +627,7 @@ class PlayState extends MusicBeatState
 				defaultCamZoom = 0.8;
 				curStage = 'houseSunset';
 
-				var bg:FlxSprite = new FlxSprite(-680, -130).loadGraphic(Paths.image('backgrounds/skies/sky'));
+				var bg:FlxSprite = new FlxSprite(-680, -130).loadGraphic(Paths.image('backgrounds/skies/sky_sunset'));
 				bg.antialiasing = true;
 				bg.scrollFactor.set(0.1, 0.1);
 				bg.active = true;
@@ -668,7 +668,7 @@ class PlayState extends MusicBeatState
 				defaultCamZoom = 0.8;
 				curStage = 'houseNight';
 
-				var bg:FlxSprite = new FlxSprite(-680, -130).loadGraphic(Paths.image('backgrounds/skies/sky'));
+				var bg:FlxSprite = new FlxSprite(-680, -130).loadGraphic(Paths.image('backgrounds/skies/sky_night'));
 				bg.antialiasing = true;
 				bg.scrollFactor.set(0.1, 0.1);
 				bg.active = true;
