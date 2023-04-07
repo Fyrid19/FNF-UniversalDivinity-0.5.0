@@ -1,140 +1,65 @@
 {
 	"animations": [
 		{
-			"loop": true,
+			"loop": false,
 			"offsets": [
-				0,
-				10
+				30,
+				-23
 			],
-			"anim": "singLEFT-loop",
+			"anim": "singDOWN",
 			"fps": 24,
-			"name": "Dad Sing Note LEFT",
-			"indices": [
-				12,
-				13,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-9,
+				3
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
 				14,
-				15
-			]
+				34
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		},
 		{
-			"loop": true,
+			"loop": false,
+			"offsets": [
+				36,
+				11
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
 			"offsets": [
 				0,
-				27
+				0
 			],
-			"anim": "singRIGHT-loop",
-			"fps": 24,
-			"name": "Dad Sing Note RIGHT",
-			"indices": [
-				15,
-				16,
-				17,
-				18
-			]
-		},
-		{
-			"loop": true,
-			"offsets": [
-				-6,
-				50
-			],
-			"anim": "singUP-loop",
-			"fps": 24,
-			"name": "Dad Sing Note UP",
-			"indices": [
-				56,
-				57,
-				58,
-				59
-			]
-		},
-		{
-			"offsets": [
-				140,
-				-100
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "hey",
 			"indices": [],
-			"name": "WhatYouKnowAboutRollingDownInTheDeep"
-		},
-		{
-			"offsets": [
-				0,
-				0
-			],
-			"loop": true,
-			"fps": 12,
-			"anim": "idle-loop",
-			"indices": [
-				10,
-				11,
-				12,
-				12
-			],
-			"name": "Dave Idle"
-		},
-		{
-			"offsets": [
-				0,
-				0
-			],
-			"loop": false,
 			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "IDLE"
-		},
-		{
-			"offsets": [
-				0,
-				-11
-			],
-			"indices": [],
-			"fps": 24,
-			"anim": "singDOWN",
 			"loop": false,
-			"name": "DOWN"
-		},
-		{
-			"offsets": [
-				0,
-				27
-			],
-			"indices": [],
-			"fps": 24,
-			"anim": "singRIGHT",
-			"loop": false,
-			"name": "RIGHT"
-		},
-		{
-			"offsets": [
-				-6,
-				14
-			],
-			"indices": [],
-			"fps": 24,
-			"anim": "singUP",
-			"loop": false,
-			"name": "UP"
-		},
-		{
-			"offsets": [
-				34,
-				10
-			],
-			"indices": [],
-			"fps": 24,
-			"anim": "singLEFT",
-			"loop": false,
-			"name": "LEFT"
+			"name": "Idle"
 		}
 	],
 	"no_antialiasing": true,
 	"image": "characters/Dave_Furiosity",
 	"position": [
-		40,
+		0,
 		-30
 	],
 	"healthicon": "dave3d",
@@ -149,5 +74,5 @@
 		31
 	],
 	"sing_duration": 6.1,
-	"scale": 1
+	"scale": 0.9
 }
