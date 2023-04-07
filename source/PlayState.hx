@@ -157,8 +157,8 @@ class PlayState extends MusicBeatState
 	public var gf:Character = null;
 	public var boyfriend:Boyfriend = null;
 
-	var funnyFloatyBoys:Array<String> = ['dave-3d', 'mordon', 'heldai-phase-1', 'sbarren'];
-	var funnySideFloatyBoys:Array<String> = ['bombu', 'bombu-expunged'];
+	var funnyFloatyBoys:Array<String> = ['dave-3d', 'mordon', 'heldai-phase-1', 'sbarren', 'bf-3d'];
+	var funnySideFloatyBoys:Array<String> = [];
 	var canSlide:Bool = true;
 	
 	var dontDarkenChar:Array<String> = ['bambi-god'];
@@ -981,11 +981,10 @@ class PlayState extends MusicBeatState
 				defaultCamZoom = 0.85;
 				curStage = 'barrenBG';
 
-				var bg:FlxSprite = new FlxSprite(-900, -500).loadGraphic(Paths.image('backgrounds/void/barrenBGNew'));
+				var bg:FlxSprite = new FlxSprite(-900, -500).loadGraphic(Paths.image('backgrounds/void/barrenBG'));
 				bg.antialiasing = true;
 				bg.scrollFactor.set(0.6, 0.6);
 				bg.active = true;
-				bg.setGraphicSize(Std.int(bg.width * 1.6), Std.int(bg.height * 1.8));
 
 				add(bg);
 
@@ -1769,10 +1768,10 @@ class PlayState extends MusicBeatState
 			});
 		new FlxTimer().start(6, function(tmr:FlxTimer)
 			{
-		FlxTween.tween(leSongName, {x: -1000}, durationOut, {type:PERSIST, ease:FlxEase.backInOut});
-		FlxTween.tween(leBox, {x: -1000}, durationOut, {type:PERSIST, ease:FlxEase.circInOut});
-		FlxTween.tween(leInfo, {x: -1000}, durationOut, {type:PERSIST, ease:FlxEase.backInOut});
-		FlxTween.tween(leInfo2, {x: -1000}, durationOut, {type:PERSIST, ease:FlxEase.backInOut});
+		FlxTween.tween(leSongName, {x: -2000}, durationOut, {type:PERSIST, ease:FlxEase.backInOut});
+		FlxTween.tween(leBox, {x: -2000}, durationOut, {type:PERSIST, ease:FlxEase.circInOut});
+		FlxTween.tween(leInfo, {x: -2000}, durationOut, {type:PERSIST, ease:FlxEase.backInOut});
+		FlxTween.tween(leInfo2, {x: -2000}, durationOut, {type:PERSIST, ease:FlxEase.backInOut});
 			});
 	}
 
@@ -3962,6 +3961,12 @@ for (key => value in luaShaders)
 
 	public function triggerEventNote(eventName:String, value1:String, value2:String) {
 		switch(eventName) {
+			/*case 'Toggle Eyesores':
+				var varID:Int = Std.parseInt(value1);
+				switch (varID)
+				{
+					case 1:
+				}*/
 			case 'Quick note spin':
 				strumLineNotes.forEach(function(note)
 					{
