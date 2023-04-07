@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Cheating old.png"><SubTexture name="Cheating old idle0000" x="1276" y="447" width="334" height="445" frameX="-147" frameY="-95" frameWidth="544" frameHeight="576" />
+<SubTexture name="Cheating old idle0001" x="749" y="1100" width="323" height="438" frameX="-154" frameY="-92" frameWidth="544" frameHeight="576" />
+<SubTexture name="Cheating old idle0002" x="441" y="1100" width="308" height="441" frameX="-163" frameY="-75" frameWidth="544" frameHeight="576" />
+<SubTexture name="Cheating old idle0003" x="1722" y="0" width="286" height="434" frameX="-143" frameY="-76" frameWidth="544" frameHeight="576" />
+<SubTexture name="Cheating old idle0004" x="1722" y="434" width="286" height="432" frameX="-143" frameY="-76" frameWidth="544" frameHeight="576" />
+<SubTexture name="Cheating old up0000" x="0" y="576" width="297" height="524" frameX="-159" frameY="-2" frameWidth="544" frameHeight="576" />
+<SubTexture name="Cheating old up0001" x="980" y="0" width="296" height="528" frameX="-160" frameY="-2" frameWidth="544" frameHeight="576" />
+<SubTexture name="Cheating old up0002" x="0" y="576" width="297" height="524" frameX="-159" frameY="-2" frameWidth="544" frameHeight="576" />
+<SubTexture name="Cheating old up0003" x="297" y="576" width="289" height="497" frameX="-162" frameY="-14" frameWidth="544" frameHeight="576" />
+<SubTexture name="Cheating old up0004" x="1072" y="1100" width="285" height="435" frameX="-145" frameY="-47" frameWidth="544" frameHeight="576" />
+<SubTexture name="Cheating old left0000" x="0" y="1100" width="441" height="444" frameX="-5" frameY="-96" frameWidth="544" frameHeight="576" />
+<SubTexture name="Cheating old left0001" x="1276" y="0" width="446" height="447" frameX="-3" frameY="-95" frameWidth="544" frameHeight="576" />
+<SubTexture name="Cheating old left0002" x="0" y="1100" width="441" height="444" frameX="-5" frameY="-96" frameWidth="544" frameHeight="576" />
+<SubTexture name="Cheating old left0003" x="586" y="576" width="425" height="451" frameX="-16" frameY="-94" frameWidth="544" frameHeight="576" />
+<SubTexture name="Cheating old left0004" x="1357" y="1100" width="338" height="435" frameX="-56" frameY="-78" frameWidth="544" frameHeight="576" />
+<SubTexture name="Cheating old right0000" x="544" y="1544" width="544" height="422" frameX="0" frameY="-108" frameWidth="544" frameHeight="576" />
+<SubTexture name="Cheating old right0001" x="0" y="1544" width="544" height="424" frameX="0" frameY="-107" frameWidth="544" frameHeight="576" />
+<SubTexture name="Cheating old right0002" x="544" y="1544" width="544" height="422" frameX="0" frameY="-108" frameWidth="544" frameHeight="576" />
+<SubTexture name="Cheating old right0003" x="1428" y="1544" width="427" height="412" frameX="-110" frameY="-106" frameWidth="544" frameHeight="576" />
+<SubTexture name="Cheating old right0004" x="1088" y="1544" width="340" height="420" frameX="-142" frameY="-102" frameWidth="544" frameHeight="576" />
+<SubTexture name="Cheating old down0000" x="0" y="0" width="486" height="576" frameX="-44" frameY="0" frameWidth="544" frameHeight="576" />
+<SubTexture name="Cheating old down0001" x="486" y="0" width="494" height="576" frameX="-40" frameY="0" frameWidth="544" frameHeight="576" />
+<SubTexture name="Cheating old down0002" x="0" y="0" width="486" height="576" frameX="-44" frameY="0" frameWidth="544" frameHeight="576" />
+<SubTexture name="Cheating old down0003" x="2008" y="0" width="459" height="389" frameX="-57" frameY="-171" frameWidth="544" frameHeight="576" />
+<SubTexture name="Cheating old down0004" x="2008" y="389" width="389" height="304" frameX="-90" frameY="-230" frameWidth="544" frameHeight="576" />
+</TextureAtlas>
