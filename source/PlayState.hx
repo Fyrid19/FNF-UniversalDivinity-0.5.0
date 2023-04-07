@@ -579,20 +579,30 @@ class PlayState extends MusicBeatState
 				defaultCamZoom = 0.8;
 				curStage = 'houseDay';
 
-				var bg:BGSprite = new BGSprite('backgrounds/skies/sky', -600, -200, 0.2, 0.2);
-				add(bg);
-	
-				var hills:BGSprite = new BGSprite('backgrounds/dave/hills', -225, -125, 0.5, 0.5);
-				hills.setGraphicSize(Std.int(hills.width * 1.25));
-				hills.updateHitbox();
-	
-				var gate:BGSprite = new BGSprite('backgrounds/dave/gate', -266, -125, 0.9, 0.9);
-				gate.setGraphicSize(Std.int(gate.width * 1.5));
-				gate.updateHitbox();
-	
-				var grass:BGSprite = new BGSprite('backgrounds/dave/grass', -266, -125, 0.9, 0.9);
-				grass.setGraphicSize(Std.int(grass.width * 1.5));
-				grass.updateHitbox();
+				var bg:FlxSprite = new FlxSprite(-680, -130).loadGraphic(Paths.image('backgrounds/skies/sky'));
+				bg.antialiasing = true;
+				bg.scrollFactor.set(0.1, 0.1);
+				bg.active = true;
+
+				var hills:FlxSprite = new FlxSprite(-652, -20).loadGraphic(Paths.image('backgrounds/dave/hills'));
+				hills.antialiasing = true;
+				hills.scrollFactor.set(0.7, 0.7);
+				hills.active = true;
+
+				var grassBG:FlxSprite = new FlxSprite(-725, 400).loadGraphic(Paths.image('backgrounds/dave/grass bg'));
+				grassBG.antialiasing = true;
+				grassBG.scrollFactor.set(0.3, 0.3);
+				grassBG.active = true;
+
+				var gate:FlxSprite = new FlxSprite(-542, 440).loadGraphic(Paths.image('backgrounds/dave/gate'));
+				gate.antialiasing = true;
+				gate.scrollFactor.set(0.9, 0.9);
+				gate.active = true;
+
+				var grass:FlxSprite = new FlxSprite(-725, 580).loadGraphic(Paths.image('backgrounds/dave/grass'));
+				grass.antialiasing = true;
+				grass.scrollFactor.set(1, 1);
+				grass.active = true;
 
 				redSky.loadGraphic(Paths.image('backgrounds/void/redsky')); // this is used for intertwined - frogb
 				redSky.antialiasing = true;
@@ -606,6 +616,7 @@ class PlayState extends MusicBeatState
 
 				add(bg);
 				add(hills);
+				add(grassBG);
 				add(gate);
 				add(grass);
 				add(redSky);
@@ -616,22 +627,33 @@ class PlayState extends MusicBeatState
 				defaultCamZoom = 0.8;
 				curStage = 'houseSunset';
 
-				var bg:BGSprite = new BGSprite('backgrounds/skies/sky_sunset', -600, -200, 0.2, 0.2);
-				add(bg);
-	
-				var hills:BGSprite = new BGSprite('backgrounds/dave/hills', -225, -125, 0.5, 0.5);
-				hills.setGraphicSize(Std.int(hills.width * 1.25));
-				hills.updateHitbox();
-	
-				var gate:BGSprite = new BGSprite('backgrounds/dave/gate', -266, -125, 0.9, 0.9);
-				gate.setGraphicSize(Std.int(gate.width * 1.5));
-				gate.updateHitbox();
-	
-				var grass:BGSprite = new BGSprite('backgrounds/dave/grass', -266, -125, 0.9, 0.9);
-				grass.setGraphicSize(Std.int(grass.width * 1.5));
-				grass.updateHitbox();
+				var bg:FlxSprite = new FlxSprite(-680, -130).loadGraphic(Paths.image('backgrounds/skies/sky_sunset'));
+				bg.antialiasing = true;
+				bg.scrollFactor.set(0.1, 0.1);
+				bg.active = true;
+
+				var hills:FlxSprite = new FlxSprite(-652, -20).loadGraphic(Paths.image('backgrounds/dave/hills'));
+				hills.antialiasing = true;
+				hills.scrollFactor.set(0.7, 0.7);
+				hills.active = true;
+
+				var grassBG:FlxSprite = new FlxSprite(-725, 400).loadGraphic(Paths.image('backgrounds/dave/grass bg'));
+				grassBG.antialiasing = true;
+				grassBG.scrollFactor.set(0.3, 0.3);
+				grassBG.active = true;
+
+				var gate:FlxSprite = new FlxSprite(-542, 440).loadGraphic(Paths.image('backgrounds/dave/gate'));
+				gate.antialiasing = true;
+				gate.scrollFactor.set(0.9, 0.9);
+				gate.active = true;
+
+				var grass:FlxSprite = new FlxSprite(-725, 580).loadGraphic(Paths.image('backgrounds/dave/grass'));
+				grass.antialiasing = true;
+				grass.scrollFactor.set(1, 1);
+				grass.active = true;
 
 				hills.color = 0xFFF9974C;
+				grassBG.color = 0xFFF9974C;
 				gate.color = 0xFFF9974C;
 				grass.color = 0xFFF9974C;
 
@@ -646,27 +668,39 @@ class PlayState extends MusicBeatState
 				defaultCamZoom = 0.8;
 				curStage = 'houseNight';
 
-				var bg:BGSprite = new BGSprite('backgrounds/skies/sky_night', -600, -200, 0.2, 0.2);
-				add(bg);
-	
-				var hills:BGSprite = new BGSprite('backgrounds/dave/hills', -225, -125, 0.5, 0.5);
-				hills.setGraphicSize(Std.int(hills.width * 1.25));
-				hills.updateHitbox();
-	
-				var gate:BGSprite = new BGSprite('backgrounds/dave/gate', -266, -125, 0.9, 0.9);
-				gate.setGraphicSize(Std.int(gate.width * 1.5));
-				gate.updateHitbox();
-	
-				var grass:BGSprite = new BGSprite('backgrounds/dave/grass', -266, -125, 0.9, 0.9);
-				grass.setGraphicSize(Std.int(grass.width * 1.5));
-				grass.updateHitbox();
+				var bg:FlxSprite = new FlxSprite(-680, -130).loadGraphic(Paths.image('backgrounds/skies/sky_night'));
+				bg.antialiasing = true;
+				bg.scrollFactor.set(0.1, 0.1);
+				bg.active = true;
+
+				var hills:FlxSprite = new FlxSprite(-652, -20).loadGraphic(Paths.image('backgrounds/dave/hills'));
+				hills.antialiasing = true;
+				hills.scrollFactor.set(0.7, 0.7);
+				hills.active = true;
+
+				var grassBG:FlxSprite = new FlxSprite(-725, 400).loadGraphic(Paths.image('backgrounds/dave/grass bg'));
+				grassBG.antialiasing = true;
+				grassBG.scrollFactor.set(0.3, 0.3);
+				grassBG.active = true;
+
+				var gate:FlxSprite = new FlxSprite(-542, 440).loadGraphic(Paths.image('backgrounds/dave/gate'));
+				gate.antialiasing = true;
+				gate.scrollFactor.set(0.9, 0.9);
+				gate.active = true;
+
+				var grass:FlxSprite = new FlxSprite(-725, 580).loadGraphic(Paths.image('backgrounds/dave/grass'));
+				grass.antialiasing = true;
+				grass.scrollFactor.set(1, 1);
+				grass.active = true;
 
 				hills.color = 0xFF878787;
+				grassBG.color = 0xFF878787;
 				gate.color = 0xFF878787;
 				grass.color = 0xFF878787;
 
 				add(bg);
 				add(hills);
+				add(grassBG);
 				add(gate);
 				add(grass);
 			}

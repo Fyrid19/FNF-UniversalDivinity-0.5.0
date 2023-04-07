@@ -26,7 +26,7 @@ using StringTools;
 class MainMenuState extends MusicBeatState
 {
 	public static var psychEngineVersion:String = '0.6.2'; //This is also used for Discord RPC
-	public static var devModVer:String = 'ALPHA 1'; //THIS IS USED FOR FUCKING YOU SO TIGHT IN THE A- -frogb
+	public static var devModVer:String = 'ALPHA 2'; //THIS IS USED FOR FUCKING YOU SO TIGHT IN THE A- -frogb
 	public static var curModVer:String = 'Early 1.0'; //This is also used FOR YOUR MOTHE-
 	public static var curSelected:Int = 0;
 
@@ -181,7 +181,7 @@ class MainMenuState extends MusicBeatState
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("Comic Sans MS Bold", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, curModVer + " Divinity Engine, VD&B: Universal Divinity 1.0", 12);
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, curModVer + " Engine, VD&B: Universal Divinity DEMO", 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("Comic Sans MS Bold", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
@@ -213,52 +213,6 @@ class MainMenuState extends MusicBeatState
 			char1.updateHitbox();
 			char1.visible = true;
 		}
-		else
-		{
-			char1.visible = false;
-		}
-
-		if (optionShit[curSelected] == 'freeplay')
-			{
-				changeItem(-1);
-				changeItem(1);
-	
-				//char2.dance();
-				//char2.updateHitbox();
-				//char2.visible = true;
-			}
-			else
-			{
-				char2.visible = false;
-			}
-
-			if (optionShit[curSelected] == 'options')
-				{
-					changeItem(-1);
-					changeItem(1);
-		
-					//char3.dance();
-					//char3.updateHitbox();
-					//char3.visible = true;
-				}
-				else
-				{
-					char3.visible = false;
-				}
-		
-		if (optionShit[curSelected] == 'credits')
-				{
-					changeItem(-1);
-					changeItem(1);
-		
-					//char4.dance();
-					//char4.updateHitbox();
-					//char4.visible = true;
-				}
-				else
-				{
-					char4.visible = false;
-				}
 
 		var lerpVal:Float = CoolUtil.boundTo(elapsed * 5.6, 0, 1);
 		camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
