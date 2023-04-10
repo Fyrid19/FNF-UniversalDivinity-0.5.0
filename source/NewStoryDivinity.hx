@@ -65,7 +65,7 @@ class NewStoryDivinity extends MusicBeatState
 
 		FlxG.mouse.visible = true;
 		
-		bg = new FlxSprite(-80).loadGraphic(Paths.image('backgrounds/purgatory/osp'));
+		bg = new FlxSprite(-80).loadGraphic(Paths.image('backgrounds/melDoesStuff2'));
 		bg.scrollFactor.set();
 		bg.updateHitbox();
 		bg.screenCenter();
@@ -76,39 +76,39 @@ class NewStoryDivinity extends MusicBeatState
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
 		
-		week1 = new FlxSprite(100, 70).loadGraphic(Paths.image('purgatoryweeks/story2'));
+		week1 = new FlxSprite(100, 70).loadGraphic(Paths.image('purgatoryweeks/story'));
 		week1.scale.set(0.8, 0.8);
 		week1.updateHitbox();
 		week1.antialiasing = ClientPrefs.globalAntialiasing;
 		menuItems.add(week1);
 		
-		week1text = new FlxText(80, 480, 320, "Hell\n" + "Week\n");
+		week1text = new FlxText(80, 480, 320, "Rage\n" + "Week\n");
 		week1text.setFormat(Paths.font("comic-sans.ttf"), 50, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		week1text.scrollFactor.set();
 		week1text.borderSize = 3.25;
 		week1text.visible = true;
 		menuItems.add(week1text);
 		
-		week2 = new FlxSprite(500, 70).loadGraphic(Paths.image('purgatoryweeks/story2'));
+		week2 = new FlxSprite(500, 70).loadGraphic(Paths.image('purgatoryweeks/story'));
 		week2.scale.set(0.8, 0.8);
 		week2.updateHitbox();
 		week2.antialiasing = ClientPrefs.globalAntialiasing;
 		menuItems.add(week2);
 		
-		week2text = new FlxText(480, 480, 320, "Hell\n" + "Week\n");
+		week2text = new FlxText(480, 480, 320, "Rage\n" + "Week\n");
 		week2text.setFormat(Paths.font("comic-sans.ttf"), 50, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		week2text.scrollFactor.set();
 		week2text.borderSize = 3.25;
 		week2text.visible = true;
 		menuItems.add(week2text);
 		
-		week3 = new FlxSprite(900, 70).loadGraphic(Paths.image('purgatoryweeks/story2'));
+		week3 = new FlxSprite(900, 70).loadGraphic(Paths.image('purgatoryweeks/story'));
 		week3.scale.set(0.8, 0.8);
 		week3.updateHitbox();
 		week3.antialiasing = ClientPrefs.globalAntialiasing;
 		menuItems.add(week3);
 		
-		week3text = new FlxText(880, 480, 320, "Hell\n" + "Week\n");
+		week3text = new FlxText(880, 480, 320, "Rage\n" + "Week\n");
 		week3text.setFormat(Paths.font("comic-sans.ttf"), 50, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		week3text.scrollFactor.set();
 		week3text.borderSize = 3.25;
@@ -219,7 +219,7 @@ class Section2Substate extends MusicBeatSubstate
 	public function new() {
 		super();
 		
-		bgSub = new FlxSprite(-80).loadGraphic(Paths.image('backgrounds/purgatory/osp'));
+		bgSub = new FlxSprite(-80).loadGraphic(Paths.image('backgrounds/melDoesStuff2));
 		bgSub.scrollFactor.set();
 		bgSub.updateHitbox();
 		bgSub.screenCenter();
