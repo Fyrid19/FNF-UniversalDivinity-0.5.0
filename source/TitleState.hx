@@ -199,7 +199,7 @@ class TitleState extends MusicBeatState
 			FlxG.sound.music.fadeIn(4, 0, 0.7);
 		}
 
-		Conductor.changeBPM(143.75);
+		Conductor.changeBPM(186.875);
 		persistentUpdate = true;
 
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
@@ -516,7 +516,7 @@ class TitleState extends MusicBeatState
 	{
 		if (!skippedIntro)
 		{
-			Conductor.changeBPM(100);
+			Conductor.changeBPM(130);
 
 			remove(logoSpr);
 
