@@ -219,7 +219,7 @@ class Section2Substate extends MusicBeatSubstate
 	public function new() {
 		super();
 		
-		bgSub = new FlxSprite(-80).loadGraphic(Paths.image('backgrounds/melDoesStuff2));
+		bgSub = new FlxSprite(-80).loadGraphic(Paths.image('backgrounds/melDoesStuff2'));
 		bgSub.scrollFactor.set();
 		bgSub.updateHitbox();
 		bgSub.screenCenter();
