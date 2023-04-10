@@ -66,7 +66,7 @@ class DivinityFreeplayState extends MusicBeatState
 		0xFF000000, // DUMBASS PLACEHOLDER 0
 		0xFF1D3FFF, // DAVE 1
 		0xFFDC97AA, // ANGEY ANGER 2
-		0xFF00B515, // MISTER BAMBI 3
+		0xFF00B515, // MISTER BAMBI RETARD (thats kinda rude ngl) 3
 		0xFF4965FF, // fdfdfd 4 
 		0xFFA40B09, // EVIL UNFAIRNESSSSS 5
 		0xFFFF0030, // 3d dave og color scary (sharted) 6
@@ -130,7 +130,7 @@ class DivinityFreeplayState extends MusicBeatState
 					addWeek(['Meadow'], 3, ['bambi']); // ayo renamed it coz of donut smh
 					addWeek(['Golden'], 9, ['tristan-golden']);
 					addWeek(['Undefiable'], 3, ['bambi3d']); // true exfucked
-					addWeek(['Spiral'], 13, ['barren']);
+					addWeek(['Spiral'], 13, ['barren']); // unshitted barren
 					addWeek(['Ringularity'], 14, ['lenzo']);
 					addWeek(['Remorseless'], 12, ['morrow']);
 					//EVERYTHING FROM HERE ONWARDS IS COMING IN V1, and yes i copied and pasted the sbarren template lmao ignore that -frogb
@@ -142,10 +142,10 @@ class DivinityFreeplayState extends MusicBeatState
 				case 'extrasandfanmades':
 					//addWeek(['Deep End'], 15, ['mordon']);
 					//addWeek(['Unruly'], 6, ['dave-angey']);
-					//addWeek(['SFF'], 6, ['dave-angey']);
-					addWeek(['Hellbound'], 8, ['heldai-phase-1']);
+					addWeek(['SFF'], 3, ['bambi']);
+					addWeek(['Hellbound'], 8, ['heldai-phase-1']); // remade in v1
 					//addWeek(['Retro'], 6, ['dave-angey']);
-					addWeek(['Intertwined'], 6, ['dave-angey']);
+					addWeek(['Intertwined'], 6, ['dave3d']);
 					//addWeek(['All-Star'], 6, ['dave-angey']); // fyrid said she wanted it replaced, awaiting the new song name
 					//addWeek(['Shifted'], 8, ['sbarren']); / shitted barren
 				// case 'joke': //whenever you ready you take the double slashes off this shit
@@ -160,7 +160,7 @@ class DivinityFreeplayState extends MusicBeatState
 					addWeek(['Tessattack'], 10, ['sbarren']);
 					//addWeek(['Triple Trouble'], 8, ['sbarren']); //<--- and if some fucker presses 7 or do some other shitthey get bought to triple dev
 					//addWeek(['Triple Dev'], 8, ['sbarren']); //<--- idk do something in triple trouble to unlock this???
-					//god damn it redly (may be for 1.0 and 1.5 idk, unless we want a separate dev covers section or some shit)
+					//god damn it redly (may be for 1.0 and 1.5 idk, unless we want a separate dev covers section or mod or some other shit)
 					//addWeek(['Victory'], 8, ['sbarren']);
 					//addWeek(['Armed'], 8, ['sbarren']);
 					//addWeek(['Monotone Atack'], 8, ['sbarren']);
