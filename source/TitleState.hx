@@ -214,8 +214,8 @@ class TitleState extends MusicBeatState
 			gfDance.animation.addByIndices('danceLeft', 'gfDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
 			gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
 
-		var gridthing:FlxBackdrop; // rambi i cant believe you've made me get this shit DIRECTLY from os engine
-		gridthing = new FlxBackdrop(Paths.image('udGrid'), 0.2, 0, true, true);
+		var gridthing:FlxBackdrop;
+		gridthing = new FlxBackdrop(Paths.image('loading'), 0.2, 0, true, true);
 		gridthing.velocity.set(50, -25);
 		gridthing.updateHitbox();
 		gridthing.alpha = 0.4;
