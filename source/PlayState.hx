@@ -1030,43 +1030,32 @@ class PlayState extends MusicBeatState
 			}
 
 			case 'bambersHell': // only in bami's ohio-gatory bruh (why -fyrid)
+			//fyrid we may re-use this for fantracks section lmao
 			{
 				defaultCamZoom = 0.7;
 				curStage = 'bambersHell';
-				var bg:BGSprite = new BGSprite('bambi/purgatory/graysky', -600, -200, 0, 0);
+				var bg:BGSprite = new BGSprite('purgatory/graysky', -600, -200, 0, 0);
 				bg.antialiasing = false;
 				bg.scrollFactor.set(0, 0);
 				bg.active = true;
 				add(bg);
 
-				var bg2:BGSprite = new BGSprite('bambi/purgatory/Grid_BG', -600, -300, 0, 0);
+				var bg2:BGSprite = new BGSprite('purgatory/Grid_BG', -600, -300, 0, 0);
 				bg2.setGraphicSize(Std.int(bg2.width * 1.15));
 				bg2.antialiasing = false;
-				bg2.scrollFactor.set(0, 0);
+				bg2.scrollFactor.set(0.4, 0.4);
 				bg2.active = true;
 				add(bg2);
 
-				var bg3:BGSprite = new BGSprite('bambi/purgatory/NightEffect', -600, -200, 0, 0);
-				bg3.setGraphicSize(Std.int(bg3.width * 1.15));
+				var bg3:BGSprite = new BGSprite('purgatory/NightEffect', -600, -200, 0, 0);
+				bg3.setGraphicSize(Std.int(bg3.width * 400)); //AS BIG AS MY FUCKING CO-
 				bg3.antialiasing = false;
 				bg3.scrollFactor.set(0, 0);
 				bg3.active = true;
 				add(bg3);
-	
-				var bgshit:BGSprite = new BGSprite('bambi/purgatory/3d_Objects', -600, -200, 0.7, 0.7);
-				bgshit.setGraphicSize(Std.int(bgshit.width * 1.25));
-				bgshit.updateHitbox();
-				bgshit.y += (Math.sin(elapsedtime) * 20);
-				add(bgshit);
-	
-				var bgshit2:BGSprite = new BGSprite('bambi/purgatory/3dBG_Objects', -600, -200, 0.5, 0.5);
-				bgshit2.setGraphicSize(Std.int(bgshit2.width * 1.2));
-				bgshit2.y += (Math.sin(elapsedtime) * - 15);
-				bgshit2.updateHitbox();
-				add(bgshit2);
 
 				// below code assumes shaders are always enabled which is bad
-				var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect(2, 5, 0.1);
+				var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect(0.95, 5, 0.1);
 				bg2.shader = testshader.shader;
 			}
 		}
@@ -1490,7 +1479,7 @@ class PlayState extends MusicBeatState
 		judgementCounter.scrollFactor.set();
 		judgementCounter.cameras = [camHUD];
 		judgementCounter.screenCenter(Y);
-		judgementCounter.text = 'Total Notes: ${tnh}\nSicks: ${sicks}\nGoods: ${goods}\nBads: ${bads}\nShits: ${shits}\nCombo: ${combo}\nCombo Breaks: ${songMisses}\n';
+		judgementCounter.text = 'Total Notes: ${tnh}\nSicks: ${sicks}\nGoods: ${goods}\nBads: ${bads}\nShits: ${shits}\nCombo: ${combo}\nMisses: ${songMisses}\n';
 		add(judgementCounter);
 		judgementCounter.cameras = [camHUD];
 
@@ -1513,7 +1502,7 @@ class PlayState extends MusicBeatState
 		creditsWatermark.setFormat(Paths.font("comic-sans.ttf"), 14, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		creditsWatermark.scrollFactor.set();
 		creditsWatermark.borderSize = 1.25;
-		add(creditsWatermark);
+		//add(creditsWatermark);
 		creditsWatermark.cameras = [camHUD];
 
 		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
@@ -1564,7 +1553,7 @@ class PlayState extends MusicBeatState
 		ballsText.scrollFactor.set();
 		ballsText.cameras = [camHUD];
         ballsText.text = SONG.song;
-		add(ballsText);
+		//add(ballsText);
 
 		composersText = new FlxText(20, 40/*hi remember that this is the y pos*/, 0, "", 20);
 		composersText.setFormat(Paths.font("comic-sans.ttf"), 20, FlxColor.WHITE, FlxTextAlign.LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -1573,7 +1562,7 @@ class PlayState extends MusicBeatState
 		composersText.scrollFactor.set();
 		composersText.cameras = [camHUD];
         composersText.text = 'Composer(s): ' + composersWatermark;
-		add(composersText);
+		//add(composersText);
 
 		strumLineNotes.cameras = [camHUD];
 		grpNoteSplashes.cameras = [camHUD];
@@ -1731,7 +1720,7 @@ class PlayState extends MusicBeatState
 		Conductor.safeZoneOffset = (ClientPrefs.safeFrames / 60) * 1000;
 		callOnLuas('onCreatePost', []);
 
-		new FlxTimer().start(3, function(tmr:FlxTimer)
+		/*new FlxTimer().start(3, function(tmr:FlxTimer)
 		{
 			FlxTween.tween(composersText, {y:-100}, 2, {
 				onComplete: function(tween:FlxTween)
@@ -1740,7 +1729,7 @@ class PlayState extends MusicBeatState
 				},
 				ease: FlxEase.circOut
 			});
-		});
+		});*/
 
 		super.create();
 
@@ -2643,6 +2632,8 @@ class PlayState extends MusicBeatState
 						countdownGo = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
 						countdownGo.cameras = [camHUD];
 						countdownGo.scrollFactor.set();
+						boyfriend.playAnim('hey', true);
+						gf.playAnim('cheer', true);
 
 						if (PlayState.isPixelStage)
 							countdownGo.setGraphicSize(Std.int(countdownGo.width * daPixelZoom));
@@ -2666,15 +2657,6 @@ class PlayState extends MusicBeatState
 								quickSpin(note);
 							});
 
-						FlxTween.tween(ballsText, {alpha:0}, 2);
-						FlxTween.tween(composersText, {alpha:0}, 2);
-						FlxTween.tween(ballsText, {y:-100}, 2, {
-							onComplete: function(tween:FlxTween)
-							{
-								remove(ballsText);
-							},
-							ease: FlxEase.circOut
-						});
 						moveCamera(true);
 
 					case 4:
@@ -4781,29 +4763,17 @@ for (key => value in luaShaders)
 		//tryna do MS based judgment due to popular demand
 		var daRating:Rating = Conductor.judgeNote(note, noteDiff);
 		var ratingNum:Int = 0;
-		tnh = sicks + goods + bads + shits;
-
-		if (noteDiff > Conductor.safeZoneOffset * 0.75)
-		{
-			shits += 1;
-		}
-		else if (noteDiff > Conductor.safeZoneOffset * 0.5)
-		{
-			bads += 1;
-		}
-		else if (noteDiff > Conductor.safeZoneOffset * 0.25)
-		{
-			goods += 1;
-		}
-		else
-		{
-			spawnNoteSplashOnNote(note);
-		}
+		tnh = sicks + goods + bads + shits + 1;
 
 		totalNotesHit += daRating.ratingMod;
 		note.ratingMod = daRating.ratingMod;
 		if(!note.ratingDisabled) daRating.increase();
 		note.rating = daRating.name;
+
+		if(daRating.noteSplash && !note.noteSplashDisabled)
+		{
+			spawnNoteSplashOnNote(note);
+		}
 
 		if(!practiceMode && !cpuControlled) {
 			songScore += score;
@@ -5750,7 +5720,11 @@ for (key => value in luaShaders)
 	{
 		super.stepHit();
 
-		moveCameraSection();
+		if(funnyFloatyBoys.contains(dad.curCharacter.toLowerCase()) && canFloat) //restricting it to move every stephit would break the cam and the cam movement on arrow system, setting it to restrict only to floating people
+		{
+			moveCameraSection();
+		}
+		//yes i just copied this line of code from ffn lmao
 
 		if (Math.abs(FlxG.sound.music.time - (Conductor.songPosition - Conductor.offset)) > 20
 			|| (SONG.needsVoices && Math.abs(vocals.time - (Conductor.songPosition - Conductor.offset)) > 20))
@@ -6007,7 +5981,7 @@ for (key => value in luaShaders)
 		setOnLuas('rating', ratingPercent);
 		setOnLuas('ratingName', ratingName);
 		setOnLuas('ratingFC', ratingFC);
-		judgementCounter.text = 'Total Notes: ${tnh}\nSicks: ${sicks}\nGoods: ${goods}\nBads: ${bads}\nShits: ${shits}\nCombo: ${combo}\nCombo Breaks: ${songMisses}\n';
+		judgementCounter.text = 'Total Notes: ${tnh}\nSicks: ${sicks}\nGoods: ${goods}\nBads: ${bads}\nShits: ${shits}\nCombo: ${combo}\nMisses: ${songMisses}\n';
 	}
 
 	#if ACHIEVEMENTS_ALLOWED
