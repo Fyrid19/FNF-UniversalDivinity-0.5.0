@@ -274,7 +274,7 @@ class MainMenuState extends MusicBeatState
 								switch (daChoice)
 								{
 									case 'story_mode':
-										MusicBeatState.switchState(new StoryMenuState());
+										MusicBeatState.switchState(new NewStoryDivinity());
 									case 'freeplay':
 										MusicBeatState.switchState(new divinity.DivinityFreeplayState());
 									case 'extras': // NOW A PLACEHOLDER LOL

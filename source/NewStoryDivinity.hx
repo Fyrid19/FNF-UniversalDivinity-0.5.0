@@ -33,6 +33,7 @@ class NewStoryDivinity extends MusicBeatState
 	var week1:FlxSprite;
 	var o:FlxSprite;
 	var lol:Bool = false;
+	var lol2:Bool = false;
 	var sex:FlxSprite;
 	var canExit:Bool = true;
 	var week1text:FlxText;
@@ -126,24 +127,32 @@ class NewStoryDivinity extends MusicBeatState
 		text.scrollFactor.set();
 		menuItems.add(text);
 		
-		arrowshit = new FlxSprite(-80).loadGraphic(Paths.image('stupidarrows'));
+		/*arrowshit = new FlxSprite(-80).loadGraphic(Paths.image('stupidarrows'));
 		arrowshit.setGraphicSize(Std.int(arrowshit.width * 1));
 		arrowshit.updateHitbox();
 		arrowshit.screenCenter();
 		arrowshit.antialiasing = ClientPrefs.globalAntialiasing;
-		menuItems.add(arrowshit);
+		menuItems.add(arrowshit);*/
 		
 	}
 	  override public function update(elapsed:Float)
 	  {
 		  
 		var clicked = FlxG.mouse.overlaps(week1) && FlxG.mouse.justPressed && !lol;
+		var clicked2 = FlxG.mouse.overlaps(week2) && FlxG.mouse.justPressed && !lol2;
 		
 		if (clicked)
 		{
 			lol = true;
 			FlxG.sound.play(Paths.sound('confirmMenu'));
-			startSong('midnight/midnight-hard', 'meadow', 'golden', 'undefiable');	
+			startSong('midnight/midnight', 'meadow', 'golden', 'undefiable');	
+		}
+
+		if (clicked2)
+		{
+			lol2 = true;
+			FlxG.sound.play(Paths.sound('confirmMenu'));
+			startSong2('spiral/spiral-hard', 'ringularity', 'remorseless');	
 		}
 		  
 		if(controls.BACK)
@@ -154,11 +163,6 @@ class NewStoryDivinity extends MusicBeatState
 				
 		}
 		
-		if (controls.UI_RIGHT_P)
-		{
-			openSubState(new Section2Substate());
-			FlxG.sound.play(Paths.sound('scrollMenu'));
-		}
 		
 		super.update(elapsed);
 	  }
@@ -167,10 +171,40 @@ class NewStoryDivinity extends MusicBeatState
     {
 	   FlxFlicker.flicker(week1, 1, 0.06, false, false, function(flick:FlxFlicker)
 	   {
+	    PlayState.storyPlaylist = [songName1, songName2, songName3, songName4];
+		PlayState.isStoryMode = true;
+	    PlayState.storyWeek = 1;
+	    PlayState.storyDifficulty = 1;
+	    PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0], '');
+	    PlayState.campaignScore = 0;
+	    PlayState.campaignMisses = 0;
+	    FlxTween.tween(FlxG.camera, {zoom: 5}, 0.8, {ease: FlxEase.expoIn});
+	    FlxTween.tween(bg, {angle: 45}, 0.8, {ease: FlxEase.expoIn});
+	    FlxTween.tween(bg, {alpha: 0}, 0.8, {ease: FlxEase.expoIn});
+	    menuItems.forEach(function(spr:FlxSprite) {
+	    FlxTween.tween(spr, {alpha: 0}, 0.4, {
+	  	    ease: FlxEase.quadOut,
+		    onComplete: function(twn:FlxTween)
+		    {
+		  	    spr.kill();
+		    }
+	      });
+       });
+	    new FlxTimer().start(1, function(tmr:FlxTimer)
+	    {
+		    LoadingState.loadAndSwitchState(new PlayState());
+	    });
+	   });
+	}
+
+	function startSong2(songName1:String, songName2:String, songName3:String)
+    {
+	   FlxFlicker.flicker(week2, 1, 0.06, false, false, function(flick:FlxFlicker)
+	   {
 	    PlayState.storyPlaylist = [songName1, songName2, songName3];
 		PlayState.isStoryMode = true;
 	    PlayState.storyWeek = 2;
-	    PlayState.storyDifficulty = 2;
+	    PlayState.storyDifficulty = 1;
 	    PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0], '');
 	    PlayState.campaignScore = 0;
 	    PlayState.campaignMisses = 0;
@@ -282,13 +316,7 @@ class Section2Substate extends MusicBeatSubstate
 	}
 	
 	override function update(elapsed:Float)
-	{
-		if (controls.UI_LEFT_P)
-		{
-			close();
-			FlxG.sound.play(Paths.sound('scrollMenu'));
-		}
-		
+	{	
 		if(controls.BACK)
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
