@@ -3411,7 +3411,10 @@ class PlayState extends MusicBeatState
 					case 64:
 						//fartt = true; // mf what
 						//bALLS = true;
+						// fyrid i dont remember putting those vars there dont blame me lmao -frogb
 						redSky.visible = true;
+					case 960: //BACK TO NORMAL R9UCHN9CR9HW9EVWF9H-
+						redSkyVisible = false;
 				}
 			case 'disposition':
 				switch(curStep)
