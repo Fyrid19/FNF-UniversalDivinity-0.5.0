@@ -1,0 +1,23 @@
+{
+	"songs": [
+		["Midnight", "dave", [146, 113, 253]],
+		["Meadow", "bambi", [146, 113, 253]],
+		["Golden", "tristan", [146, 113, 253]],
+		["Undefiable", "bambi3d", [146, 113, 253]]
+	],
+
+	"weekCharacters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"storyName": "Prolonged Rematch",
+	"weekBefore": "tutorial",
+	"weekName": "UNIVERSAL DIVINITY: WEEK 1",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}

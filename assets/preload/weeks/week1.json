@@ -1,9 +1,8 @@
 {
 	"songs": [
-		["Midnight", "dave", [146, 113, 253]],
-		["Meadow", "bambi", [146, 113, 253]],
-		["Golden", "tristan", [146, 113, 253]],
-		["Undefiable", "bambi3d", [146, 113, 253]]
+		["Bopeebo", "dad", [146, 113, 253]],
+		["Fresh", "dad", [146, 113, 253]],
+		["Dad Battle", "dad", [146, 113, 253]]
 	],
 
 	"weekCharacters": [
@@ -13,9 +12,9 @@
 	],
 	"weekBackground": "stage",
 
-	"storyName": "Prolonged Rematch",
+	"storyName": "Daddy Dearest",
 	"weekBefore": "tutorial",
-	"weekName": "UNIVERSAL DIVINITY: WEEK 1",
+	"weekName": "Week 1",
 	"startUnlocked": true,
 
 	"hideStoryMode": false,
