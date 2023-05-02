@@ -28,8 +28,8 @@ typedef WeekFile =
 	var difficulties:String;
 }
 
-class WeekData {
-	public static var weeksLoaded:Map<String, WeekData> = new Map<String, WeekData>();
+class DivinityWeekData {
+	public static var weeksLoaded:Map<String, DivinityWeekData> = new Map<String, DivinityWeekData>();
 	public static var weeksList:Array<String> = [];
 	public var folder:String = '';
 	
@@ -135,11 +135,11 @@ class WeekData {
 		var sexList:Array<String> = CoolUtil.coolTextFile(Paths.getPreloadPath('weeks/weekList.txt'));
 		for (i in 0...sexList.length) {
 			for (j in 0...directories.length) {
-				var fileToCheck:String = directories[j] + 'weeks/' + sexList[i] + '.json';
+				var fileToCheck:String = directories[j] + 'divinityweeks/' + sexList[i] + '.json';
 				if(!weeksLoaded.exists(sexList[i])) {
 					var week:WeekFile = getWeekFile(fileToCheck);
 					if(week != null) {
-						var weekFile:WeekData = new WeekData(week, sexList[i]);
+						var weekFile:DivinityWeekData = new DivinityWeekData(week, sexList[i]);
 
 						#if MODS_ALLOWED
 						if(j >= originalLength) {
@@ -158,7 +158,7 @@ class WeekData {
 
 		#if MODS_ALLOWED
 		for (i in 0...directories.length) {
-			var directory:String = directories[i] + 'weeks/';
+			var directory:String = directories[i] + 'divinityweeks/';
 			if(FileSystem.exists(directory)) {
 				var listOfWeeks:Array<String> = CoolUtil.coolTextFile(directory + 'weekList.txt');
 				for (daWeek in listOfWeeks)
@@ -190,7 +190,7 @@ class WeekData {
 			var week:WeekFile = getWeekFile(path);
 			if(week != null)
 			{
-				var weekFile:WeekData = new WeekData(week, weekToCheck);
+				var weekFile:DivinityWeekData = new DivinityWeekData(week, weekToCheck);
 				if(i >= originalLength)
 				{
 					#if MODS_ALLOWED
@@ -232,11 +232,11 @@ class WeekData {
 	}
 
 	//Used on LoadingState, nothing really too relevant
-	public static function getCurrentWeek():WeekData {
+	public static function getCurrentWeek():DivinityWeekData {
 		return weeksLoaded.get(weeksList[PlayState.storyWeek]);
 	}
 
-	public static function setDirectoryFromWeek(?data:WeekData = null) {
+	public static function setDirectoryFromWeek(?data:DivinityWeekData = null) {
 		Paths.currentModDirectory = '';
 		if(data != null && data.folder != null && data.folder.length > 0) {
 			Paths.currentModDirectory = data.folder;

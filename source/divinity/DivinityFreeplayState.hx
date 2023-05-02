@@ -24,6 +24,11 @@ import Discord.DiscordClient;
 #end
 import divinity.SkinSelectState;
 using StringTools;
+import WeekData;
+import divinity.DivinityWeekData;
+#if MODS_ALLOWED
+import sys.FileSystem;
+#end
 
 class DivinityFreeplayState extends MusicBeatState
 {
@@ -452,7 +457,7 @@ class DivinityFreeplayState extends MusicBeatState
 	}
 	else if(controls.RESET #if android || _virtualpad.buttonY.justPressed #end)
 	{
-		openSubState(new ResetScoreSubState(songs[curSelected].songName, curDifficulty, songs[curSelected].songCharacter));
+		openSubState(new DivinityResetScoreSubState(songs[curSelected].songName, curDifficulty, songs[curSelected].songCharacter));
 		FlxG.sound.play(Paths.sound('scrollMenu'));
 		allowinputShit = false;
 		fart = false;
