@@ -168,7 +168,7 @@ class DivinityFreeplayState extends MusicBeatState
 					//addWeek(['Quadruple Quarrel'], 8, ['sbarren']);
 					//addWeek(['Prey'], 8, ['sbarren']); // ITS ALL SHITTED BARRENNN -fyrid
 				case 'fantracks': //screw you im doing it
-					addWeek(["Pixe's Rebound'], 8, ['bambiGod']);
+					addWeek(["Pixe's Rebound"], 8, ['bambiGod']);
 					
 			}
 		}
