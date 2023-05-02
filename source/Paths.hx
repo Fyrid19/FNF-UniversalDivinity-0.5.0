@@ -109,7 +109,7 @@ class Paths
 		}
 		// flags everything to be cleared out next unused memory clear
 		localTrackedAssets = [];
-		openfl.Assets.cache.clear("songs");
+		#if !html5 openfl.Assets.cache.clear("songs"); #end
 	}
 
 	static public var currentModDirectory:String = '';
@@ -220,16 +220,24 @@ class Paths
 
 	inline static public function voices(song:String):Any
 	{
+		#if html5
+		return 'songs:assets/songs/${formatToSongPath(song)}/Voices.$SOUND_EXT';
+		#else
 		var songKey:String = '${formatToSongPath(song)}/Voices';
 		var voices = returnSound('songs', songKey);
 		return voices;
+		#end
 	}
 
 	inline static public function inst(song:String):Any
 	{
+		#if html5
+		return 'songs:assets/songs/${formatToSongPath(song)}/Inst.$SOUND_EXT';
+		#else
 		var songKey:String = '${formatToSongPath(song)}/Inst';
 		var inst = returnSound('songs', songKey);
 		return inst;
+		#end
 	}
 
 	inline static public function image(key:String, ?library:String):FlxGraphic
@@ -324,7 +332,11 @@ class Paths
 	}
 
 	inline static public function formatToSongPath(path:String) {
-		return path.toLowerCase().replace(' ', '-');
+		var invalidChars = ~/[~&\\;:<>#]/;
+		var hideChars = ~/[.,'"%?!]/;
+
+		var path = invalidChars.split(path.replace(' ', '-')).join("-");
+		return hideChars.split(path).join("").toLowerCase();
 	}
 
 	// completely rewritten asset loading? fuck!
@@ -355,7 +367,7 @@ class Paths
 			localTrackedAssets.push(path);
 			return currentTrackedAssets.get(path);
 		}
-		trace('oh no its returning null NOOOO');
+		trace('null found here: $path');
 		return null;
 	}
 
@@ -431,11 +443,9 @@ class Paths
 	{
 		return modFolders('shaders/'+key+'.vert');
 	}
-	
-	/* Goes unused for now
 	inline static public function modsAchievements(key:String) {
 		return modFolders('achievements/' + key + '.json');
-	}*/
+	}
 
 	static public function modFolders(key:String) {
 		if(currentModDirectory != null && currentModDirectory.length > 0) {

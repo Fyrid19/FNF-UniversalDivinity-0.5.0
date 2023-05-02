@@ -3,6 +3,8 @@ package;
 #if desktop
 import Discord.DiscordClient;
 #end
+import flixel.addons.effects.chainable.FlxGlitchEffect;
+import Shaders.GlitchEffect;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
@@ -16,10 +18,12 @@ import flixel.math.FlxMath;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import flixel.util.FlxTimer;
 import lime.app.Application;
 import Achievements;
+import flixel.input.keyboard.FlxKey;
 import editors.MasterEditorMenu;
-import options.OptionsState;
+import divinity.DivinityFreeplayState;
 
 using StringTools;
 
@@ -27,22 +31,20 @@ class MainMenuState extends MusicBeatState
 {
 	public static var psychEngineVersion:String = '0.6.2'; //This is also used for Discord RPC
 	public static var devModVer:String = 'ALPHA 2'; //THIS IS USED FOR FUCKING YOU SO TIGHT IN THE A- -frogb
-	public static var curModVer:String = 'Early 1.0'; //This is also used FOR YOUR MOTHE-
+	public static var curModVer:String = 'Early 1.0'; //This is also used for yo maa ma AAAAAAAAAA-
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
 	private var camGame:FlxCamera;
 	private var camAchievement:FlxCamera;
 	
-	var optionShit:Array<String> = ['story_mode', 'freeplay' , 'credits' , 'options']; // god rid of credits since i dont think we are gonna use it that much tbh, unless yall want a ost player? -frogb
+	var optionShit:Array<String> = ['story_mode', 'freeplay', 'credits', 'options'];
 
+	var bg:FlxSprite;
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
-	private var char1:Character = null; // put yo characters here
-	private var char2:Character = null; // put more characters here
-	private var char3:Character = null; // PUT WAY TOO MANY CHARACTERS here
-	private var char4:Character = null; // PUT ALL THE CHARACTERS HERE!!!
+	var debugKeys:Array<FlxKey>;
 
 	public static var sexo3:Bool = true;
 
@@ -52,7 +54,9 @@ class MainMenuState extends MusicBeatState
 	
 	public static var daRealEngineVer:String = 'David';
 
-	public static var engineVers:Array<String> = ['Fyrid', 'Divinity', 'FrogB', 'Mordon', 'Tristan', 'Morrow', 'Rambi', 'Barren'];
+	public static var engineVers:Array<String> = ['FyriDev', 'Divinity', 'FrogB', 'Mordon', 'Tristan', 'Morrow', 'Rambi', 'Barren'];
+
+	public static var doTheFunny:Bool = true;
 
 	public static var bgPaths:Array<String> = 
 	[
@@ -65,10 +69,13 @@ class MainMenuState extends MusicBeatState
 
 	override function create()
 	{
+
 		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Divinity Gates", null);
 		#end
+
+		debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_2'));
 
 		camGame = new FlxCamera();
 		camAchievement = new FlxCamera();
@@ -83,7 +90,7 @@ class MainMenuState extends MusicBeatState
 
 		persistentUpdate = persistentDraw = true;
 
-		daRealEngineVer = engineVers[FlxG.random.int(0, engineVers.length)];
+		daRealEngineVer = engineVers[FlxG.random.int(0, 2)];
 
 		var yScroll:Float = Math.max(0.1 - (0.03 * (optionShit.length - 4)), 0.1);
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(randomizeBG());
@@ -113,61 +120,35 @@ class MainMenuState extends MusicBeatState
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
 
+		var scale:Float = 1;
+
 		for (i in 0...optionShit.length)
-		{
-			var offset:Float = 108 - (Math.max(optionShit.length, 4) - 4) * 80;
-			var menuItem:FlxSprite = new FlxSprite(0, (i * 140)  + offset);
-			menuItem.frames = Paths.getSparrowAtlas('mainmenu/menu_' + optionShit[i]);
-			menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
-			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
-			menuItem.animation.play('idle');
-			menuItem.ID = i;
-			//menuItem.screenCenter(X);
-			menuItem.x += 250;
-			menuItems.add(menuItem);
-			var scr:Float = (optionShit.length - 4) * 0.135;
-			if(optionShit.length < 6) scr = 0;
-			menuItem.scrollFactor.set(0, scr);
-			menuItem.antialiasing = ClientPrefs.globalAntialiasing;
-			//menuItem.setGraphicSize(Std.int(menuItem.width * 0.58));
-			menuItem.updateHitbox();
-		}
+			{
+				var menuItem:FlxSprite = new FlxSprite(0, FlxG.height * 1.6);
+				menuItem.scale.x = scale;
+				menuItem.scale.y = scale;
+				menuItem.frames = Paths.getSparrowAtlas('mainmenu/menu_' + optionShit[i]);
+				menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
+				menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
+				menuItem.animation.play('idle');
+				menuItem.ID = i;
+				menuItem.x = -200;
+				menuItems.add(menuItem);
+				menuItem.scrollFactor.set();
+				menuItem.antialiasing = ClientPrefs.globalAntialiasing;
+				if (firstStart)
+					FlxTween.tween(menuItem,{y: 60 + (i * 160)},1 + (i * 0.25) ,{ease: FlxEase.expoInOut, onComplete: function(flxTween:FlxTween) 
+						{ 
+							finishedFunnyMove = true; 
+							changeItem();
+						}});
+				else
+					menuItem.y = 60 + (i * 160);
+			}
 
 		firstStart = false;
 
 		FlxG.camera.follow(camFollowPos, null, 1);
-
-		char1 = new Character(900, 60, 'bf', true);
-		char1.setGraphicSize(Std.int(char1.width * 0.8));
-		add(char1);
-		char1.visible = false;
-
-		FlxTween.tween(char1, {y: char1.y + 50}, 5, {ease: FlxEase.quadInOut, type: PINGPONG});
-		FlxTween.tween(char1, {y: char1.y + 50}, 5, {ease: FlxEase.quadInOut, type: PINGPONG, startDelay: 0.1});
-
-		char2 = new Character(800, 400, 'RandoScript', true);
-		char2.setGraphicSize(Std.int(char2.width * 0.8));
-		add(char2);
-		char2.visible = false;
-
-		FlxTween.tween(char2, {y: char2.y + 50}, 5, {ease: FlxEase.quadInOut, type: PINGPONG});
-		FlxTween.tween(char2, {y: char2.y + 50}, 5, {ease: FlxEase.quadInOut, type: PINGPONG, startDelay: 0.1});
-
-		char3 = new Character(800, 400, 'gf', true);
-		char3.setGraphicSize(Std.int(char3.width * 0.8));
-		add(char3);
-		char3.visible = false;
-
-		FlxTween.tween(char3, {y: char3.y + 50}, 5, {ease: FlxEase.quadInOut, type: PINGPONG});
-		FlxTween.tween(char3, {y: char3.y + 50}, 5, {ease: FlxEase.quadInOut, type: PINGPONG, startDelay: 0.1});
-		
-		char4 = new Character(800, 400, 'dad', true);
-		char4.setGraphicSize(Std.int(char4.width * 0.8));
-		add(char4);
-		char4.visible = false;
-
-		FlxTween.tween(char4, {y: char4.y + 50}, 5, {ease: FlxEase.quadInOut, type: PINGPONG});
-		FlxTween.tween(char4, {y: char4.y + 50}, 5, {ease: FlxEase.quadInOut, type: PINGPONG, startDelay: 0.1});
 
 		var versionShit:FlxText = new FlxText(12, FlxG.height - 84, 0, "Universal Divinity Developer Build " + devModVer, 12);
 		versionShit.scrollFactor.set();
@@ -190,6 +171,10 @@ class MainMenuState extends MusicBeatState
 
 		changeItem();
 
+		#if android
+		addVirtualPad(UP_DOWN, A_B_E);
+		#end
+		
 		super.create();
 	}
 
@@ -197,21 +182,15 @@ class MainMenuState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		var doTheFunny:Bool = true;
+
+		if (doTheFunny) {
+	    	FlxG.camera.zoom = FlxMath.lerp(1, FlxG.camera.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 1));
+		}
+
 		if (FlxG.sound.music.volume < 0.8)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
-		}
-
-	// i removed the char2, char 3 and char 4 temporarily because they give me a stupid haxeflixel icon despite me defining them wtf is a haxeflixel more like haxefuckxel
-
-		if (optionShit[curSelected] == 'story_mode')
-		{
-			changeItem(-1);
-			changeItem(1);
-
-			char1.dance();
-			char1.updateHitbox();
-			char1.visible = true;
 		}
 
 		var lerpVal:Float = CoolUtil.boundTo(elapsed * 5.6, 0, 1);
@@ -236,76 +215,105 @@ class MainMenuState extends MusicBeatState
 				selectedSomethin = true;
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				MusicBeatState.switchState(new TitleState());
+				sexo3 = false;
 			}
 
 			if (controls.ACCEPT)
-			{
-				if (optionShit[curSelected] == 'donate')
 				{
-					CoolUtil.browserLoad('https://ninja-muffin24.itch.io/funkin');
-				}
-				else
-				{
-					selectedSomethin = true;
-					FlxG.sound.play(Paths.sound('confirmMenu'));
-
-					if(ClientPrefs.flashing) FlxFlicker.flicker(magenta, 1.1, 0.15, false);
-
-					FlxTween.tween(FlxG.camera, {zoom:1.35}, 1.45, {ease: FlxEase.expoIn}); // the funny purgatory camera zoom
-
-					menuItems.forEach(function(spr:FlxSprite)
+					if (optionShit[curSelected] == 'donate')
 					{
-						if (curSelected != spr.ID)
-						{
-							FlxTween.tween(spr, {alpha: 0}, 0.4, {
-								ease: FlxEase.quadOut,
-								onComplete: function(twn:FlxTween)
-								{
-									spr.kill();
-								}
-							});
-						}
-						else
-						{
-							FlxFlicker.flicker(spr, 1, 0.06, false, false, function(flick:FlxFlicker)
-							{
-								var daChoice:String = optionShit[curSelected];
+						CoolUtil.browserLoad('https://gamebanana.com/mods/43201');
+					}
+					if (optionShit[curSelected] == 'story_mode')
+					{
+						FlxG.sound.play(Paths.sound('locked'), 0.7);
+						FlxG.camera.shake(0.005, 0.35);
+						trace('nope.');
+					}
+					else
+					{
+						selectedSomethin = true;
+						FlxG.sound.play(Paths.sound('confirmMenu'));
 
-								switch (daChoice)
+						if(ClientPrefs.flashing) FlxFlicker.flicker(magenta, 1.1, 0.15, false);
+
+						FlxTween.tween(FlxG.camera, {zoom:1.35}, 1.45, {ease: FlxEase.expoIn});
+	
+						menuItems.forEach(function(spr:FlxSprite)
+						{
+							if (curSelected != spr.ID)
+							{
+								FlxTween.tween(spr, {alpha: 0}, 1.3, {
+									ease: FlxEase.quadOut,
+									onComplete: function(twn:FlxTween)
+									{
+										spr.kill();
+									}
+								});
+							}
+							else
+							{
+								if(ClientPrefs.flashing)
 								{
-									case 'story_mode':
-										MusicBeatState.switchState(new NewStoryDivinity());
-									case 'freeplay':
-										MusicBeatState.switchState(new divinity.DivinityFreeplayState());
-									case 'extras': // NOW A PLACEHOLDER LOL
-										MusicBeatState.switchState(new ExtrasMenuState());
-									case 'awards':
-										MusicBeatState.switchState(new AchievementsMenuState());
-									case 'credits':
-										MusicBeatState.switchState(new CreditsState());
-									case 'options':
-										MusicBeatState.switchState(new options.OptionsState());
+									FlxFlicker.flicker(spr, 1, 0.06, false, false, function(flick:FlxFlicker)
+									{
+										goToState();
+									});
 								}
-							});
-						}
-					});
+								else
+								{
+									new FlxTimer().start(1, function(tmr:FlxTimer)
+									{
+										goToState();
+									});
+								}
+							}
+						});
+					}
 				}
 			}
-			#if desktop
-			else if (FlxG.keys.justPressed.SEVEN)
+			#if !html5
+			else if (FlxG.keys.anyJustPressed(debugKeys) #if android || _virtualpad.buttonE.justPressed #end)
 			{
-				selectedSomethin = true;
-				MusicBeatState.switchState(new MasterEditorMenu());
+			  selectedSomethin = true;
+			  MusicBeatState.switchState(new MasterEditorMenu());
 			}
 			#end
+	
+			super.update(elapsed);
+	
+			menuItems.forEach(function(spr:FlxSprite)
+			{
+				spr.screenCenter(X);
+			});
+		}
+	function goToState()
+		{
+			var daChoice:String = optionShit[curSelected];
+	
+			switch (daChoice)
+			{
+				case 'story_mode':
+					FlxG.camera.shake(0.005, 0.35);
+					FlxG.sound.play(Paths.sound('locked'), 0.7);
+				case 'freeplay':
+					MusicBeatState.switchState(new divinity.DivinityFreeplayState());
+				case 'credits':
+					MusicBeatState.switchState(new CreditsState());
+				case 'awards':
+					MusicBeatState.switchState(new AchievementsMenuState());
+				case 'options':
+					MusicBeatState.switchState(new options.OptionsState());
+			}
 		}
 
-		super.update(elapsed);
+	override function beatHit() {
+		super.beatHit();
 
-		menuItems.forEach(function(spr:FlxSprite)
+		if (curBeat % 2 == 0) //it doesnt work but when i tested it out it gave kind of a cool transition so im going to leave it here.
 		{
-			//spr.screenCenter(X);
-		});
+			FlxG.camera.zoom += 1.02;
+		}
 	}
 
 	function changeItem(huh:Int = 0)
@@ -320,6 +328,7 @@ class MainMenuState extends MusicBeatState
 		menuItems.forEach(function(spr:FlxSprite)
 		{
 			spr.animation.play('idle');
+
 			spr.offset.y = 0;
 			spr.updateHitbox();
 

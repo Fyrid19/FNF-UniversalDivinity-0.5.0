@@ -157,6 +157,8 @@ class PlayState extends MusicBeatState
 	public var gf:Character = null;
 	public var boyfriend:Boyfriend = null;
 
+	var isDadGlobal:Bool = true;
+
 	var funnyFloatyBoys:Array<String> = ['dave-3d', 'mordon', 'heldai-phase-1', 'sbarren', 'bf-3d'];
 	var funnySideFloatyBoys:Array<String> = [];
 	var canSlide:Bool = true;
@@ -929,7 +931,7 @@ class PlayState extends MusicBeatState
 				defaultCamZoom = 0.85;
 				curStage = 'the-PHONES';
 
-				var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('backgrounds/void/the-PHONES'));
+				var bg:FlxSprite = new FlxSprite(-600, -1000).loadGraphic(Paths.image('backgrounds/void/the-PHONES'));
 				bg.antialiasing = true;
 				bg.scrollFactor.set(0.6, 0.6);
 				bg.active = true;
@@ -1475,7 +1477,7 @@ class PlayState extends MusicBeatState
 		reloadHealthBarColors();
 
 		scoreTxt = new FlxText(0, healthBarBG.y + 40, FlxG.width, "", 16);
-		scoreTxt.setFormat(Paths.font("comic.ttf"), 17, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreTxt.setFormat(Paths.font("comic.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = !ClientPrefs.hideHud;
@@ -1588,6 +1590,7 @@ class PlayState extends MusicBeatState
 		timeBarBG.cameras = [camHUD];
 		timeTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
+		blackScreendeez.cameras = [camHUD];
 
 		// if (SONG.song == 'South')
 		// FlxG.camera.alpha = 0.7;
@@ -2591,6 +2594,7 @@ class PlayState extends MusicBeatState
 				{
 					case 0:
 						FlxG.sound.play(Paths.sound('intro3' + introSoundsSuffix), 0.6);
+						moveCamera(false);
 					case 1:
 						countdownReady = new FlxSprite().loadGraphic(Paths.image(introAlts[0]));
 						countdownReady.cameras = [camHUD];
@@ -2612,6 +2616,7 @@ class PlayState extends MusicBeatState
 							}
 						});
 						FlxG.sound.play(Paths.sound('intro2' + introSoundsSuffix), 0.6);
+						moveCamera(true);
 					case 2:
 						countdownSet = new FlxSprite().loadGraphic(Paths.image(introAlts[1]));
 						countdownSet.cameras = [camHUD];
@@ -2632,6 +2637,7 @@ class PlayState extends MusicBeatState
 							}
 						});
 						FlxG.sound.play(Paths.sound('intro1' + introSoundsSuffix), 0.6);
+						moveCamera(false);
 					case 3:
 					FlxG.sound.play(Paths.sound('introGo' + introSoundsSuffix), 0.6);
 						countdownGo = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
@@ -2669,6 +2675,7 @@ class PlayState extends MusicBeatState
 							},
 							ease: FlxEase.circOut
 						});
+						moveCamera(true);
 
 					case 4:
 				}
@@ -3404,24 +3411,31 @@ class PlayState extends MusicBeatState
 					case 64:
 						//fartt = true; // mf what
 						//bALLS = true;
+						// fyrid i dont remember putting those vars there dont blame me lmao -frogb
 						redSky.visible = true;
+					case 960: //BACK TO NORMAL R9UCHN9CR9HW9EVWF9H-
+						redSkyVisible = false;
+				}
+			case 'disposition':
+				switch(curStep)
+				{
+					case 0:
+						blackScreendeez.alpha = 1;
+					case 1:
+						FlxTween.tween(blackScreendeez, {alpha:0}, 1);
+						camZooming = true;
 				}
 		}
 
 		switch (curStage)
 		{ // took this straight from the dnb source, added a few things from definitive edition too -frogb (ignore the fact that theres the slur there im too lazy to delete that i just want it FIXED-)
-			case 'bambersHell' | 'the-PHONES':
-				{
-					gf.color = 0xFF878787;
-					boyfriend.color = 0xFF878787;
-				}
-			case 'houseNight' | 'farmNight': //dark as hell -frogb
+			case 'houseNight' | 'farmNight' | 'bambersHell': //dark as hell -frogb
 				{
 					dad.color = 0xFF878787;
 					gf.color = 0xFF878787;
 					boyfriend.color = 0xFF878787;
 					
-					if (SONG.player2 == 'bambi-god2d')
+					if (SONG.player2 == 'bambi-god2d' || SONG.player2 == 'heldai-phase-1') // glowing retard(s)
 					{
 						dad.color = 0xFFFFFFFF;
 					}
@@ -3691,8 +3705,13 @@ class PlayState extends MusicBeatState
 
 		if (camZooming)
 		{
-			FlxG.camera.zoom = FlxMath.lerp(defaultCamZoom, FlxG.camera.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125 * camZoomingDecay), 0, 1));
-			camHUD.zoom = FlxMath.lerp(1, camHUD.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125 * camZoomingDecay), 0, 1));
+			#if mac
+			FlxG.camera.zoom = FlxMath.lerp(defaultCamZoom, FlxG.camera.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 0.97));
+			camHUD.zoom = FlxMath.lerp(0.95, camHUD.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 0.97));
+			#else
+			FlxG.camera.zoom = FlxMath.lerp(defaultCamZoom, FlxG.camera.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 0.97));
+			camHUD.zoom = FlxMath.lerp(1, camHUD.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 0.97));
+			#end
 		}
 
 		FlxG.watch.addQuick("secShit", curSection);
@@ -4472,7 +4491,7 @@ for (key => value in luaShaders)
 			return;
 		}
 
-		if (!SONG.notes[curSection].mustHitSection)
+		if (!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection)
 		{
 			moveCamera(true);
 			callOnLuas('onMoveCamera', ['dad']);
@@ -5730,6 +5749,9 @@ for (key => value in luaShaders)
 	override function stepHit()
 	{
 		super.stepHit();
+
+		moveCameraSection();
+
 		if (Math.abs(FlxG.sound.music.time - (Conductor.songPosition - Conductor.offset)) > 20
 			|| (SONG.needsVoices && Math.abs(vocals.time - (Conductor.songPosition - Conductor.offset)) > 20))
 		{

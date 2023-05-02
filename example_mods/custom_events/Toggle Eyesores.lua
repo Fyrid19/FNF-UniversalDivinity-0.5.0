@@ -1,7 +1,7 @@
 camShake = false;
 function onEvent(n,v1,v2)
 
-	if n == "LUA-Based Eyesores" then
+	if n == "Toggle Eyesores" then
 		if v1 == "1" then
 			if flashingLights then
 				addPulseEffect('game', 1, 2, 1);
