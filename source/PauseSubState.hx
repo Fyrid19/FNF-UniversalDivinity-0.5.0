@@ -258,7 +258,7 @@ class PauseSubState extends MusicBeatSubstate
 
 					WeekData.loadTheFirstEnabledMod();
 					if(PlayState.isStoryMode) {
-						MusicBeatState.switchState(new NewStoryDivinity());
+						MusicBeatState.switchState(new divinity.NewStoryDivinity());
 					} else {
 						MusicBeatState.switchState(new divinity.DivinityFreeplayState());
 					}
