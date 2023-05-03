@@ -199,7 +199,7 @@ class TitleState extends MusicBeatState
 			FlxG.sound.music.fadeIn(4, 0, 0.7);
 		}
 
-		Conductor.changeBPM(130);
+		Conductor.changeBPM(186.875);
 		persistentUpdate = true;
 
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
@@ -214,7 +214,7 @@ class TitleState extends MusicBeatState
 			gfDance.animation.addByIndices('danceLeft', 'gfDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
 			gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
 
-		var gridthing:FlxBackdrop; // rambi i cant believe you've made me get this shit DIRECTLY from os engine
+		var gridthing:FlxBackdrop;
 		gridthing = new FlxBackdrop(Paths.image('loading'), 0.2, 0, true, true);
 		gridthing.velocity.set(50, -25);
 		gridthing.updateHitbox();
@@ -448,25 +448,18 @@ class TitleState extends MusicBeatState
 			switch (curBeat)
 			{
 				case 1:
-					createCoolText([' ']);
-						//createCoolText(['Psych Engine by']);
-					// credTextShit.visible = true;
-				case 2:
-					createCoolText([' '], 45);
-				// credTextShit.visible = true;
-				case 3:
 					addMoreText('Psych Engine by\nShadow Mario\nRiverOaken\nbb-panzu', 45);
 				// credTextShit.text += '\npresent...';
 				// credTextShit.addText();
-				case 4:
+				case 2:
 					deleteCoolText();
 				// credTextShit.visible = false;
 				// credTextShit.text = 'In association \nwith';
 				// credTextShit.screenCenter();
-				case 5:
+				case 3:
 					createCoolText(['A fan tweak and mod of\nThis mod down below'], -60);
 					logoSpr.visible = true;
-				case 7:
+				case 4:
 					deleteCoolText();
 					logoSpr.visible = false;
 				// credTextShit.visible = false;
@@ -475,43 +468,43 @@ class TitleState extends MusicBeatState
 				// credTextShit.screenCenter();
 				//createCoolText(['MoldyGH', 'Rapparep', 'Krisspo', 'TheBuilderXD']);
 			// credTextShit.visible = true;
-			case 8:
+			case 5:
 				createCoolText(['VS Dave & Bambi by'], -60);
-			case 9:
+			case 6:
 				addMoreText('MoldyGH, MissingTextureMan101', -60);
-			case 10:
+			case 7:
 				addMoreText('rapparep lol, TheBuilderXD', -60);
-			case 11:
+			case 8:
 				addMoreText('T5mpler, Erizur, Billy Bobbo', -60);
-			case 12:
+			case 9:
 				addMoreText('Cuszie, Marcello_TIMEnice30', -60);
+			case 10:
+				deleteCoolText();
+			case 11:
+				createCoolText(['VS D&B Universal Divinity', 'by']);
+			case 12:
+				addMoreText('FyriDev, Rambi, FrogB, ayo, Blocki, chezcake,\nBoxHaze, NooboDev, Jayyee, PurplyBoi738, CXYon3');
 			case 13:
 				deleteCoolText();
 			case 14:
-				createCoolText(['VS D&B Universal Divinity', 'by']);
+				createCoolText(['And special thanks to our contributors']);
 			case 15:
-				addMoreText('FyriDev, Rambi, FrogB, ayo, Blocki, chezcake,\nBoxHaze, NooboDev, Jayyee, PurplyBoi738, CXYon3');
+				addMoreText('Gabriel, Astro, Benjamin, Bamber, Carter, Zoip,\nAVery, Sketcherbasics101, Gill, Snoop, Polter, RandoScript,\nMatt, MelDoesStuff, ZertyXD, nn, Moi, Poop');
 			case 16:
 				deleteCoolText();
 			case 17:
-				createCoolText(['And special thanks to our contributors']);
+				createCoolText([curWacky[0]]);
 			case 18:
-				addMoreText('Gabriel, Astro, Benjamin, Bamber, Carter, Zoip,\nAVery, Sketcherbasics101, Gill, Snoop, Polter, RandoScript,\nMatt, MelDoesStuff, ZertyXD, nn, Moi, Poop');
+				addMoreText(curWacky[1]);
 			case 19:
 				deleteCoolText();
 			case 20:
-				createCoolText([curWacky[0]]);
-			case 21:
-				addMoreText(curWacky[1]);
-			case 22:
-				deleteCoolText();
-			case 23:
 				addMoreText('VS Dave & Bambi');
-			case 24:
+			case 21:
 				addMoreText('Universal Divinity');
-			case 25:
+			case 22:
 				addMoreText('DEMO'); 
-			case 26:
+			case 23:
 				skipIntro();
 			}
 		}

@@ -97,8 +97,7 @@ class ChartingState extends MusicBeatState
 		['Hide or Show HUD elements with Fade', "(On Value 1: 0 to hide all of the hud elements with fade\n| 1 to show the hud elements if it was hidden\n with fade previously)"],
 		['turn that fuckin spin on', "360 camhud spin lmao\nValue 1: (0: turn dat thing off\n 1: turn dat thing on to the right\n 2: turn dat thing on to the left)"],
 		['Switch to Pixel or 3D UI', "On Value 1:\n\n0: Pixel UI\n1: 3D UI\n2: Revert Default UI"],
-		['Thunderstorm type black screen', "adds a thunderstom from the shaggy mod type black screen\nValue 1: (0: Turn off, 1: turn on)"],
-		['Toggle Eyesores', "If eyesores are on, the screen will flash multiple colors like in Polygonized.\nValue 1: (0: Off, 1: On)"],
+		['Thunderstorm type black screen', "adds a thunderstom from the shaggy mod type black screen\nValue 1: (0: Turn off, 1: turn on)"]
 	];
 
 	var _file:FileReference;

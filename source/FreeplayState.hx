@@ -1,8 +1,4 @@
-//damn it fyrid your stupid freeplaystate bugged out the entire exit to menu shit, now i had to make a duplicate of the current one (the one with freeplay cats) -frogb
-//this is supposed to be where freeplay shit is frogb! -fyrid
-//THEN WHY THE FUCK IS IT RETURNING NULL AND GIVING ME A NULL OBJECT REFERENCE EARLIE- -frogb
-
-package divinity;
+package;
 
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxEase;
@@ -24,8 +20,13 @@ import Discord.DiscordClient;
 #end
 import divinity.SkinSelectState;
 using StringTools;
+import WeekData;
+import divinity.DivinityWeekData;
+#if MODS_ALLOWED
+import sys.FileSystem;
+#end
 
-class DivinityFreeplayState extends MusicBeatState
+class FreeplayState extends MusicBeatState
 {
 	var songs:Array<SongMetadata> = [];
 
@@ -33,7 +34,7 @@ class DivinityFreeplayState extends MusicBeatState
 	var curSelected:Int = 0;
 	var curDifficulty:Int = 1;
 
-	var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('backgrounds/SUSSUS AMOGUS'));
+	var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('backgrounds/melDoesStuff2'));
 
 	var scoreBG:FlxSprite;
 	var scoreText:FlxText;
@@ -56,7 +57,7 @@ class DivinityFreeplayState extends MusicBeatState
 
 	private var CurrentSongIcon:FlxSprite;
 
-	private var AllPossibleSongs:Array<String> = ["main", "extrasandfanmades", "covers"];
+	private var AllPossibleSongs:Array<String> = ["main", "extrasandfanmades", "covers", "fantracks"];
 
 	private var CurrentPack:Int = 0;
 
@@ -64,22 +65,20 @@ class DivinityFreeplayState extends MusicBeatState
 
 	var songColors:Array<FlxColor> = [ // numbers at the side represent the number of that item in a array.
 		0xFF000000, // DUMBASS PLACEHOLDER 0
-		0xFF4965FF, // DAVE 1
+		0xFF1D3FFF, // DAVE 1
 		0xFFDC97AA, // ANGEY ANGER 2
-		0xFF00B515, // MISTER BAMBI 3
+		0xFF00B515, // MISTER BAMBI RETARD (thats kinda rude ngl) 3
 		0xFF4965FF, // fdfdfd 4 
 		0xFFA40B09, // EVIL UNFAIRNESSSSS 5
 		0xFFFF0030, // 3d dave og color scary (sharted) 6
 		0xFF00FFFF, // SPLIT THE THONNNNN 7
-		0xFF0CB500, // purgatory stuff 8
-		0xFFFF0D00, // purgatory stuff 9 
-		0xFF189429, // purgatory stuff 10
-		0xFF24177D, // purgatory stuff 11 
-		0xFF420000, // purgatory stuff 12
-		0xFFFFFFFF, // purgatory stuff 13
-		0xFF000000, // purgatory stuff 14
-		0xFF8A00A2, // divinity stuff 15
-		0xFFFFD966, // divinity stuf 16
+		0xFFFFFFFF, // blinding 8
+		0xFFFFD146, // divinity stuf 9
+		0xFFE7F1FF, // divinity stuf 10
+		0xFF8302DF, // divinity stuf 11
+		0xFFAAAAAA, // divinity stuf 12
+		0xFF3B4FFF, // divinity stuf 13
+		0xFFFFEA00, // divinity stuf 14
     ];
 
 	private var iconArray:Array<HealthIcon> = [];
@@ -122,52 +121,55 @@ class DivinityFreeplayState extends MusicBeatState
 		super.create();
 	}
 
-	public function LoadProperPack() // wait fyrid what happened to singularity lmao -frogb
+	public function LoadProperPack() // wait fyrid what happened to singularity lmao -frogb 
+		// its called ringularity ayo named it wrong -fyrid
 		{
 			switch (AllPossibleSongs[CurrentPack].toLowerCase())
 			{
 				case 'main':
-					addWeek(['Midnight'], 1, ['dave']);
+					addWeek(['Midnight'], 1, ['dave-insanity']); // upheaval.
 					addWeek(['Meadow'], 3, ['bambi']); // ayo renamed it coz of donut smh
-					addWeek(['Golden'], 16, ['tristan-golden']);
-					addWeek(['Undefiable'], 12, ['dataexpunged']); // true exfucked
-					addWeek(['Spiral'], 13, ['face']);
-					addWeek(['Ringularity'], 13, ['face']);
-					addWeek(['Remorseless'], 13, ['face']);
+					addWeek(['Golden'], 9, ['tristan-golden']);
+					addWeek(['Undefiable'], 3, ['bambi3d']); // true exfucked
+					addWeek(['Spiral'], 13, ['barren']); // unshitted barren
+					addWeek(['Ringularity'], 14, ['lenzo']);
+					addWeek(['Remorseless'], 12, ['morrow']);
 					//EVERYTHING FROM HERE ONWARDS IS COMING IN V1, and yes i copied and pasted the sbarren template lmao ignore that -frogb
-					//addWeek(['Apprehensive'], 13, ['sbarren']);
-					//addWeek(['Distortion'], 13, ['sbarren']);
-					//addWeek(['Reality Twist'], 13, ['sbarren']);
-					//addWeek(['Distinctive'], 13, ['sbarren']);
-					//addWeek(['Ultimatum'], 13, ['sbarren']);
+					//addWeek(['Apprehensive'], 8, ['sbarren']);
+					//addWeek(['Distortion'], 8, ['sbarren']);
+					//addWeek(['Reality Twist'], 8, ['sbarren']);
+					//addWeek(['Distinctive'], 8, ['sbarren']);
+					//addWeek(['Ultimatum'], 8, ['sbarren']);
 				case 'extrasandfanmades':
 					//addWeek(['Deep End'], 15, ['mordon']);
 					//addWeek(['Unruly'], 6, ['dave-angey']);
-					//addWeek(['SFF'], 6, ['dave-angey']);
-					addWeek(['Hellbound'], 13, ['heldai-phase-1']);
+					addWeek(['SFF'], 3, ['bambi']);
+					addWeek(['Hellbound'], 8, ['heldai-phase-1']); // remade in v1
 					//addWeek(['Retro'], 6, ['dave-angey']);
-					addWeek(['Intertwined'], 6, ['dave-angey']);
+					addWeek(['Intertwined'], 6, ['dave3d']);
 					//addWeek(['All-Star'], 6, ['dave-angey']); // fyrid said she wanted it replaced, awaiting the new song name
-					//addWeek(['Shifted'], 13, ['sbarren']); / shitted barren
+					//addWeek(['Shifted'], 8, ['sbarren']); / shitted barren
 				// case 'joke': //whenever you ready you take the double slashes off this shit
-					//addWeek(['snoc'], 13, ['sbarren']);
-					//addWeek(['Gamer'], 13, ['sbarren']);
+					//addWeek(['snoc'], 8, ['sbarren']);
+					//addWeek(['Gamer'], 8, ['sbarren']);
 				case 'covers':
-					//addWeek(['Purgatory'], 13, ['sbarren']);
-					addWeek(['Roofs'], 13, ['face']);
-					addWeek(['Disposition'], 13, ['heldai-phase-1']);
-					addWeek(['Endless D'], 13, ['face']);
-					addWeek(['Boiling Point'], 15, ['mordon']);
-					//addWeek(['Tessattack'], 13, ['sbarren']);
-					//addWeek(['Triple Trouble'], 13, ['sbarren']); <--- and if some fucker presses 7 or do some other shitthey get bought to triple dev
-					//addWeek(['Triple Dev'], 13, ['sbarren']); <--- idk do something in triple trouble to unlock this???
-					//god damn it redly (may be for 1.0 and 1.5 idk, unless we want a separate dev covers section or some shit)
-					//addWeek(['Victory'], 13, ['sbarren']);
-					//addWeek(['Armed'], 13, ['sbarren']);
-					//addWeek(['Monotone Atack'], 13, ['sbarren']);
-					//addWeek(['Gamebreaker'], 13, ['sbarren']);
-					//addWeek(['Quadruple Quarrel'], 13, ['sbarren']);
-					//addWeek(['Prey'], 13, ['sbarren']);
+					//addWeek(['Purgatory'], 8, ['sbarren']);
+					//addWeek(['Roofs'], 8, ['face']);
+					addWeek(['Disposition'], 8, ['heldai-phase-1']);
+					//addWeek(['Endless D'], 8, ['face']);
+					addWeek(['Boiling Point'], 11, ['mordon']);
+					addWeek(['Tessattack'], 10, ['sbarren']);
+					//addWeek(['Triple Trouble'], 8, ['sbarren']); //<--- and if some fucker presses 7 or do some other shitthey get bought to triple dev
+					//addWeek(['Triple Dev'], 8, ['sbarren']); //<--- idk do something in triple trouble to unlock this???
+					//god damn it redly (may be for 1.0 and 1.5 idk, unless we want a separate dev covers section or mod or some other shit)
+					//addWeek(['Victory'], 8, ['sbarren']);
+					//addWeek(['Armed'], 8, ['sbarren']);
+					//addWeek(['Monotone Atack'], 8, ['sbarren']);
+					//addWeek(['Gamebreaker'], 8, ['sbarren']);
+					//addWeek(['Quadruple Quarrel'], 8, ['sbarren']);
+					//addWeek(['Prey'], 8, ['sbarren']); // ITS ALL SHITTED BARRENNN -fyrid
+				case 'fantracks': //screw you im doing it
+					addWeek(["Pixe's Rebound"], 8, ['bambiGod']);
 					
 			}
 		}
@@ -451,7 +453,7 @@ class DivinityFreeplayState extends MusicBeatState
 	}
 	else if(controls.RESET #if android || _virtualpad.buttonY.justPressed #end)
 	{
-		openSubState(new ResetScoreSubState(songs[curSelected].songName, curDifficulty, songs[curSelected].songCharacter));
+		openSubState(new ResetScoreSubState(songs[curSelected].songName, curDifficulty, songs[curSelected].songCharacter)); //good fucking lord this breaks the freeplaystate lmao
 		FlxG.sound.play(Paths.sound('scrollMenu'));
 		allowinputShit = false;
 		fart = false;

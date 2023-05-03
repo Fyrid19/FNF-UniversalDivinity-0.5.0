@@ -2,30 +2,8 @@
 	"animations": [
 		{
 			"offsets": [
-				0,
-				0
-			],
-			"loop": true,
-			"fps": 24,
-			"anim": "idle",
-			"indices": [],
-			"name": "bambi idle"
-		},
-		{
-			"offsets": [
-				80,
-				0
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT",
-			"indices": [],
-			"name": "bambi left"
-		},
-		{
-			"offsets": [
 				20,
-				-40
+				-30
 			],
 			"loop": false,
 			"fps": 24,
@@ -43,17 +21,6 @@
 			"anim": "singUP",
 			"indices": [],
 			"name": "bambi up"
-		},
-		{
-			"offsets": [
-				-20,
-				2
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "bambi right"
 		},
 		{
 			"offsets": [
@@ -120,6 +87,39 @@
 			"fps": 24,
 			"name": "bambi alt down",
 			"indices": []
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "bambi idle"
+		},
+		{
+			"offsets": [
+				-10,
+				2
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "bambi right"
+		},
+		{
+			"offsets": [
+				80,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "bambi left"
 		}
 	],
 	"no_antialiasing": false,

@@ -24,6 +24,8 @@ import flixel.util.FlxTimer;
 import flixel.input.keyboard.FlxKey;
 import flixel.graphics.FlxGraphic;
 import Controls;
+import divinity.DivinityFreeplayState;
+import FreeplayState;
 
 using StringTools;
 
@@ -173,6 +175,8 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 		if (controls.BACK) {
 			close();
 			ClientPrefs.saveSettings();
+			FreeplayState.fart = true;
+			DivinityFreeplayState.fart = true;
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 		}
 
