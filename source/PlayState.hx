@@ -1029,8 +1029,7 @@ class PlayState extends MusicBeatState
 				bg.shader = testshader.shader;
 			}
 
-			case 'bambersHell': // only in bami's ohio-gatory bruh (why -fyrid)
-			//fyrid we may re-use this for fantracks section lmao
+			case 'bambersHell': // bamb's fardgatory
 			{
 				defaultCamZoom = 0.7;
 				curStage = 'bambersHell';
@@ -3462,7 +3461,7 @@ class PlayState extends MusicBeatState
 					gf.color = 0xFF878787;
 					boyfriend.color = 0xFF878787;
 					
-					if (SONG.player2 == 'bambi-god2d' || SONG.player2 == 'heldai-phase-1' || SONG.player2 == 'bambi=god') // glowing retard(s)
+					if (SONG.player2 == 'bambi-god2d' || SONG.player2 == 'heldai-phase-1' || SONG.player2 == 'bambi-god') // glowing retard(s)
 					{
 						dad.color = 0xFFFFFFFF;
 					}
