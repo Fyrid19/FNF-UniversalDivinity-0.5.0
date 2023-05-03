@@ -159,7 +159,7 @@ class PlayState extends MusicBeatState
 
 	var isDadGlobal:Bool = true;
 
-	var funnyFloatyBoys:Array<String> = ['dave-3d', 'mordon', 'heldai-phase-1', 'sbarren', 'bf-3d'];
+	var funnyFloatyBoys:Array<String> = ['dave-3d', 'mordon', 'heldai-phase-1', 'sbarren', 'bf-3d', 'bambi-god'];
 	var funnySideFloatyBoys:Array<String> = [];
 	var canSlide:Bool = true;
 	
@@ -1029,8 +1029,7 @@ class PlayState extends MusicBeatState
 				bg.shader = testshader.shader;
 			}
 
-			case 'bambersHell': // only in bami's ohio-gatory bruh (why -fyrid)
-			//fyrid we may re-use this for fantracks section lmao
+			case 'bambersHell': // bamb's fardgatory
 			{
 				defaultCamZoom = 0.7;
 				curStage = 'bambersHell';
@@ -1498,11 +1497,11 @@ class PlayState extends MusicBeatState
 				credits = '';
 		}
 
-		creditsWatermark = new FlxText(4, healthBarBG.y + 50, 0, credits, 16);
-		creditsWatermark.setFormat(Paths.font("comic-sans.ttf"), 14, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		creditsWatermark = new FlxText(17, FlxG.height - 34, 0, credits, 16); //jesus it didnt read kadeEngineWatermark's y???
+		creditsWatermark.setFormat(Paths.font("comic-sans.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		creditsWatermark.scrollFactor.set();
 		creditsWatermark.borderSize = 1.25;
-		//add(creditsWatermark);
+		add(creditsWatermark);
 		creditsWatermark.cameras = [camHUD];
 
 		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
@@ -3462,7 +3461,7 @@ class PlayState extends MusicBeatState
 					gf.color = 0xFF878787;
 					boyfriend.color = 0xFF878787;
 					
-					if (SONG.player2 == 'bambi-god2d' || SONG.player2 == 'heldai-phase-1') // glowing retard(s)
+					if (SONG.player2 == 'bambi-god2d' || SONG.player2 == 'heldai-phase-1' || SONG.player2 == 'bambi-god') // glowing retard(s)
 					{
 						dad.color = 0xFFFFFFFF;
 					}

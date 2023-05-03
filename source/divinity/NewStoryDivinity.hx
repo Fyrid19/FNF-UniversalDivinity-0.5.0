@@ -1,4 +1,4 @@
-package;
+package divinity;
 
 #if desktop
 import Discord.DiscordClient;
