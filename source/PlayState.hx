@@ -1432,6 +1432,7 @@ class PlayState extends MusicBeatState
 		healthBarBG = new AttachedSprite('healthBar');
 		healthBarBG.y = FlxG.height * 0.89;
 		healthBarBG.screenCenter(X);
+		healthBarBG.x += 220;
 		healthBarBG.scrollFactor.set();
 		healthBarBG.visible = false;
 		healthBarBG.xAdd = -4;
@@ -1474,7 +1475,7 @@ class PlayState extends MusicBeatState
 		add(iconP2);
 		reloadHealthBarColors();
 
-		scoreTxt = new FlxText(0, healthBarBG.y + 40, FlxG.width, "", 16);
+		scoreTxt = new FlxText(healthBarBG.x - 100, healthBarBG.y + 40, 800, "", 16);
 		scoreTxt.setFormat(Paths.font("comic.ttf"), 17, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
@@ -3607,9 +3608,10 @@ class PlayState extends MusicBeatState
 
 		var iconOffset:Int = 26;
 
-		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
-		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
-
+		// iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
+		// iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
+		iconP1.x = healthBar.x - (((healthBar.width * 0.01) - 200) - iconOffset) + 195;
+		iconP2.x = healthBar.x - (((healthBar.width * 0.01) + 200) - iconOffset) + 195;
 		
 		if (health > 2)
 			health = 2;
