@@ -131,7 +131,7 @@ class DivinityFreeplayState extends MusicBeatState
 			switch (AllPossibleSongs[CurrentPack].toLowerCase())
 			{
 				case 'main':
-					addWeek(['Midnight'], 1, ['dave']);
+					addWeek(['Midnight'], 1, ['dave-insanity']); // upheaval.
 					addWeek(['Meadow'], 3, ['bambi']); // ayo renamed it coz of donut smh
 					addWeek(['Golden'], 9, ['tristan-golden']);
 					addWeek(['Undefiable'], 3, ['bambi3d']); // true exfucked
@@ -147,7 +147,7 @@ class DivinityFreeplayState extends MusicBeatState
 				case 'extrasandfanmades':
 					//addWeek(['Deep End'], 15, ['mordon']);
 					//addWeek(['Unruly'], 6, ['dave-angey']);
-					addWeek(['SFF'], 3, ['bambi']);
+					//addWeek(['SFF'], 3, ['bambi']);
 					addWeek(['Hellbound'], 8, ['heldai-phase-1']); // remade in v1
 					//addWeek(['Retro'], 6, ['dave-angey']);
 					addWeek(['Intertwined'], 6, ['dave3d']);
