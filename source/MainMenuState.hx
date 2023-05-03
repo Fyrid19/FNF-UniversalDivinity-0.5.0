@@ -23,6 +23,7 @@ import lime.app.Application;
 import Achievements;
 import flixel.input.keyboard.FlxKey;
 import editors.MasterEditorMenu;
+import divinity.NewStoryDivinity
 import divinity.DivinityFreeplayState;
 
 using StringTools;
