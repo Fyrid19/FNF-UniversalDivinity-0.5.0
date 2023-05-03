@@ -1,8 +1,8 @@
 {
 	"songs": [
-		["Spiral", "spooky", [34, 51, 68]],
-		["Ringularity", "spooky", [34, 51, 68]],
-		["Remorseless", "monster", [34, 51, 68]]
+		["Spookeez", "spooky", [34, 51, 68]],
+		["South", "spooky", [34, 51, 68]],
+		["Monster", "monster", [34, 51, 68]]
 	],
 
 	"weekCharacters": [
@@ -10,11 +10,11 @@
 		"bf",
 		"gf"
 	],
-	"weekBackground": "",
+	"weekBackground": "halloween",
 
-	"storyName": "Divinity Dimension",
+	"storyName": "Spooky Month",
 	"weekBefore": "week1",
-	"weekName": "UNIVERSAL DIVINITY: WEEK 2",
+	"weekName": "Week 2",
 	"startUnlocked": true,
 
 	"hideStoryMode": false,

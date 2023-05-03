@@ -3409,6 +3409,51 @@ class PlayState extends MusicBeatState
 				}
 		}
 
+		//welcome to modchart city.
+		if(SONG.song.toLowerCase() == 'pixes rebound' || SONG.song.toLowerCase() == 'pixes-rebound' || SONG.song.toLowerCase() == "pixe's-rebound" || SONG.song.toLowerCase() == "pixe's rebound")
+		{
+			for(str in playerStrums)
+			{
+				str.angle = 15*Math.cos((elapsedtime*2)+str.ID*2);
+				str.y = strumLine.y+(40*Math.sin((elapsedtime*2)+str.ID*2));
+			}
+
+			for(str in opponentStrums)
+			{
+				str.angle = 15*Math.cos((elapsedtime*2)+str.ID*2);
+				str.y = strumLine.y+(40*Math.sin((elapsedtime*2)+str.ID*2));
+			}
+		}
+
+		if (SONG.song.toLowerCase() == 'disposition') // dispositioning all over the room
+		    {
+				for(str in opponentStrums)
+				{
+					str.angle = 60*Math.cos((elapsedtime*2)+str.ID*2);
+					str.y = strumLine.y+(20*Math.sin((elapsedtime*2)+str.ID*2));
+				}
+
+				playerStrums.forEach(function(spr:FlxSprite)
+				{
+					spr.x += Math.sin(elapsedtime) * ((spr.ID % 2) == 0 ? 0.005 : -0.005);
+					spr.x -= Math.sin(elapsedtime) * 1.3;
+				});
+				opponentStrums.forEach(function(spr:FlxSprite)
+				{
+					spr.x += Math.sin(elapsedtime) * 1.3;
+
+					spr.scale.x = Math.abs(Math.sin(elapsedtime - 5) * ((spr.ID % 2) == 0 ? 1 : -1)) / 4;
+	
+					spr.scale.y = Math.abs((Math.sin(elapsedtime) * ((spr.ID % 2) == 0 ? 1 : -1)) / 2);
+	
+					spr.scale.x += 0.3;
+					spr.scale.y += 0.3;
+	
+					spr.scale.x *= 1.15;
+					spr.scale.y *= 1.15;
+				});
+			}
+
 		switch (curStage)
 		{ // took this straight from the dnb source, added a few things from definitive edition too -frogb (ignore the fact that theres the slur there im too lazy to delete that i just want it FIXED-)
 			case 'houseNight' | 'farmNight' | 'bambersHell': //dark as hell -frogb
@@ -3700,6 +3745,16 @@ class PlayState extends MusicBeatState
 		FlxG.watch.addQuick("beatShit", curBeat);
 		FlxG.watch.addQuick("stepShit", curStep);
 
+		switch (curSong.toLowerCase())
+		{
+			case 'disposition':
+				for (i in 0...opponentStrums.length) {
+				setOnLuas('defaultOpponentStrumX' + i, opponentStrums.members[i].x);
+				setOnLuas('defaultOpponentStrumY' + i, opponentStrums.members[i].y);
+				opponentStrums.members[i].alpha = 0.2;
+				}
+		}
+		
 		// RESET = Quick Game Over Screen
 		if (!ClientPrefs.noReset && controls.RESET && canReset && !inCutscene && startedCountdown && !endingSong)
 		{
@@ -5760,17 +5815,19 @@ for (key => value in luaShaders)
 			notes.sort(FlxSort.byY, ClientPrefs.downScroll ? FlxSort.ASCENDING : FlxSort.DESCENDING);
 		}
 
-		if (curBeat % 4 == 0 || curBeat % 4 == 1 || curBeat % 4 == 2 || curBeat % 4 == 3) // Bambi's Purgatory: Presentation Video (WhatsDown)
+		if (curBeat % 2 == 0)
 		{
-			FlxTween.angle(iconP1, -20, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
-			FlxTween.angle(iconP2, 20, 0, Conductor.crochet / 1300 * gfSpeed, {ease: FlxEase.quadOut});
+			iconP1.scale.set(1.1, 0.8);
+			iconP2.scale.set(1.1, 1.3);
+		}
+		if (curBeat % 2 == 1)
+		{
+			iconP1.scale.set(1.1, 1.3);
+			iconP2.scale.set(1.1, 0.8);
 		}
 
-		var funny:Float = (healthBar.percent * 0.01) + 0.01;
-
-		//icon squish funny haha
-		iconP1.setGraphicSize(Std.int(iconP1.width + (50 * (2 - funny))),Std.int(iconP1.height - (25 * (2 - funny))));
-		iconP2.setGraphicSize(Std.int(iconP2.width + (50 * (2 - funny))),Std.int(iconP2.height - (25 * (2 - funny))));
+		FlxTween.tween(iconP1, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quadOut});
+		FlxTween.tween(iconP2, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quadOut});
 
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();

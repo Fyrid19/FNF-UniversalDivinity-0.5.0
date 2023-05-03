@@ -1,0 +1,22 @@
+{
+	"songs": [
+		["Spiral", "spooky", [34, 51, 68]],
+		["Ringularity", "spooky", [34, 51, 68]],
+		["Remorseless", "monster", [34, 51, 68]]
+	],
+
+	"weekCharacters": [
+		"spooky",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "",
+
+	"storyName": "Divinity Dimension",
+	"weekBefore": "week1",
+	"weekName": "UNIVERSAL DIVINITY: WEEK 2",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}

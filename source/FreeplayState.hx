@@ -1,7 +1,3 @@
-//damn it fyrid your stupid freeplaystate bugged out the entire exit to menu shit, now i had to make a duplicate of the current one (the one with freeplay cats) -frogb
-//this is supposed to be where freeplay shit is frogb! -fyrid
-//THEN WHY THE FUCK IS IT RETURNING NULL AND GIVING ME A NULL OBJECT REFERENCE EARLIE- -frogb
-
 package;
 
 import flixel.util.FlxTimer;
@@ -24,6 +20,11 @@ import Discord.DiscordClient;
 #end
 import divinity.SkinSelectState;
 using StringTools;
+import WeekData;
+import divinity.DivinityWeekData;
+#if MODS_ALLOWED
+import sys.FileSystem;
+#end
 
 class FreeplayState extends MusicBeatState
 {
@@ -56,7 +57,7 @@ class FreeplayState extends MusicBeatState
 
 	private var CurrentSongIcon:FlxSprite;
 
-	private var AllPossibleSongs:Array<String> = ["main", "extrasandfanmades", "covers"];
+	private var AllPossibleSongs:Array<String> = ["main", "extrasandfanmades", "covers", "fantracks"];
 
 	private var CurrentPack:Int = 0;
 
@@ -66,7 +67,7 @@ class FreeplayState extends MusicBeatState
 		0xFF000000, // DUMBASS PLACEHOLDER 0
 		0xFF1D3FFF, // DAVE 1
 		0xFFDC97AA, // ANGEY ANGER 2
-		0xFF00B515, // MISTER BAMBI 3
+		0xFF00B515, // MISTER BAMBI RETARD (thats kinda rude ngl) 3
 		0xFF4965FF, // fdfdfd 4 
 		0xFFA40B09, // EVIL UNFAIRNESSSSS 5
 		0xFFFF0030, // 3d dave og color scary (sharted) 6
@@ -126,7 +127,7 @@ class FreeplayState extends MusicBeatState
 			switch (AllPossibleSongs[CurrentPack].toLowerCase())
 			{
 				case 'main':
-					addWeek(['Midnight'], 1, ['dave']);
+					addWeek(['Midnight'], 1, ['dave-insanity']); // upheaval.
 					addWeek(['Meadow'], 3, ['bambi']); // ayo renamed it coz of donut smh
 					addWeek(['Golden'], 9, ['tristan-golden']);
 					addWeek(['Undefiable'], 3, ['bambi3d']); // true exfucked
@@ -167,6 +168,8 @@ class FreeplayState extends MusicBeatState
 					//addWeek(['Gamebreaker'], 8, ['sbarren']);
 					//addWeek(['Quadruple Quarrel'], 8, ['sbarren']);
 					//addWeek(['Prey'], 8, ['sbarren']); // ITS ALL SHITTED BARRENNN -fyrid
+				case 'fantracks': //screw you im doing it
+					addWeek(["Pixe's Rebound"], 8, ['bambiGod']);
 					
 			}
 		}
@@ -450,7 +453,7 @@ class FreeplayState extends MusicBeatState
 	}
 	else if(controls.RESET #if android || _virtualpad.buttonY.justPressed #end)
 	{
-		openSubState(new ResetScoreSubState(songs[curSelected].songName, curDifficulty, songs[curSelected].songCharacter));
+		openSubState(new ResetScoreSubState(songs[curSelected].songName, curDifficulty, songs[curSelected].songCharacter)); //good fucking lord this breaks the freeplaystate lmao
 		FlxG.sound.play(Paths.sound('scrollMenu'));
 		allowinputShit = false;
 		fart = false;
