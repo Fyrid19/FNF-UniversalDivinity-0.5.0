@@ -10,6 +10,7 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxCamera;
 import flixel.addons.transition.FlxTransitionableState;
+import flixel.addons.display.FlxBackdrop;
 import flixel.effects.FlxFlicker;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -41,8 +42,8 @@ class MainMenuState extends MusicBeatState
 	
 	var optionShit:Array<String> = ['story_mode', 'freeplay', 'credits', 'options'];
 
-	var bg:FlxSprite;
-	var magenta:FlxSprite;
+	var bg:FlxBackdrop;
+	var magenta:FlxBackdrop;
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
 	var debugKeys:Array<FlxKey>;
@@ -93,13 +94,14 @@ class MainMenuState extends MusicBeatState
 
 		daRealEngineVer = engineVers[FlxG.random.int(0, 2)];
 
+		//only update the hitbox shit after putting EVERYTHING IN -frogb
+
 		var yScroll:Float = Math.max(0.1 - (0.03 * (optionShit.length - 4)), 0.1);
-		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(randomizeBG());
-		bg.scrollFactor.set(0, yScroll);
-		bg.setGraphicSize(Std.int(bg.width * 1.175));
-		bg.updateHitbox();
-		bg.screenCenter();
+		var bg = new FlxBackdrop(MainMenuState.randomizeBG(), 0.2, 0, true, true);
+		bg.velocity.set(25, 0);
+		bg.screenCenter(X);
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
+		bg.updateHitbox();
 		bg.color = 0xFFfd719b;
 		add(bg);
 
@@ -108,15 +110,22 @@ class MainMenuState extends MusicBeatState
 		add(camFollow);
 		add(camFollowPos);
 
-		magenta = new FlxSprite(-80).loadGraphic(bg.graphic);
-		magenta.scrollFactor.set(0, yScroll);
-		magenta.setGraphicSize(Std.int(magenta.width * 1.175));
-		magenta.updateHitbox();
-		magenta.screenCenter();
+		magenta = new FlxBackdrop(MainMenuState.randomizeBG(), 0.2, 0, true, true);
+		magenta.velocity.set(25, 0);
+		magenta.scrollFactor.set();
+		magenta.screenCenter(X);
 		magenta.antialiasing = ClientPrefs.globalAntialiasing;
 		magenta.color = 0xFFFDE871;
+		magenta.updateHitbox();
 		add(magenta);
-		// magenta.scrollFactor.set();
+
+		var bars:FlxSprite = new FlxSprite().loadGraphic(Paths.image('barFull'));
+        bars.scale.y = 1.0;
+		bars.screenCenter(X);
+		bars.scrollFactor.set();
+        bars.antialiasing = ClientPrefs.globalAntialiasing;
+		bars.updateHitbox();
+		add(bars);
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
@@ -126,14 +135,14 @@ class MainMenuState extends MusicBeatState
 		for (i in 0...optionShit.length)
 			{
 				var menuItem:FlxSprite = new FlxSprite(0, FlxG.height * 1.6);
-				menuItem.scale.x = scale;
-				menuItem.scale.y = scale;
+				//menuItem.scale.x = scale;
+				//menuItem.scale.y = scale;
 				menuItem.frames = Paths.getSparrowAtlas('mainmenu/menu_' + optionShit[i]);
 				menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
 				menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
 				menuItem.animation.play('idle');
 				menuItem.ID = i;
-				menuItem.x = -200;
+				menuItem.x = -400;
 				menuItems.add(menuItem);
 				menuItem.scrollFactor.set();
 				menuItem.antialiasing = ClientPrefs.globalAntialiasing;
