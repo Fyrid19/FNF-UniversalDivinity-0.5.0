@@ -10,6 +10,7 @@ import flixel.util.FlxTimer;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import divinity.DivinityFreeplayState;
+import divinity.NewStoryDivinity;
 
 class GameOverSubstate extends MusicBeatSubstate
 {

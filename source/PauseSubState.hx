@@ -15,6 +15,7 @@ import flixel.util.FlxColor;
 import flixel.FlxCamera;
 import flixel.util.FlxStringUtil;
 import divinity.DivinityFreeplayState;
+import divinity.NewStoryDivinity;
 
 class PauseSubState extends MusicBeatSubstate
 {
