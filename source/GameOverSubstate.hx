@@ -10,6 +10,7 @@ import flixel.util.FlxTimer;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import divinity.DivinityFreeplayState;
+import divinity.NewStoryDivinity;
 
 class GameOverSubstate extends MusicBeatSubstate
 {
@@ -96,7 +97,7 @@ class GameOverSubstate extends MusicBeatSubstate
 
 			WeekData.loadTheFirstEnabledMod();
 			if (PlayState.isStoryMode)
-				MusicBeatState.switchState(new NewStoryDivinity());
+				MusicBeatState.switchState(new divinity.NewStoryDivinity());
 			else
 				MusicBeatState.switchState(new divinity.DivinityFreeplayState());
 

@@ -15,6 +15,7 @@ import flixel.util.FlxColor;
 import flixel.FlxCamera;
 import flixel.util.FlxStringUtil;
 import divinity.DivinityFreeplayState;
+import divinity.NewStoryDivinity;
 
 class PauseSubState extends MusicBeatSubstate
 {
@@ -258,7 +259,7 @@ class PauseSubState extends MusicBeatSubstate
 
 					WeekData.loadTheFirstEnabledMod();
 					if(PlayState.isStoryMode) {
-						MusicBeatState.switchState(new NewStoryDivinity());
+						MusicBeatState.switchState(new divinity.NewStoryDivinity());
 					} else {
 						MusicBeatState.switchState(new divinity.DivinityFreeplayState());
 					}
