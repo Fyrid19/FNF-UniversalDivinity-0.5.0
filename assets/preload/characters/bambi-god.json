@@ -2,55 +2,55 @@
 	"animations": [
 		{
 			"offsets": [
-				0,
+				1,
 				0
 			],
 			"indices": [],
-			"fps": 4,
+			"fps": 24,
 			"anim": "idle",
 			"loop": true,
 			"name": "idle"
 		},
 		{
 			"offsets": [
-				-90,
+				-89,
 				130
 			],
 			"indices": [],
-			"fps": 4,
+			"fps": 24,
 			"anim": "singDOWN",
 			"loop": false,
 			"name": "down"
 		},
 		{
 			"offsets": [
-				20,
+				21,
 				-180
 			],
 			"indices": [],
-			"fps": 4,
+			"fps": 24,
 			"anim": "singUP",
 			"loop": false,
 			"name": "up"
 		},
 		{
 			"offsets": [
-				10,
+				11,
 				-20
 			],
 			"indices": [],
-			"fps": 4,
+			"fps": 24,
 			"anim": "singRIGHT",
 			"loop": false,
 			"name": "right"
 		},
 		{
 			"offsets": [
-				20,
+				21,
 				-10
 			],
 			"indices": [],
-			"fps": 4,
+			"fps": 24,
 			"anim": "singLEFT",
 			"loop": false,
 			"name": "left"

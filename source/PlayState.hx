@@ -5818,13 +5818,21 @@ for (key => value in luaShaders)
 
 		if (curBeat % 2 == 0)
 		{
-			iconP1.scale.set(1.1, 0.8);
-			iconP2.scale.set(1.1, 1.3);
+			iconP1.scale.set(1.5, 0.7);
+			iconP2.scale.set(1.5, 1.3);
 		}
 		if (curBeat % 2 == 1)
 		{
-			iconP1.scale.set(1.1, 1.3);
-			iconP2.scale.set(1.1, 0.8);
+			iconP1.scale.set(1.5, 1.3);
+			iconP2.scale.set(1.5, 0.7);
+		}
+		if (healthBar.percent < 20)
+		{
+			iconP1.scale.set(1.5, 0.5);
+		}
+		if (healthBar.percent > 80)
+		{
+			iconP2.scale.set(1.5, 0.5);
 		}
 
 		FlxTween.tween(iconP1, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quadOut});
