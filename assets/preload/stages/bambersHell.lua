@@ -15,6 +15,7 @@ function onCreate()
 
 	makeLuaSprite('the fog is coming', 'purgatory/scaryclouds', -600, -200);
 	setScrollFactor('the fog is coming', 0.7, 0.7);
+	scaleObject('the fog is coming', 2, 2)
 
 	addLuaSprite('cubes', false)
 	addLuaSprite('cubes2', false)
