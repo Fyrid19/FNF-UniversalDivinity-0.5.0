@@ -2927,15 +2927,16 @@ class PlayState extends MusicBeatState
 					oldNote = null;
 
 				var swagNote:Note;
-				if(PlayState.SONG.isSkinSep) {
+				/*if(PlayState.SONG.isSkinSep) {
 					if (gottaHitNote){
 						swagNote = new Note(daStrumTime, daNoteData, oldNote, false, false, true);
 					} else {
-						 swagNote = new Note(daStrumTime, daNoteData, oldNote);
+						swagNote = new Note(daStrumTime, daNoteData, oldNote);
 					}
 				} else {
 					swagNote = new Note(daStrumTime, daNoteData, oldNote);
-				}
+				}*/
+				var rng:FlxRandom = new FlxRandom();
 
 				swagNote.mustPress = gottaHitNote;
 				swagNote.sustainLength = songNotes[2];
