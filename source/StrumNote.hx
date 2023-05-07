@@ -39,14 +39,14 @@ class StrumNote extends FlxSprite
 		{
 			skin = PlayState.SONG.arrowSkin;
 		}
-		if (player = 1) {
+		if (player == 1) {
 			if ((PlayState.funnyFloatyBoys.contains(PlayState.SONG.player1) || PlayState.funnySideFloatyBoys.contains(PlayState.SONG.player1))) {
 				skin = 'polynote';
 			} else {
 				skin = PlayState.SONG.arrowSkin;
 			}
 		}
-		if (player = 0) {
+		if (player == 0) {
 			if ((PlayState.funnyFloatyBoys.contains(PlayState.SONG.player2) || PlayState.funnySideFloatyBoys.contains(PlayState.SONG.player2))) {
 				skin = 'polynote';
 			} else {

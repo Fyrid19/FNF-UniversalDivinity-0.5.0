@@ -8,6 +8,7 @@ import flixel.math.FlxMath;
 import flixel.util.FlxColor;
 import flash.display.BitmapData;
 import editors.ChartingState;
+import flixel.math.FlxRandom;
 
 using StringTools;
 

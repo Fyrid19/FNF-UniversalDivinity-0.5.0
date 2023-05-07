@@ -28,6 +28,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
+import flixel.math.FlxRandom;
 import flixel.system.FlxAssets.FlxShader;
 import flixel.system.FlxSound;
 import flixel.text.FlxText;
@@ -159,9 +160,9 @@ class PlayState extends MusicBeatState
 
 	var isDadGlobal:Bool = true;
 
-	var funnyFloatyBoys:Array<String> = ['dave-3d', 'mordon', 'heldai-phase-1', 'sbarren', 'bf-3d', 'bambi-god'];
-	var funnySideFloatyBoys:Array<String> = [];
-	var canSlide:Bool = true;
+	public static var funnyFloatyBoys:Array<String> = ['dave-3d', 'mordon', 'heldai-phase-1', 'sbarren', 'bf-3d', 'bambi-god'];
+	public static var funnySideFloatyBoys:Array<String> = [];
+	public static var canSlide:Bool = true;
 	
 	var dontDarkenChar:Array<String> = ['bambi-god'];
 
