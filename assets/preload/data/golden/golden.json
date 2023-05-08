@@ -5222,7 +5222,7 @@
 		"song": "Golden",
 		"needsVoices": true,
 		"arrowSkin": "",
-		"stage": "farmNight",
+		"stage": "farmDay",
 		"validScore": true,
 		"bpm": 155,
 		"speed": 2.7

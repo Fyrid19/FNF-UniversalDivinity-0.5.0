@@ -6627,8 +6627,8 @@
 		"validScore": true,
 		"stage": "the-PHONES",
 		"arrowSkin": "polynote",
+		"arrowPlayerSkin": "NOTE_assets",
 		"needsVoices": true,
-		"isSkinSep": true,
 		"speed": 3.1,
 		"bpm": 186
 	}

@@ -6103,8 +6103,8 @@
 		"validScore": true,
 		"stage": "bambersHell",
 		"arrowSkin": "polynote",
+		"arrowPlayerSkin": "NOTE_assets",
 		"needsVoices": true,
-		"isSkinSep": true,
 		"speed": 3.7,
 		"bpm": 190
 	}
