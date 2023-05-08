@@ -97,6 +97,8 @@ class SkinSelectState extends MusicBeatState
         super.update(elapsed);
 
         if (controls.BACK && !charSelected) {
+            FlxG.sound.music.stop();
+			FlxG.sound.playMusic(Paths.music('freakyMenu'));
             MusicBeatState.switchState(new divinity.DivinityFreeplayState());
         }
 

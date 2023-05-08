@@ -20021,7 +20021,7 @@
 		"needsVoices": true,
 		"stage": "the-PHONES",
 		"arrowSkin": "polynote",
-		"isSkinSep": true,
+		"arrowPlayerSkin": "NOTE_assets",
 		"bpm": 115,
 		"speed": 3.4
 	}

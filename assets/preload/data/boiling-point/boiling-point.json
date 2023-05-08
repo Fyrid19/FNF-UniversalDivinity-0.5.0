@@ -9361,11 +9361,10 @@
 		"player3": null,
 		"song": "Boiling Point",
 		"arrowSkin": "polynote",
+		"arrowPlayerSkin": "NOTE_assets",
 		"validScore": true,
-		"allowPet": true,
 		"stage": "3dMordon",
 		"needsVoices": true,
-		"isSkinSep": true,
 		"bpm": 200,
 		"speed": 3.2
 	}

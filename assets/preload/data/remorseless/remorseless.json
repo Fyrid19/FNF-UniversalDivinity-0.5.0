@@ -4674,6 +4674,8 @@
 		],
 		"player3": null,
 		"song": "Remorseless",
+		"arrowPlayerSkin": "NOTE_assets",
+		"arrowSkin": "polynote",
 		"validScore": true,
 		"needsVoices": true,
 		"stage": "morrowBG",
