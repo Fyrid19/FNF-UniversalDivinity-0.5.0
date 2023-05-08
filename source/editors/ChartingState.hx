@@ -604,7 +604,7 @@ class ChartingState extends MusicBeatState
 		noteSkinInputText = new FlxUIInputText(10, 250, 150, skin, 8);
 		blockPressWhileTypingOn.push(noteSkinInputText);
 
-		notePlayerSkinInputText = new FlxUIInputText(10, noteSkinInputText.y + 75, 150, skinP, 8);
+		notePlayerSkinInputText = new FlxUIInputText(10, noteSkinInputText.y + 100, 150, skinP, 8);
 		blockPressWhileTypingOn.push(notePlayerSkinInputText);
 
 		noteSkinInputText = new FlxUIInputText(player2DropDown.x, player2DropDown.y + 50, 150, skin, 8);
@@ -613,7 +613,7 @@ class ChartingState extends MusicBeatState
 		noteSplashesInputText = new FlxUIInputText(noteSkinInputText.x, noteSkinInputText.y + 35, 150, _song.splashSkin, 8);
 		blockPressWhileTypingOn.push(noteSplashesInputText);
 
-		var reloadNotesButton:FlxButton = new FlxButton(noteSplashesInputText.x + 5, noteSplashesInputText.y + 20, 'Change Notes', function() {
+		var reloadNotesButton:FlxButton = new FlxButton(loadAutosaveBtn.x, noteSkinInputText.y + 35, 'Change Notes', function() {
 			_song.arrowSkin = noteSkinInputText.text;
 			_song.arrowPlayerSkin = notePlayerSkinInputText.text;
 			updateGrid();

@@ -286,27 +286,20 @@ class Note extends FlxSprite
 	var lastNoteOffsetXForPixelAutoAdjusting:Float = 0;
 	var lastNoteScaleToo:Float = 1;
 	public var originalHeightForCalcs:Float = 6;
+	
 	function reloadNote(?prefix:String = '', ?texture:String = '', ?suffix:String = '') {
 		if(prefix == null) prefix = '';
 		if(texture == null) texture = '';
 		if(suffix == null) suffix = '';
 
-		var skin:String = texture;
+		var skin:String = texture; //simplified and fixed it thank me later fyrid :3 -frogb
 		if(texture.length < 1) {
 			skin = PlayState.SONG.arrowSkin;
-			if ((PlayState.funnyFloatyBoys.contains(PlayState.SONG.player1) || PlayState.funnySideFloatyBoys.contains(PlayState.SONG.player1)) && (PlayState.funnyFloatyBoys.contains(PlayState.SONG.player2) || PlayState.funnySideFloatyBoys.contains(PlayState.SONG.player2))) {
-				skin = 'polynote';
-			} else if ((PlayState.funnyFloatyBoys.contains(PlayState.SONG.player2) || PlayState.funnySideFloatyBoys.contains(PlayState.SONG.player2)) || (PlayState.funnyFloatyBoys.contains(PlayState.SONG.player1) || PlayState.funnySideFloatyBoys.contains(PlayState.SONG.player1))) {
-				var rng:FlxRandom = new FlxRandom();
-				if (rng.int(0,1) == 1)
-				{
-					skin = 'NOTE_assets';
-				}
-				else
-				{
-					skin = 'polynote';
-				}
+			if(skin == null || skin.length < 1) {
+				skin = 'NOTE_assets';
 			}
+			
+			skin = PlayState.SONG.arrowPlayerSkin;
 			if(skin == null || skin.length < 1) {
 				skin = 'NOTE_assets';
 			}
