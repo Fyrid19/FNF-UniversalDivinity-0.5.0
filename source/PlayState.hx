@@ -2928,10 +2928,12 @@ class PlayState extends MusicBeatState
 					oldNote = null;
 
 				var swagNote:Note;
-				if (!SONG.notes[curSection].mustHitSection)
-					swagNote = new Note(daStrumTime, daNoteData, oldNote);
-				else
+				if (gottaHitNote){
 					swagNote = new Note(daStrumTime, daNoteData, oldNote, false, false, true);
+				}
+				else {
+					swagNote = new Note(daStrumTime, daNoteData, oldNote);
+				}
 
 				swagNote.mustPress = gottaHitNote;
 				swagNote.sustainLength = songNotes[2];
@@ -2952,7 +2954,15 @@ class PlayState extends MusicBeatState
 					{
 						oldNote = unspawnNotes[Std.int(unspawnNotes.length - 1)];
 
-						var sustainNote:Note = new Note(daStrumTime + (Conductor.stepCrochet * susNote) + (Conductor.stepCrochet / FlxMath.roundDecimal(songSpeed, 2)), daNoteData, oldNote, true);
+						var sustainNote:Note;
+						//checks if its a player note, if it is, then it turns it into a note that DOESNT use the custom style
+						if (gottaHitNote){
+							sustainNote = new Note(daStrumTime + (Conductor.stepCrochet * susNote) + (Conductor.stepCrochet / FlxMath.roundDecimal(SONG.speed, 2)), daNoteData, oldNote, true, false, true);
+						}
+						else {
+							sustainNote = new Note(daStrumTime + (Conductor.stepCrochet * susNote) + (Conductor.stepCrochet / FlxMath.roundDecimal(SONG.speed, 2)), daNoteData, oldNote, true);
+						}
+
 						sustainNote.mustPress = gottaHitNote;
 						sustainNote.gfNote = (section.gfSection && (songNotes[1]<4));
 						sustainNote.noteType = swagNote.noteType;

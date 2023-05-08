@@ -142,7 +142,7 @@ class MainMenuState extends MusicBeatState
 				menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
 				menuItem.animation.play('idle');
 				menuItem.ID = i;
-				menuItem.x = -400;
+				menuItem.x = 100;
 				menuItems.add(menuItem);
 				menuItem.scrollFactor.set();
 				menuItem.antialiasing = ClientPrefs.globalAntialiasing;
@@ -172,7 +172,7 @@ class MainMenuState extends MusicBeatState
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("Comic Sans MS Bold", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, curModVer + " Engine, VD&B: Universal Divinity DEMO", 12);
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, curModVer + " Divinity Engine, VD&B: Universal Divinity DEMO", 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("Comic Sans MS Bold", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
@@ -186,6 +186,21 @@ class MainMenuState extends MusicBeatState
 		#end
 		
 		super.create();
+
+		//fyrid i'll leave this part to you.
+		// -frogb
+
+		/*switch (FlxG.random.int(1, 1))
+		{
+			case 1:
+				char = new FlxSprite(100, 270).loadGraphic(Paths.image('mainmenu/CHARACTER SPRITESHEET NAME HERE'));//put your cords and image here
+				char.frames = Paths.getSparrowAtlas('mainmenu/CHARACTER XML NAME HERE');//here put the name of the xml
+				char.animation.addByPrefix('idleR', 'idle normal', 24, true);//on 'idle normal' change it to your xml one
+				char.animation.play('idleR');//you can rename the anim however you want to
+				char.scrollFactor.set();
+				char.antialiasing = ClientPrefs.globalAntialiasing;
+				add(char);
+		*/
 	}
 
 	var selectedSomethin:Bool = false;
@@ -247,7 +262,7 @@ class MainMenuState extends MusicBeatState
 
 						if(ClientPrefs.flashing) FlxFlicker.flicker(magenta, 1.1, 0.15, false);
 
-						FlxTween.tween(FlxG.camera, {zoom:1.35}, 1.45, {ease: FlxEase.expoIn});
+						FlxTween.tween(FlxG.camera, {zoom:1.35}, 1.5, {ease: FlxEase.expoIn}); //changed the duration to tackle a camera issue 
 	
 						menuItems.forEach(function(spr:FlxSprite)
 						{
@@ -291,11 +306,6 @@ class MainMenuState extends MusicBeatState
 			#end
 	
 			super.update(elapsed);
-	
-			menuItems.forEach(function(spr:FlxSprite)
-			{
-				spr.screenCenter(X);
-			});
 		}
 	function goToState()
 		{
@@ -320,7 +330,7 @@ class MainMenuState extends MusicBeatState
 	override function beatHit() {
 		super.beatHit();
 
-		if (curBeat % 2 == 0) //it doesnt work but when i tested it out it gave kind of a cool transition so im going to leave it here.
+		if (curBeat % 1 == 0) //it doesnt work but when i tested it out it gave kind of a cool transition so im going to leave it here.
 		{
 			FlxG.camera.zoom += 1.02;
 		}

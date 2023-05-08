@@ -222,8 +222,8 @@ class ChartingState extends MusicBeatState
 				bpm: 150.0,
 				needsVoices: true,
 				arrowSkin: '',
+				arrowPlayerSkin: '', //STRIDENT CRISIS :vomit:
 				splashSkin: 'noteSplashes',//idk it would crash if i didn't\
-				isSkinSep: false,
 				player1: 'bf',
 				player2: 'dad',
 				gfVersion: 'gf',
@@ -405,6 +405,7 @@ class ChartingState extends MusicBeatState
 	var UI_songTitle:FlxUIInputText;
 	var noteSkinInputText:FlxUIInputText;
 	var noteSplashesInputText:FlxUIInputText;
+	var notePlayerSkinInputText:FlxUIInputText;
 	var stageDropDown:FlxUIDropDownMenuCustom;
 	function addSongUI():Void
 	{
@@ -418,14 +419,6 @@ class ChartingState extends MusicBeatState
 		{
 			_song.needsVoices = check_voices.checked;
 			//trace('CHECKED!');
-		};
-
-		var check_isSkinSep = new FlxUICheckBox(500, 45, null, null, "Has Opponent Skin Separated", 120);
-		check_isSkinSep.checked = _song.isSkinSep;
-		check_isSkinSep.callback = function()
-		{
-			_song.isSkinSep = check_isSkinSep.checked;
-			trace('CHECKED OPP SKIN SEP!');
 		};
 
 		var saveButton:FlxButton = new FlxButton(110, 8, "Save", function()
@@ -605,14 +598,24 @@ class ChartingState extends MusicBeatState
 
 		var skin = PlayState.SONG.arrowSkin;
 		if(skin == null) skin = '';
+		var skinP = PlayState.SONG.arrowPlayerSkin;
+		if(skinP == null) skinP = '';
+
+		noteSkinInputText = new FlxUIInputText(10, 250, 150, skin, 8);
+		blockPressWhileTypingOn.push(noteSkinInputText);
+
+		notePlayerSkinInputText = new FlxUIInputText(10, noteSkinInputText.y + 100, 150, skinP, 8);
+		blockPressWhileTypingOn.push(notePlayerSkinInputText);
+
 		noteSkinInputText = new FlxUIInputText(player2DropDown.x, player2DropDown.y + 50, 150, skin, 8);
 		blockPressWhileTypingOn.push(noteSkinInputText);
 
 		noteSplashesInputText = new FlxUIInputText(noteSkinInputText.x, noteSkinInputText.y + 35, 150, _song.splashSkin, 8);
 		blockPressWhileTypingOn.push(noteSplashesInputText);
 
-		var reloadNotesButton:FlxButton = new FlxButton(noteSplashesInputText.x + 5, noteSplashesInputText.y + 20, 'Change Notes', function() {
+		var reloadNotesButton:FlxButton = new FlxButton(loadAutosaveBtn.x, noteSkinInputText.y + 35, 'Change Notes', function() {
 			_song.arrowSkin = noteSkinInputText.text;
+			_song.arrowPlayerSkin = notePlayerSkinInputText.text;
 			updateGrid();
 		});
 
@@ -621,7 +624,6 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(UI_songTitle);
 
 		tab_group_song.add(check_voices);
-		//tab_group_song.add(check_isSkinSep);
 		tab_group_song.add(clear_events);
 		tab_group_song.add(clear_notes);
 		tab_group_song.add(saveButton);
@@ -634,6 +636,7 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(stepperSpeed);
 		tab_group_song.add(reloadNotesButton);
 		tab_group_song.add(noteSkinInputText);
+		tab_group_song.add(notePlayerSkinInputText);
 		tab_group_song.add(noteSplashesInputText);
 		tab_group_song.add(new FlxText(stepperBPM.x, stepperBPM.y - 15, 0, 'Song BPM:'));
 		tab_group_song.add(new FlxText(stepperBPM.x + 100, stepperBPM.y - 15, 0, 'Song Offset:'));
@@ -642,7 +645,8 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(new FlxText(gfVersionDropDown.x, gfVersionDropDown.y - 15, 0, 'Girlfriend:'));
 		tab_group_song.add(new FlxText(player1DropDown.x, player1DropDown.y - 15, 0, 'Boyfriend:'));
 		tab_group_song.add(new FlxText(stageDropDown.x, stageDropDown.y - 15, 0, 'Stage:'));
-		tab_group_song.add(new FlxText(noteSkinInputText.x, noteSkinInputText.y - 15, 0, 'Note Texture/Opponent Note Textures:'));
+		tab_group_song.add(new FlxText(noteSkinInputText.x, noteSkinInputText.y - 15, 0, 'Opponent Note Textures (BETA):'));
+		tab_group_song.add(new FlxText(notePlayerSkinInputText.x, notePlayerSkinInputText.y - 15, 0, 'Player Note Textures:'));
 		tab_group_song.add(new FlxText(noteSplashesInputText.x, noteSplashesInputText.y - 15, 0, 'Note Splashes Texture:'));
 		tab_group_song.add(player2DropDown);
 		tab_group_song.add(gfVersionDropDown);

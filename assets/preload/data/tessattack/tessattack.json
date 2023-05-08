@@ -12591,12 +12591,12 @@
 		"player3": null,
 		"song": "Tessattack",
 		"arrowSkin": "polynote",
+		"arrowPlayerSkin": "NOTE_assets",
 		"stage": "sbarrenBG",
 		"needsVoices": true,
 		"sections": 0,
 		"validScore": true,
 		"bpm": 183,
-		"speed": 3.4,
-		"isSkinSep": true
+		"speed": 3.4
 	}
 }

@@ -5121,7 +5121,8 @@
 		"song": "Spiral",
 		"validScore": true,
 		"stage": "barrenBG",
-		"arrowSkin": "",
+		"arrowSkin": "polynote",
+		"arrowPlayerSkin": "NOTE_assets",
 		"needsVoices": true,
 		"speed": 2.6,
 		"bpm": 195

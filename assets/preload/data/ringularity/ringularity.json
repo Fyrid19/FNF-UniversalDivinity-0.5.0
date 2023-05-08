@@ -5527,10 +5527,10 @@
 		"splashSkin": "noteSplashes",
 		"song": "Ringularity",
 		"needsVoices": true,
-		"arrowSkin": "",
+		"arrowSkin": "polynote",
 		"stage": "lenzoBG",
 		"validScore": true,
-		"isSkinSep": false,
+		"arrowPlayerSkin": "NOTE_assets",
 		"bpm": 304,
 		"speed": 2.6
 	}
