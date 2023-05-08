@@ -160,8 +160,8 @@ class PlayState extends MusicBeatState
 
 	var isDadGlobal:Bool = true;
 
-	public static var funnyFloatyBoys:Array<String> = ['dave-3d', 'mordon', 'heldai-phase-1', 'sbarren', 'bf-3d', 'bambi-god'];
-	public static var funnySideFloatyBoys:Array<String> = [];
+	public static var funnyFloatyBoys:Array<String> = ['dave-3d', 'mordon', 'heldai-phase-1', 'sbarren', 'bf-3d', 'bambi-god', 'barren'];
+	public static var funnySideFloatyBoys:Array<String> = ['barren'];
 	public static var canSlide:Bool = true;
 	
 	var dontDarkenChar:Array<String> = ['bambi-god'];
@@ -2928,7 +2928,10 @@ class PlayState extends MusicBeatState
 					oldNote = null;
 
 				var swagNote:Note;
-				swagNote = new Note(daStrumTime, daNoteData, oldNote);
+				if (!SONG.notes[curSection].mustHitSection)
+					swagNote = new Note(daStrumTime, daNoteData, oldNote);
+				else
+					swagNote = new Note(daStrumTime, daNoteData, oldNote, false, false, true);
 
 				swagNote.mustPress = gottaHitNote;
 				swagNote.sustainLength = songNotes[2];
@@ -2953,6 +2956,7 @@ class PlayState extends MusicBeatState
 						sustainNote.mustPress = gottaHitNote;
 						sustainNote.gfNote = (section.gfSection && (songNotes[1]<4));
 						sustainNote.noteType = swagNote.noteType;
+						//sustainNote.isPlayer = swagNote.isPlayer;
 						sustainNote.scrollFactor.set();
 						swagNote.tail.push(sustainNote);
 						sustainNote.parent = swagNote;
@@ -4522,7 +4526,7 @@ for (key => value in luaShaders)
 			return;
 		}
 
-		if (!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection)
+		if (!SONG.notes[curSection].mustHitSection)
 		{
 			moveCamera(true);
 			callOnLuas('onMoveCamera', ['dad']);

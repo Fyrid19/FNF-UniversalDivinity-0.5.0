@@ -44,6 +44,8 @@ class Note extends FlxSprite
 	public var isSustainNote:Bool = false;
 	public var noteType(default, set):String = null;
 
+	public var isPlayer:Bool = false;
+
 	public var eventName:String = '';
 	public var eventLength:Int = 0;
 	public var eventVal1:String = '';
@@ -174,6 +176,7 @@ class Note extends FlxSprite
 		this.prevNote = prevNote;
 		isSustainNote = sustainNote;
 		this.inEditor = inEditor;
+		this.isPlayer = isPlayer;
 
 		x += (ClientPrefs.middleScroll ? PlayState.STRUM_X_MIDDLESCROLL : PlayState.STRUM_X) + 50;
 		// MAKE SURE ITS DEFINITELY OFF SCREEN?
@@ -300,6 +303,15 @@ class Note extends FlxSprite
 				}
 				else
 				{
+					skin = 'polynote';
+				}
+			}
+			if (isPlayer == false) {
+				if ((PlayState.funnyFloatyBoys.contains(PlayState.SONG.player2) || PlayState.funnySideFloatyBoys.contains(PlayState.SONG.player2))) {
+					skin = 'polynote';
+				}
+			} else {
+				if ((PlayState.funnyFloatyBoys.contains(PlayState.SONG.player1) || PlayState.funnySideFloatyBoys.contains(PlayState.SONG.player1))) {
 					skin = 'polynote';
 				}
 			}
