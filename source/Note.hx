@@ -209,7 +209,7 @@ class Note extends FlxSprite
 		//STRIDENT CRISIS :vomit: -frogb
 		if(isPlayer) texture = PlayState.SONG.arrowPlayerSkin;
 
-		if(isPlayer && FlxG.random.bool(42)) texture = PlayState.SONG.arrowSkin;
+		if(isPlayer && FlxG.random.bool(42)) texture = PlayState.SONG.arrowSkin; //adjust the chances of spawning a opponent note here
 
 		if(!isPlayer) texture = PlayState.SONG.arrowSkin;
 
