@@ -1,3 +1,4 @@
+//i HATE N-
 package;
 
 import flixel.graphics.FlxGraphic;
@@ -250,7 +251,9 @@ class PlayState extends MusicBeatState
 
 	var notesHitArray:Array<Date> = [];
 
+	//reason why i variable'd these two instead of putting them straight away into the stagt is because im modifying them to be used for stage changes -frogb
 	var redSky:FlxSprite = new FlxSprite(-600, -300).loadGraphic(Paths.image('backgrounds/void/redsky'));
+	var greenSky:FlxSprite = new FlxSprite(-700, -350).loadGraphic(Paths.image('backgrounds/void/cheater'));
 
 	var dialogue:Array<String> = ['blah blah blah', 'coolswag'];
 	var dialogueJson:DialogueFile = null;
@@ -482,16 +485,18 @@ class PlayState extends MusicBeatState
 		curStage = SONG.stage;
 		//trace('stage is: ' + curStage);
 		if(SONG.stage == null || SONG.stage.length < 1) {
-			switch (songName)
+			switch (songName) //i'll put the rest of the stages here later im too lazy lmao -frogb
 			{
 				case 'intertwined':
 					curStage = 'houseDay';
 				case 'midnight':
 					curStage = 'houseNight';
-				case 'blast':
+				case 'mneadow':
 					curStage = 'farmSunset';
-				case 'indignancy' :
+				case 'golden' : //maybe we could do a 3d bg for golden (AND REMAKE IT TOO THE CURRENT VERSION SOUNDS REPETITIVE GOD DAMN)
 					curStage = 'farmNight';
+				case 'disposition' | 'hellbound':
+					curStage = 'the-PHONES';
 				case 'tessattack':
 					curStage = '3dRed';
 				case 'distinctive' | 'deep-end' | 'boiling-point':
@@ -925,6 +930,22 @@ class PlayState extends MusicBeatState
 				// below code assumes shaders are always enabled which is bad
 				var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect(2, 5, 0.1);
 				redSky.shader = testshader.shader;
+			}
+
+			case '3dGreen':
+			{
+				defaultCamZoom = 0.8;
+				curStage = '3dGreen';
+
+				greenSky.loadGraphic(Paths.image('backgrounds/void/cheater'));
+				greenSky.antialiasing = true;
+				greenSky.setGraphicSize(Std.int(greenSky.width * 2));
+
+				add(greenSky);
+
+				// below code assumes shaders are always enabled which is bad
+				var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect(1.75, 5, 0.1);
+				greenSky.shader = testshader.shader;
 			}
 
 			case 'the-PHONES':
