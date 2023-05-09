@@ -1,3 +1,4 @@
+//i HATE N-
 package;
 
 import flixel.graphics.FlxGraphic;
