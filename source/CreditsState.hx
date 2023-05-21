@@ -31,9 +31,11 @@ class CreditsState extends MusicBeatState
 
 	var bg:FlxSprite;
 	var descText:FlxText;
+	var quoteText:FlxText;
 	var intendedColor:Int;
 	var colorTween:FlxTween;
 	var descBox:AttachedSprite;
+	//var creditsBox:AttachedSprite; piss OFF bruh this is scrapped
 
 	var offsetThing:Float = -75;
 
@@ -80,9 +82,9 @@ class CreditsState extends MusicBeatState
 		}
 		#end
 
-		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
+		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color - QUOTE 
 			['Psych Engine Team'],
-			['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',								'https://twitter.com/Shadow_Mario_',	'444444'],
+			['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',								'https://twitter.com/Shadow_Mario_',	'444444', "'i shit myself'"],
 			['RiverOaken',			'river',			'Main Artist/Animator of Psych Engine',							'https://twitter.com/RiverOaken',		'B42F71'],
 			['shubs',				'shubs',			'Additional Programmer of Psych Engine',						'https://twitter.com/yoshubs',			'5E99DF'],
 			[''],
@@ -154,9 +156,13 @@ class CreditsState extends MusicBeatState
 		descText = new FlxText(50, FlxG.height + offsetThing - 25, 1180, "", 32);
 		descText.setFormat(Paths.font("default.ttf"), 32, FlxColor.WHITE, CENTER/*, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK*/);
 		descText.scrollFactor.set();
-		//descText.borderSize = 2.4;
 		descBox.sprTracker = descText;
 		add(descText);
+
+		quoteText = new FlxText(50, FlxG.height + offsetThing + 5, 1180, "", 32);
+		quoteText.setFormat(Paths.font("default.ttf"), 20, FlxColor.WHITE, CENTER/*, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK*/);
+		quoteText.scrollFactor.set();
+		add(quoteText);
 
 		bg.color = getCurrentBGColor();
 		intendedColor = bg.color;
@@ -286,10 +292,14 @@ class CreditsState extends MusicBeatState
 		descText.text = creditsStuff[curSelected][2];
 		descText.y = FlxG.height - descText.height + offsetThing - 60;
 
+		quoteText.text = creditsStuff[curSelected][5];
+		quoteText.y = FlxG.height - quoteText.height + offsetThing - 30;
+
 		if(moveTween != null) moveTween.cancel();
 		moveTween = FlxTween.tween(descText, {y : descText.y + 75}, 0.25, {ease: FlxEase.sineOut});
+		moveTween = FlxTween.tween(quoteText, {y : quoteText.y + 70}, 0.25, {ease: FlxEase.sineOut});
 
-		descBox.setGraphicSize(Std.int(descText.width + 20), Std.int(descText.height + 25));
+		descBox.setGraphicSize(Std.int(descText.width + 20), Std.int(quoteText.height + descText.height + 25));
 		descBox.updateHitbox();
 	}
 
