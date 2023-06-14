@@ -1520,7 +1520,7 @@ class PlayState extends MusicBeatState
 				credits = '';
 		}
 
-		creditsWatermark = new FlxText(17, FlxG.height - 34, 0, credits, 16); //jesus it didnt read kadeEngineWatermark's y???
+		creditsWatermark = new FlxText(17, FlxG.height - 44, 0, credits, 16); //jesus it didnt read kadeEngineWatermark's y???
 		creditsWatermark.setFormat(Paths.font("comic-sans.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		creditsWatermark.scrollFactor.set();
 		creditsWatermark.borderSize = 1.25;

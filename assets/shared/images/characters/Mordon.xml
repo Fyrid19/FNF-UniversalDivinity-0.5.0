@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Mordon.png">
+<SubTexture name="Mordon Idle0000" x="0" y="1076" width="646" height="1033" frameX="-446" frameY="-175" frameWidth="1515" frameHeight="1471" />
+<SubTexture name="Mordon Idle0001" x="1025" y="2109" width="701" height="964" frameX="-415" frameY="-216" frameWidth="1515" frameHeight="1471" />
+<SubTexture name="Mordon Idle0002" x="3602" y="928" width="729" height="912" frameX="-399" frameY="-235" frameWidth="1515" frameHeight="1471" />
+<SubTexture name="Mordon Idle0003" x="0" y="3088" width="739" height="893" frameX="-393" frameY="-242" frameWidth="1515" frameHeight="1471" />
+<SubTexture name="Mordon Down0000" x="1942" y="0" width="623" height="1044" frameX="-436" frameY="-366" frameWidth="1515" frameHeight="1471" />
+<SubTexture name="Mordon Down0001" x="646" y="1076" width="623" height="1026" frameX="-436" frameY="-374" frameWidth="1515" frameHeight="1471" />
+<SubTexture name="Mordon Down0002" x="3602" y="1840" width="623" height="910" frameX="-438" frameY="-413" frameWidth="1515" frameHeight="1471" />
+<SubTexture name="Mordon Left0000" x="2565" y="0" width="1037" height="995" frameX="-48" frameY="-230" frameWidth="1515" frameHeight="1471" />
+<SubTexture name="Mordon Left0001" x="0" y="2109" width="1025" height="979" frameX="-63" frameY="-242" frameWidth="1515" frameHeight="1471" />
+<SubTexture name="Mordon Left0002" x="3602" y="0" width="941" height="928" frameX="-196" frameY="-278" frameWidth="1515" frameHeight="1471" />
+<SubTexture name="Mordon Right0000" x="1269" y="1076" width="925" height="999" frameX="-551" frameY="-230" frameWidth="1515" frameHeight="1471" />
+<SubTexture name="Mordon Right0001" x="2565" y="995" width="920" height="991" frameX="-552" frameY="-238" frameWidth="1515" frameHeight="1471" />
+<SubTexture name="Mordon Right0002" x="1726" y="2109" width="833" height="944" frameX="-536" frameY="-294" frameWidth="1515" frameHeight="1471" />
+<SubTexture name="Mordon Up0000" x="0" y="0" width="969" height="1076" frameX="-290" frameY="-44" frameWidth="1515" frameHeight="1471" />
+<SubTexture name="Mordon Up0001" x="969" y="0" width="973" height="1057" frameX="-288" frameY="-66" frameWidth="1515" frameHeight="1471" />
+<SubTexture name="Mordon Up0002" x="2559" y="2109" width="943" height="936" frameX="-300" frameY="-165" frameWidth="1515" frameHeight="1471" />
+</TextureAtlas>

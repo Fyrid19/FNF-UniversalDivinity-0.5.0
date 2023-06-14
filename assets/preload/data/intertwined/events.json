@@ -1,0 +1,61 @@
+{
+	"song": {
+		"events": [
+			[
+				11992.1875,
+				[
+					[
+						"noteskinchangeOPPT",
+						"polynote",
+						""
+					]
+				]
+			],
+			[
+				12000,
+				[
+					[
+						"Change Character",
+						"1",
+						"dave-3d"
+					],
+					[
+						"Flash effect",
+						"0",
+						""
+					]
+				]
+			],
+			[
+				95996.09375,
+				[
+					[
+						"noteskinchangeOPPT",
+						"NOTE_assets",
+						""
+					]
+				]
+			],
+			[
+				96000,
+				[
+					[
+						"Flash effect",
+						"0",
+						""
+					],
+					[
+						"Quick note spin",
+						"",
+						""
+					],
+					[
+						"Change Character",
+						"1",
+						"dave"
+					]
+				]
+			]
+		]
+	}
+}

@@ -5,59 +5,59 @@
 				20,
 				40
 			],
-			"loop": true,
-			"fps": 30,
-			"anim": "idle",
 			"indices": [],
-			"name": "idle"
+			"fps": 12,
+			"anim": "idle",
+			"loop": false,
+			"name": "Mordon Idle"
 		},
 		{
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWN",
 			"indices": [],
-			"name": "down"
+			"fps": 12,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "Mordon Down"
 		},
 		{
 			"offsets": [
 				20,
 				50
 			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
 			"indices": [],
-			"name": "up"
+			"fps": 12,
+			"anim": "singUP",
+			"loop": false,
+			"name": "Mordon Up"
 		},
 		{
 			"offsets": [
 				15,
 				20
 			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
 			"indices": [],
-			"name": "right"
+			"fps": 12,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "Mordon Right"
 		},
 		{
 			"offsets": [
 				27,
 				20
 			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT",
 			"indices": [],
-			"name": "left"
+			"fps": 12,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "Mordon Left"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/mordon-effects",
+	"image": "characters/Mordon",
 	"position": [
 		-580,
 		-360
