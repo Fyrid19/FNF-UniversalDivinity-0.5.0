@@ -491,14 +491,16 @@ class PlayState extends MusicBeatState
 					curStage = 'houseDay';
 				case 'midnight':
 					curStage = 'houseNight';
-				case 'mneadow':
+				case 'meadow': //spelling mistake :moyai:
 					curStage = 'farmSunset';
 				case 'golden' : //maybe we could do a 3d bg for golden (AND REMAKE IT TOO THE CURRENT VERSION SOUNDS REPETITIVE GOD DAMN)
-					curStage = 'farmNight';
+					curStage = 'farmDay';
 				case 'disposition' | 'hellbound':
 					curStage = 'the-PHONES';
+				case 'spiral':
+					curStage = 'barrenBG';
 				case 'tessattack':
-					curStage = '3dRed';
+					curStage = 'sbarrenBG';
 				case 'distinctive' | 'deep-end' | 'boiling-point':
 					curStage = '3dMordon';
 				default:
@@ -934,7 +936,7 @@ class PlayState extends MusicBeatState
 
 			case '3dGreen':
 			{
-				defaultCamZoom = 0.8;
+				defaultCamZoom = 0.7;
 				curStage = '3dGreen';
 
 				greenSky.loadGraphic(Paths.image('backgrounds/void/cheater'));
@@ -950,7 +952,7 @@ class PlayState extends MusicBeatState
 
 			case 'the-PHONES':
 			{
-				defaultCamZoom = 0.85;
+				defaultCamZoom = 0.75;
 				curStage = 'the-PHONES';
 
 				var bg:FlxSprite = new FlxSprite(-600, -1000).loadGraphic(Paths.image('backgrounds/void/the-PHONES'));
@@ -967,7 +969,7 @@ class PlayState extends MusicBeatState
 
 			case '3dMordon':
 			{
-				defaultCamZoom = 0.85;
+				defaultCamZoom = 0.7;
 				curStage = '3dMordon';
 
 				var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('backgrounds/void/MordonBG'));
@@ -984,7 +986,7 @@ class PlayState extends MusicBeatState
 
 			case 'sbarrenBG':
 			{
-				defaultCamZoom = 0.85;
+				defaultCamZoom = 0.7;
 				curStage = 'sbarrenBG';
 
 				var bg:FlxSprite = new FlxSprite(-900, -500).loadGraphic(Paths.image('backgrounds/void/sbarrenBG'));
@@ -1001,7 +1003,7 @@ class PlayState extends MusicBeatState
 
 			case 'morrowBG':
 			{
-				defaultCamZoom = 0.85;
+				defaultCamZoom = 0.7;
 				curStage = 'morrowBG';
 
 				var bg:FlxSprite = new FlxSprite(-900, -500).loadGraphic(Paths.image('backgrounds/void/morrowBG'));
@@ -1511,9 +1513,11 @@ class PlayState extends MusicBeatState
 			// COVER SONGS HERE
 			case 'boiling-point' | 'boiling point' : // these kids do fucking grammar errors almost everyday bruh
 				credits = 'Original song by Rareblin (Cover by FyriDev)';
-			// TEST SONGS HERE
 			case 'disposition':
 				credits = 'Original song by ShredBoi (Cover by FyriDev)';
+			case 'tessattack':
+				credits = 'Original song by AadstaPinwheel (Cover by FyriDev)';
+			// TEST SONGS HERE
 			case 'opposition' :
 				credits = "Fuck you. You are done.";
 			default:
@@ -1548,19 +1552,7 @@ class PlayState extends MusicBeatState
 
 		var composersWatermark:String;
 		switch (SONG.song.toLowerCase()) // note to self: never release source till full release
-		{
-			case 'meadow' | 'ringularity' : 
-				composersWatermark = 'Ayo';
-			// add fyrid's songs here
-			case 'midnight' | 'remorseless' :
-				composersWatermark = 'FyriDev';
-			// cover songs
-			case 'boiling-point' | 'boiling point' :
-				composersWatermark = 'Rareblin';
-			case 'disposition' :
-				composersWatermark = 'ShredBoi';
-			case 'tessattack' :
-				composersWatermark = 'AadstaPinwheel';
+		{ //we're not using this so i deleted everything :troll4k: -frogb
 			// test songs
 			case 'opposition' :
 				composersWatermark = 'Maevings';

@@ -385,7 +385,7 @@ class TitleState extends MusicBeatState
 		}
 
 		if (doTheFunny) {
-	    	FlxG.camera.zoom = FlxMath.lerp(1, FlxG.camera.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 1));
+	    	FlxG.camera.zoom = FlxMath.lerp(1, FlxG.camera.zoom, CoolUtil.boundTo(1 - (elapsed * 10), 0, 1));
 		}
 
 		super.update(elapsed);
@@ -489,7 +489,7 @@ class TitleState extends MusicBeatState
 			case 14:
 				createCoolText(['And special thanks to our contributors']);
 			case 15:
-				addMoreText('Gabriel, Astro, Benjamin, Bamber, Carter, Zoip,\nAVery, Sketcherbasics101, Gill, Snoop, Polter, RandoScript,\nMatt, MelDoesStuff, ZertyXD, nn, Moi, Poop');
+				addMoreText('Astro, Benjamin, Bamber, Carter, Zoip,\nAVery, Sketcherbasics101, Gill, Snoop, Polter,\nMatt, MelDoesStuff, ZertyXD, nn, Moi, Poop');
 			case 16:
 				deleteCoolText();
 			case 17:
@@ -543,13 +543,13 @@ class TitleState extends MusicBeatState
 
 			FlxTween.tween(logoBl,{x: 15}, 1.4, {ease: FlxEase.expoInOut});
 
-			logoBl.angle = -7;
+			logoBl.angle = -5;
 			new FlxTimer().start(0.01, function(tmr:FlxTimer)
 			{
-				if(logoBl.angle == -7) 
-				FlxTween.angle(logoBl, logoBl.angle, 7, 7, {ease: FlxEase.quartInOut});
-				if (logoBl.angle == 7) 
-				FlxTween.angle(logoBl, logoBl.angle, -7, 7, {ease: FlxEase.quartInOut});
+				if(logoBl.angle == -5) 
+				FlxTween.angle(logoBl, logoBl.angle, 5, 5, {ease: FlxEase.quartInOut});
+				if (logoBl.angle == 5) 
+				FlxTween.angle(logoBl, logoBl.angle, -5, 5, {ease: FlxEase.quartInOut});
 			}, 0);
 
 			if(ClientPrefs.flashing) {FlxG.camera.flash(FlxColor.WHITE, 4); }
