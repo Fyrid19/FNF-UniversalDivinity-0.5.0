@@ -32,8 +32,8 @@ using StringTools;
 class MainMenuState extends MusicBeatState
 {
 	public static var psychEngineVersion:String = '0.6.2'; //This is also used for Discord RPC
-	public static var devModVer:String = 'ALPHA 2'; //THIS IS USED FOR FUCKING YOU SO TIGHT IN THE A- -frogb
-	public static var curModVer:String = 'Early 1.0'; //This is also used for yo maa ma AAAAAAAAAA-
+	public static var devModVer:String = 'ALPHA 3';
+	public static var curModVer:String = '0.5'; //This is also used for yo maa ma AAAAAAAAAA-
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
@@ -92,7 +92,7 @@ class MainMenuState extends MusicBeatState
 
 		persistentUpdate = persistentDraw = true;
 
-		daRealEngineVer = engineVers[FlxG.random.int(0, 2)];
+		daRealEngineVer = engineVers[FlxG.random.int(0, 8)];
 
 		//only update the hitbox shit after putting EVERYTHING IN -frogb
 
