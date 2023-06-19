@@ -3430,7 +3430,7 @@ class PlayState extends MusicBeatState
 		}
 
 		//welcome to modchart city.
-		if(SONG.song.toLowerCase() == 'pixes rebound' || SONG.song.toLowerCase() == 'pixes-rebound' || SONG.song.toLowerCase() == "pixe's-rebound" || SONG.song.toLowerCase() == "pixe's rebound")
+		if(SONG.song.toLowerCase() == 'hellbound')
 		{
 			for(str in playerStrums)
 			{
@@ -3475,8 +3475,8 @@ class PlayState extends MusicBeatState
 			}
 
 		switch (curStage)
-		{ // took this straight from the dnb source, added a few things from definitive edition too -frogb (ignore the fact that theres the slur there im too lazy to delete that i just want it FIXED-)
-			case 'houseNight' | 'farmNight' | 'bambersHell': //dark as hell -frogb
+		{ // took this straight from the dnb source lol end me -frogb
+			case 'houseNight' | 'farmNight' | 'bambersHell': //dark stage
 				{
 					dad.color = 0xFF878787;
 					gf.color = 0xFF878787;
@@ -5841,25 +5841,22 @@ for (key => value in luaShaders)
 
 		if (curBeat % 2 == 0)
 		{
-			iconP1.scale.set(1.5, 0.7);
-			iconP2.scale.set(0.7, 1.5);
+			FlxTween.tween(iconP1, {'scale.x': 1.5, 'scale.y': 0.7}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quadOut});
+			FlxTween.tween(iconP2, {'scale.x': 0.7, 'scale.y': 1.5}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quadOut});
 		}
 		if (curBeat % 2 == 1)
 		{
-			iconP1.scale.set(0.7, 1.5);
-			iconP2.scale.set(1.5, 0.7);
+			FlxTween.tween(iconP1, {'scale.x': 0.7, 'scale.y': 1.5}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quadOut});
+			FlxTween.tween(iconP2, {'scale.x': 1.5, 'scale.y': 0.7}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quadOut});
 		}
 		if (healthBar.percent < 20)
 		{
-			iconP1.scale.set(1.5, 0.2);
+			FlxTween.tween(iconP1, {'scale.x': 1.5, 'scale.y': 0.2}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quadOut});
 		}
 		if (healthBar.percent > 80)
 		{
-			iconP2.scale.set(1.5, 0.2);
+			FlxTween.tween(iconP1, {'scale.x': 1.5, 'scale.y': 0.2}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quadOut});
 		}
-
-		FlxTween.tween(iconP1, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quadOut});
-		FlxTween.tween(iconP2, {'scale.x': 1, 'scale.y': 1}, Conductor.crochet / 1250 * gfSpeed, {ease: FlxEase.quadOut});
 
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
