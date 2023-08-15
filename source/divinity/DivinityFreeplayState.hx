@@ -61,7 +61,7 @@ class DivinityFreeplayState extends MusicBeatState
 
 	private var CurrentSongIcon:FlxSprite;
 
-	private var AllPossibleSongs:Array<String> = ["main", "extrasandfanmades", "covers", "fantracks"];
+	private var AllPossibleSongs:Array<String> = ["main", "extrasandfanmades", "covers"];
 
 	private var CurrentPack:Int = 0;
 
@@ -172,8 +172,6 @@ class DivinityFreeplayState extends MusicBeatState
 					//addWeek(['Gamebreaker'], 8, ['sbarren']);
 					//addWeek(['Quadruple Quarrel'], 8, ['sbarren']);
 					//addWeek(['Prey'], 8, ['sbarren']); // ITS ALL SHITTED BARRENNN -fyrid
-				case 'fantracks': //screw you im doing it
-					addWeek(["Pixe's Rebound"], 8, ['bambiGod']);
 					
 			}
 		}

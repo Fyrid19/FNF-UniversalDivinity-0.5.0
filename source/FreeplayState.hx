@@ -21,7 +21,6 @@ import Discord.DiscordClient;
 import divinity.SkinSelectState;
 using StringTools;
 import WeekData;
-import divinity.DivinityWeekData;
 #if MODS_ALLOWED
 import sys.FileSystem;
 #end
@@ -57,7 +56,7 @@ class FreeplayState extends MusicBeatState
 
 	private var CurrentSongIcon:FlxSprite;
 
-	private var AllPossibleSongs:Array<String> = ["main", "extrasandfanmades", "covers", "fantracks"];
+	private var AllPossibleSongs:Array<String> = ["main", "extrasandfanmades", "covers"];
 
 	private var CurrentPack:Int = 0;
 
@@ -143,7 +142,7 @@ class FreeplayState extends MusicBeatState
 				case 'extrasandfanmades':
 					//addWeek(['Deep End'], 15, ['mordon']);
 					//addWeek(['Unruly'], 6, ['dave-angey']);
-					addWeek(['SFF'], 3, ['bambi']);
+					//addWeek(['SFF'], 3, ['bambi']);
 					addWeek(['Hellbound'], 8, ['heldai-phase-1']); // remade in v1
 					//addWeek(['Retro'], 6, ['dave-angey']);
 					addWeek(['Intertwined'], 6, ['dave3d']);
@@ -168,8 +167,6 @@ class FreeplayState extends MusicBeatState
 					//addWeek(['Gamebreaker'], 8, ['sbarren']);
 					//addWeek(['Quadruple Quarrel'], 8, ['sbarren']);
 					//addWeek(['Prey'], 8, ['sbarren']); // ITS ALL SHITTED BARRENNN -fyrid
-				case 'fantracks': //screw you im doing it
-					addWeek(["Pixe's Rebound"], 8, ['bambiGod']);
 					
 			}
 		}
@@ -371,7 +368,7 @@ class FreeplayState extends MusicBeatState
 		if (controls.BACK && allowinputShit)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
-				MusicBeatState.switchState(new divinity.DivinityFreeplayState());
+				MusicBeatState.switchState(new FreeplayState());
 	
 			if (accepted && allowinputShit)
 			{
@@ -453,7 +450,7 @@ class FreeplayState extends MusicBeatState
 	}
 	else if(controls.RESET #if android || _virtualpad.buttonY.justPressed #end)
 	{
-		openSubState(new ResetScoreSubState(songs[curSelected].songName, curDifficulty, songs[curSelected].songCharacter)); //good fucking lord this breaks the freeplaystate lmao
+		openSubState(new ResetScoreSubState(songs[curSelected].songName, curDifficulty, songs[curSelected].songCharacter));
 		FlxG.sound.play(Paths.sound('scrollMenu'));
 		allowinputShit = false;
 		fart = false;
